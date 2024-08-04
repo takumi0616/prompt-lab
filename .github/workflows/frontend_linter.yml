@@ -1,0 +1,52 @@
+name: lint-check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js version
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+
+      - name: Install packages
+        run: |
+          npm install
+
+      - name: Run eslint
+        run: npm run lint
+
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js version
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+
+      - name: Install packages
+        run: |
+          npm install
+
+      - name: Run format
+        run: |
+          npm run format
+          clean=$(git status | grep "nothing to commit" || true)
+          if [ -z "$clean" ]; then
+            git status
+            echo "There generated codes. Run \`npm run format\`."
+            exit 1
+          fi
