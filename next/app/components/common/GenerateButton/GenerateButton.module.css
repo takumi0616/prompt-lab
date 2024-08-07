@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.component {
+  width: 80%;
+}
+
+.generateButton {
+  background-color: #edc3e7;
+  border: 1px solid black;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition:
+    background-color 0.3s,
+    color 0.1s,
+    border-color 0.1s;
+}
+.generateButton:hover {
+  background-color: black;
+  color: #edc3e7;
+  border-color: #edc3e7;
+}
