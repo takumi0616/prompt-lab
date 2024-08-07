@@ -1,9 +1,9 @@
-import Script from 'next/script';
-export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || '';
+import Script from 'next/script'
+export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || ''
 
 export function GoogleAnalytics() {
   if (!GA_MEASUREMENT_ID) {
-    return <></>;
+    return <></>
   }
   return (
     <>
@@ -21,6 +21,6 @@ export function GoogleAnalytics() {
           `}
       </Script>
     </>
-  );
+  )
 }
-export default GoogleAnalytics;
+export default GoogleAnalytics
