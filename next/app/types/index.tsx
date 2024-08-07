@@ -1,12 +1,13 @@
-export interface TopLogprobs {
-  [key: string]: number
+export interface TopLogprob {
+  token: string
+  logprob: number
 }
 
 export interface TokenInfo {
   token: string
   logprob: number
   bytes: number[]
-  top_logprobs: TopLogprobs[]
+  top_logprobs: TopLogprob[]
 }
 
 export interface LogprobsDisplayProps {

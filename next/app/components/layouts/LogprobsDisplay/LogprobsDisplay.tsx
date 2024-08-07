@@ -1,16 +1,23 @@
-// next/app/LogprobsDisplay/index.tsx
 import React from 'react'
-import styles from './index.module.css'
+import styles from './LogprobsDisplay.module.css'
 import { LogprobsDisplayProps } from '@/types'
 
 const LogprobsDisplay: React.FC<LogprobsDisplayProps> = ({ logprobs }) => {
+  const displayToken = (token: string) => {
+    if (token === '\n') {
+      return '[改行文字]'
+    }
+    if (token.trim() === '') {
+      return '[空白文字]'
+    }
+    return token
+  }
+
   return (
     <div className={styles.grid}>
       {logprobs.map((token, index) => (
         <div key={index} className={styles.card}>
-          <h3 className={styles.title}>Token: {token.token}</h3>
-          <p>Log Probability: {token.logprob.toFixed(8)}</p>
-          <h4 className={styles.subtitle}>Top Log Probabilities:</h4>
+          <h3 className={styles.title}>{displayToken(token.token)}</h3>
           <ul>
             {token.top_logprobs.slice(0, 10).map((topLogprob, i) => {
               const expLogprob = Math.exp(topLogprob.logprob)
@@ -22,9 +29,8 @@ const LogprobsDisplay: React.FC<LogprobsDisplayProps> = ({ logprobs }) => {
 
               return (
                 <li key={i}>
-                  <strong>Candidate:</strong> {topLogprob.token}
-                  <br />
-                  <strong>Log Probability:</strong> {percentage.toFixed(2)}%
+                  <strong>{displayToken(topLogprob.token)}</strong>
+                  <strong>{percentage.toFixed(2)}%</strong>
                 </li>
               )
             })}

@@ -1,9 +1,8 @@
-// next/app/components/ChatInterface/index.tsx
 'use client'
 
 import { useState } from 'react'
-import LogprobsDisplay from '@/components/LogprobsDisplay'
-import styles from '@/components/ChatInterface/index.module.css'
+import styles from './index.module.css'
+import LogprobsDisplay from '@/components/layouts/LogprobsDisplay'
 import { TokenInfo, ResultData } from '@/types'
 
 export default function ChatInterface() {
@@ -106,6 +105,7 @@ export default function ChatInterface() {
         <div className={styles.mb}>
           <h2 className={styles.bold}>Result:</h2>
           <p>{result.text}</p>
+          {/* <pre>{JSON.stringify(result, null, 2)}</pre> */}
         </div>
       )}
       {logprobs.length > 0 && (
