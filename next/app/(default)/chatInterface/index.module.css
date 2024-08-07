@@ -1,55 +1,62 @@
 .container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 16px;
+  padding: 20px;
 }
 
 .title {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 16px;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 .form {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+.mb {
+  margin-bottom: 20px;
 }
 
 .label {
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .input {
   width: 100%;
   padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-.button {
-  background-color: #0070f3;
-  color: white;
-  padding: 8px 16px;
+.buttonContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.gearButton {
+  background: none;
   border: none;
-  border-radius: 4px;
+  font-size: 24px;
   cursor: pointer;
 }
 
-.button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+.button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #0070f3;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 .bgRed {
-  background-color: #fee2e2;
+  background-color: #ffeded;
 }
 
 .borderRed {
-  border-color: #f87171;
+  border: 1px solid #ff0000;
 }
 
 .textRed {
-  color: #b91c1c;
+  color: #ff0000;
 }
 
 .px {
@@ -58,14 +65,18 @@
 }
 
 .py {
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 .rounded {
-  border-radius: 4px;
+  border-radius: 8px;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 .mb {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }

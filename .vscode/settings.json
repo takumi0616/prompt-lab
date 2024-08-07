@@ -13,5 +13,6 @@
   "css.validate": true,
   "scss.validate": true,
   "less.validate": true,
-  "css.lint.unknownAtRules": "ignore"
+  "css.lint.unknownAtRules": "ignore",
+  "figma.autocompleteBlocks": true
 }

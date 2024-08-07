@@ -3,14 +3,25 @@
 import { useState } from 'react'
 import styles from './index.module.css'
 import LogprobsDisplay from '@/components/layouts/LogprobsDisplay'
+import ResponseBox from '@/components/common/ResponseBox'
+import InputBox from '@/components/common/InputBox'
+import ConfigModal from '@/components/modal/ConfigModal'
 import { TokenInfo, ResultData } from '@/types'
+import ParameterBox from '@/components/common/ParameterBox'
 
 export default function ChatInterface() {
+  const [model, setModel] = useState('gpt-4o')
   const [apiKey, setApiKey] = useState('')
   const [prompt, setPrompt] = useState('')
+  const [maxTokens, setMaxTokens] = useState(30)
+  const [seed, setSeed] = useState(27)
+  const [topLogprobs, setTopLogprobs] = useState(10)
+  const [temperature, setTemperature] = useState(0)
+  const [topP, setTopP] = useState(1)
   const [result, setResult] = useState<ResultData | null>(null)
   const [logprobs, setLogprobs] = useState<TokenInfo[]>([])
   const [error, setError] = useState<string>('')
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
@@ -24,7 +35,17 @@ export default function ChatInterface() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ apiKey, text: prompt }),
+        body: JSON.stringify({
+          apiKey,
+          text: prompt,
+          model,
+          max_tokens: maxTokens,
+          seed,
+          logprobs: true,
+          top_logprobs: topLogprobs,
+          temperature,
+          top_p: topP,
+        }),
       })
 
       if (!response.ok) {
@@ -58,41 +79,31 @@ export default function ChatInterface() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>ChatGPT API Interface</h1>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <div className={styles.mb}>
-          <label htmlFor="apiKey" className={styles.label}>
-            API Key:
-          </label>
-          <input
-            type="text"
-            id="apiKey"
-            value={apiKey}
-            onChange={(e) => setApiKey(e.target.value)}
-            required
-            className={styles.input}
-          />
-        </div>
-        <div className={styles.mb}>
-          <label htmlFor="prompt" className={styles.label}>
-            Prompt:
-          </label>
-          <input
-            type="text"
-            id="prompt"
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-            required
-            className={styles.input}
-          />
-        </div>
-        <button
-          type="submit"
-          disabled={!apiKey || !prompt}
-          className={styles.button}
-        >
-          Send
-        </button>
-      </form>
+      <InputBox
+        apiKey={apiKey}
+        prompt={prompt}
+        setPrompt={setPrompt}
+        setIsModalOpen={setIsModalOpen}
+        handleSubmit={handleSubmit}
+      />
+      <ConfigModal
+        model={model}
+        setModel={setModel}
+        apiKey={apiKey}
+        setApiKey={setApiKey}
+        maxTokens={maxTokens}
+        setMaxTokens={setMaxTokens}
+        seed={seed}
+        setSeed={setSeed}
+        topLogprobs={topLogprobs}
+        setTopLogprobs={setTopLogprobs}
+        temperature={temperature}
+        setTemperature={setTemperature}
+        topP={topP}
+        setTopP={setTopP}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
       {error && (
         <div
           className={`${styles.bgRed} ${styles.borderRed} ${styles.textRed} ${styles.px} ${styles.py} ${styles.rounded} ${styles.mb}`}
@@ -102,11 +113,17 @@ export default function ChatInterface() {
         </div>
       )}
       {result && (
-        <div className={styles.mb}>
-          <h2 className={styles.bold}>Result:</h2>
-          <p>{result.text}</p>
-          {/* <pre>{JSON.stringify(result, null, 2)}</pre> */}
-        </div>
+        <>
+          <ResponseBox result={result.text} />
+          <ParameterBox
+            model={model}
+            maxTokens={maxTokens}
+            seed={seed}
+            topLogprobs={topLogprobs}
+            temperature={temperature}
+            topP={topP}
+          />
+        </>
       )}
       {logprobs.length > 0 && (
         <div>

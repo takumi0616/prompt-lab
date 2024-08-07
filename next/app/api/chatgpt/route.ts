@@ -1,7 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(request: NextRequest) {
-  const { apiKey, text } = await request.json()
+  const {
+    apiKey,
+    text,
+    model,
+    max_tokens,
+    seed,
+    top_logprobs,
+    temperature,
+    top_p,
+  } = await request.json()
 
   if (!apiKey) {
     return NextResponse.json(
@@ -18,12 +27,14 @@ export async function POST(request: NextRequest) {
   ]
 
   const body = {
-    model: 'gpt-4o',
+    model: model || 'gpt-4o',
     messages: messages,
-    max_tokens: 30,
-    seed: 27,
+    max_tokens: max_tokens || 30,
+    seed: seed || 27,
     logprobs: true,
-    top_logprobs: 10,
+    top_logprobs: top_logprobs || 10,
+    temperature: temperature || 0,
+    top_p: top_p || 1,
   }
 
   const headers = {
