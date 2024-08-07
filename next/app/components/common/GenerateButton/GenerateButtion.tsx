@@ -15,7 +15,11 @@ export default function GenerateButton() {
   }
 
   return (
-    <button className={s.generateButton} onClick={handleClick}>
+    <button
+      className={s.generateButton}
+      onClick={handleClick}
+      disabled={isLoading}
+    >
       {isLoading ? <div className={s.loader}></div> : <p>Generate</p>}
     </button>
   )

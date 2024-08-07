@@ -1,8 +1,8 @@
 .generateButton {
   background-color: #edc3e7;
-  border: 1px solid black;
-  color: black;
-  padding: 10px 20px;
+  border: 2px solid #2c3844;
+  color: #2c3844;
+  padding: 10px 30px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -17,9 +17,14 @@
   height: 32px; /* 固定の高さを設定 */
   width: 96px; /* 固定の幅を設定 */
 }
+.generateButton:hover {
+  background-color: #edc3e77f;
+  color: #2c3844;
+  border-color: #2c3844;
+}
 .loader {
-  border: 4px solid #ffffff; 
-  border-top: 4px solid #cccccc; 
+  border: 4px solid #ffffff;
+  border-top: 4px solid #cccccc;
   border-radius: 50%;
   width: 20px;
   height: 20px;
@@ -34,9 +39,3 @@
     transform: rotate(720deg);
   }
 }
-
-/* .generateButton:active {
-  background-color: #cccccc;
-  color: #ffffff;
-  border-color: #cccccc;
-} */
