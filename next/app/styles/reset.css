@@ -10,7 +10,6 @@
 }
 :where(html) {
   -webkit-text-size-adjust: none;
-  color-scheme: dark light;
   tab-size: 2;
   scrollbar-gutter: stable;
 }

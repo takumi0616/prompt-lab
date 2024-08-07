@@ -1,0 +1,71 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.form {
+  margin-bottom: 16px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.button {
+  background-color: #0070f3;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.bgRed {
+  background-color: #fee2e2;
+}
+
+.borderRed {
+  border-color: #f87171;
+}
+
+.textRed {
+  color: #b91c1c;
+}
+
+.px {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.py {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.rounded {
+  border-radius: 4px;
+}
+
+.mb {
+  margin-bottom: 16px;
+}
