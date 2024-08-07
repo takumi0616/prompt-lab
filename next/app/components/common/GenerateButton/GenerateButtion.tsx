@@ -1,16 +1,22 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import s from './GenerateButton.module.css'
 
 export default function GenerateButton() {
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleClick = () => {
+    setIsLoading(true)
+    // Simulate a loading process
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 3000)
+  }
+
   return (
-    <section className={s.container}>
-      <div className={s.component}>
-        <div className={s.generateButton}>
-          <p>Generate</p>
-        </div>
-      </div>
-    </section>
+    <button className={s.generateButton} onClick={handleClick}>
+      {isLoading ? <div className={s.loader}></div> : <p>Generate</p>}
+    </button>
   )
 }
