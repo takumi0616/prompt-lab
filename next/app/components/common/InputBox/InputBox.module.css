@@ -1,13 +1,16 @@
 .inputBox {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  border-radius: 25px; /* 角を丸くする */
-  border: 2px solid #7b90a6; /* 枠線の色 */
-  background-color: #f0f7ff; /* 入力欄の背景色 */
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 25px;
+  border: 2px solid #7b90a6;
+  background-color: #f0f7ff;
   width: 960px;
   padding: 15px;
-  height: 150px;
+}
+
+.components {
+  width: 100%;
 }
 
 .textarea {
@@ -20,9 +23,34 @@
   border-radius: 25px;
   font-size: 24px;
   font-weight: bold;
-  background-color: #f0f7ff; /* 入力欄の背景色 */
+  background-color: #f0f7ff;
   color: #333;
-  height: 100%;
+  min-height: 50px;
+  max-height: 400px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-between; /* 左右に分けて配置 */
+  align-items: center; /* 中央に配置 */
+}
+
+.lefticons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; /* 中央に配置 */
+}
+
+.righticons {
+  display: flex;
+  justify-content: flex-end; /* 右寄せに配置 */
+  align-items: center; /* 中央に配置 */
+}
+
+.icon {
+  margin-left: 10px; /* アイコン同士の間隔を調整 */
 }
 
 .textarea::placeholder {
