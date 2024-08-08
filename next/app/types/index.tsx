@@ -50,14 +50,13 @@ export interface ConfigModalProps {
   setTemperature: (value: number) => void
   topP: number
   setTopP: (value: number) => void
-  isOpen: boolean
-  onClose: () => void
 }
 
 export interface GenerateButtonProps {
   onClick: () => void
   disabled: boolean
   className?: string
+  isLoading: boolean
 }
 
 export interface ResponseBoxProps {
@@ -70,6 +69,7 @@ export interface InputBoxProps {
   setPrompt: (value: string) => void
   setIsModalOpen: (value: boolean) => void
   handleSubmit: (event: React.FormEvent) => Promise<void>
+  isLoading: boolean
 }
 
 export interface ParameterBoxProps {

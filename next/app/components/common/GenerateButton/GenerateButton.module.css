@@ -24,6 +24,19 @@
   border-color: #2c3844;
 }
 
+.disabled {
+  background-color: #d3d3d3;
+  color: #a0a0a0;
+  border-color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+.disabled:hover {
+  background-color: #d3d3d3;
+  color: #a0a0a0;
+  border-color: #a0a0a0;
+}
+
 .loader {
   border: 4px solid #ffffff;
   border-top: 4px solid #cccccc;
@@ -41,4 +54,23 @@
   100% {
     transform: rotate(720deg);
   }
+}
+
+.buttonContainer {
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1000;
+  visibility: visible;
 }

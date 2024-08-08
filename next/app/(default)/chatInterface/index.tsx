@@ -22,12 +22,14 @@ export default function ChatInterface() {
   const [logprobs, setLogprobs] = useState<TokenInfo[]>([])
   const [error, setError] = useState<string>('')
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
     setError('')
     setResult(null)
     setLogprobs([])
+    setIsLoading(true)
 
     try {
       const response = await fetch('/api/chatgpt', {
@@ -73,6 +75,8 @@ export default function ChatInterface() {
       } else {
         setError('An unknown error occurred')
       }
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -85,6 +89,7 @@ export default function ChatInterface() {
         setPrompt={setPrompt}
         setIsModalOpen={setIsModalOpen}
         handleSubmit={handleSubmit}
+        isLoading={isLoading}
       />
       <ConfigModal
         model={model}
