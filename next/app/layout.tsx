@@ -2,8 +2,11 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './styles/globals.css'
 import './styles/reset.css'
+import { Suspense } from 'react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import GoogleAnalytics from '@/thirdparty/GoogleAnalytics'
+import Header from '@/components/layouts/Header'
+import { ClientSessionProvider } from '@/lib/ClinentSessionProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,8 +26,13 @@ export default function RootLayout({
         <meta name="theme-color" content="#c9d6df" />
       </head>
       <body className={inter.className}>
-        {children}
-        <SpeedInsights />
+        <ClientSessionProvider>
+          <Suspense fallback="...">
+            <Header />
+          </Suspense>
+          {children}
+          <SpeedInsights />
+        </ClientSessionProvider>
       </body>
     </html>
   )
