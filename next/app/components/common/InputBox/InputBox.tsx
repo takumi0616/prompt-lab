@@ -1,33 +1,33 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react';
-import { CiSettings } from 'react-icons/ci';
-import { AiOutlineFileAdd } from 'react-icons/ai';
-import s from './InputBox.module.css';
-import GenerateButton from '@/components/common/GenerateButton';
+import React, { useState, useEffect, useRef } from 'react'
+import { CiSettings } from 'react-icons/ci'
+import { AiOutlineFileAdd } from 'react-icons/ai'
+import s from './InputBox.module.css'
+import GenerateButton from '@/components/common/GenerateButton'
 
 export default function InputBox() {
-  const [message, setMessage] = useState('');
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const [message, setMessage] = useState('')
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setMessage(e.target.value);
-  };
+    setMessage(e.target.value)
+  }
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter') {
-      e.preventDefault(); // Enterキーのデフォルトの動作を防ぐ
-      document.getElementById('generateButton')?.click(); // GenerateButtonのクリックイベントを出す
+      e.preventDefault() // Enterキーのデフォルトの動作を防ぐ
+      document.getElementById('generateButton')?.click() // GenerateButtonのクリックイベントを出す
     }
-  };
+  }
 
   useEffect(() => {
-    const textarea = textareaRef.current;
+    const textarea = textareaRef.current
     if (textarea) {
-      textarea.style.height = 'auto';
-      textarea.style.height = `${textarea.scrollHeight}px`;
+      textarea.style.height = 'auto'
+      textarea.style.height = `${textarea.scrollHeight}px`
     }
-  }, [message]);
+  }, [message])
 
   return (
     <div className={s.inputBox}>
@@ -59,5 +59,5 @@ export default function InputBox() {
         </div>
       </div>
     </div>
-  );
+  )
 }
