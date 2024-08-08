@@ -35,6 +35,7 @@
   display: flex;
   justify-content: space-between; /* 左右に分けて配置 */
   align-items: center; /* 中央に配置 */
+  margin-top: 20px;
 }
 
 .lefticons {
@@ -47,10 +48,11 @@
   display: flex;
   justify-content: flex-end; /* 右寄せに配置 */
   align-items: center; /* 中央に配置 */
+  
 }
 
 .icon {
-  margin-left: 10px; /* アイコン同士の間隔を調整 */
+    margin-left: 20px;
 }
 
 .textarea::placeholder {

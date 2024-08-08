@@ -44,9 +44,7 @@ export default function InputBox() {
       <div className={s.components}>
         <div className={s.icons}>
           <div className={s.lefticons}>
-            <div className={s.icon}>
-              <AiOutlineFileAdd size={40} />
-            </div>
+            <AiOutlineFileAdd size={40} />
           </div>
           <div className={s.righticons}>
             <div className={s.icon}>
