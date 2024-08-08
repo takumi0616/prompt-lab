@@ -1,0 +1,60 @@
+.inputBox {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 25px;
+  border: 2px solid #7b90a6;
+  background-color: #f0f7ff;
+  width: 960px;
+  padding: 15px;
+}
+
+.components {
+  width: 100%;
+}
+
+.textarea {
+  flex-grow: 1;
+  resize: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding-left: 10px;
+  border-radius: 25px;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #f0f7ff;
+  color: #333;
+  min-height: 50px;
+  max-height: 400px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-between; /* 左右に分けて配置 */
+  align-items: center; /* 中央に配置 */
+  margin-top: 20px;
+}
+
+.lefticons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; /* 中央に配置 */
+}
+
+.righticons {
+  display: flex;
+  justify-content: flex-end; /* 右寄せに配置 */
+  align-items: center; /* 中央に配置 */
+  
+}
+
+.icon {
+    margin-left: 20px;
+}
+
+.textarea::placeholder {
+  color: #828282;
+}
