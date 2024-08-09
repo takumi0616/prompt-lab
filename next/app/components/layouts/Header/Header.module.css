@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  background-color: #edc3e7;
+  font-size: 36px;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  transform: scale(1.1, 1);
+  transform-origin: top left;
+  letter-spacing: -1.5px;
+  color: #2c3844;
+  padding: 20px;
+}
+
+.icon {
+  display: flex;
+  color: #2c3844;
+  padding-bottom: 3px;
+}
+
+.text {
+  padding-left: 25px;
+  flex-wrap: wrap;
+}
