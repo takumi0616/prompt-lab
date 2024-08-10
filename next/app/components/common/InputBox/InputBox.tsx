@@ -49,15 +49,15 @@ export default function InputBox({
           placeholder="Type your message..."
           value={message}
           onChange={handleChange}
-          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyPress}
         />
       </div>
       <div className={styles.components}>
         <div className={styles.icons}>
-          <div className={styles.lefticons}>
+          <div className={styles.leftIcons}>
             <AiOutlineFileAdd size={40} className={styles.iconHover} />
           </div>
-          <div className={styles.righticons}>
+          <div className={styles.rightIcons}>
             <div className={styles.icon}>
               <CiSettings
                 size={48}

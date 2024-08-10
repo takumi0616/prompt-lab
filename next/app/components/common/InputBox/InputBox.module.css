@@ -5,7 +5,7 @@
   border-radius: 25px;
   border: 2px solid #7b90a6;
   background-color: #f0f7ff;
-  width: 960px;
+  width: 70vw;
   padding: 15px;
 }
 
@@ -19,9 +19,9 @@
   border: none;
   outline: none;
   box-shadow: none;
-  padding-left: 10px;
+  padding: 7px;
   border-radius: 25px;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   background-color: #f0f7ff;
   color: #333;
@@ -40,15 +40,15 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
-}
+  color: #2c3844;}
 
-.lefticons {
+.leftIcons {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-.righticons {
+.rightIcons {
   display: flex;
   justify-content: flex-end;
   align-items: center;
