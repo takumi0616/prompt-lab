@@ -1,57 +1,143 @@
-.overlay {
+.modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
+  color: #333;
 }
 
-.modal {
-  background: white;
+.modalContent {
+  background-color: #ffffff;
+  border-radius: 15px;
   padding: 20px;
-  border-radius: 8px;
+  width: 800px;
+  max-width: 90%;
   position: relative;
-  width: 80%;
-  max-width: 500px;
+}
+
+.modalHeader {
+  text-align: center;
+  margin-bottom: 60px;
 }
 
 .closeButton {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 0px;
+  right: 15px;
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: 48px;
   cursor: pointer;
+  color: #7b90a6;
 }
 
-.option {
-  margin-bottom: 16px;
+.modalBody {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 30px;
 }
 
-.option label {
+.formGroups,
+.sliderGroups {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formGroup,
+.sliderGroup {
+  margin-bottom: 15px;
+}
+
+.formGroup label,
+.sliderGroup label {
   display: block;
-  margin-bottom: 8px;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
-.option input,
-.option select {
+.formGroup input,
+.sliderGroup input[type='range'],
+.formGroup select {
   width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
+  padding: 5px;
+  border-radius: 8px;
+  border: 3px solid #7b90a6;
+  outline: none;
+  box-shadow: none;
 }
 
-.option input[type='range'] {
-  width: calc(100% - 40px);
-  display: inline-block;
+.sliderGroup {
+  display: flex;
+  flex-direction: column;
 }
 
-.option span {
-  display: inline-block;
-  width: 40px;
-  text-align: right;
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sliderGroup input[type='range'] {
+  flex: 1;
+}
+
+.sliderGroup input[type='number'] {
+  width: 60px;
+  padding: 5px;
+  border-radius: 8px;
+  border: 3px solid #7b90a6;
+  text-align: center;
+  outline: none;
+  box-shadow: none;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.cancelButton,
+.saveButton {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  width: 70px; /* ボタンの幅を統一 */
+  text-align: center;
+}
+
+.cancelButton {
+  border: 2px solid #7b90a6;
+}
+
+.saveButton {
+  background-color: #e0b1e8;
+  border: 2px solid #7b90a6;
+}
+
+.cancelButton:hover {
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    border-color 0.3s;
+  background-color: rgba(123, 144, 166, 0.1);
+  border-color: rgba(123, 144, 166, 0.5);
+}
+
+.saveButton:hover {
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    border-color 0.3s;
+  background-color: rgba(224, 177, 232, 0.7);
+  border-color: rgba(123, 144, 166, 0.5);
 }
