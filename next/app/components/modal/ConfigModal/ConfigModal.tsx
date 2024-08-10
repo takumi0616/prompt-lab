@@ -40,6 +40,18 @@ export default function ConfigModal({
     }
   }, [isOpen, model, apiKey, maxTokens, seed, topLogprobs, temperature, topP])
 
+  useEffect(() => {
+    const savedApiKey = localStorage.getItem('apiKey')
+    if (savedApiKey) {
+      setTempApiKey(savedApiKey)
+      setApiKey(savedApiKey)
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('apiKey', tempApiKey)
+  }, [tempApiKey])
+
   if (!isOpen) {
     return null
   }
