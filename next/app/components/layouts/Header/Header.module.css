@@ -1,23 +1,28 @@
 .header {
-  background-color: #f0f4f8;
-  padding: 20px;
-  border-bottom: 2px solid #bcccdc;
-}
-
-.container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  background-color: #edc3e7;
+  font-size: 30px;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  color: #2c3844;
+  padding: 13px;
 }
 
-.title {
-  font-size: 24px;
-  color: #333;
-  margin: 0;
+.icon {
+  display: flex;
+  color: #2c3844;
+  padding-bottom: 3px;
+}
+
+.text {
+  margin-left: 25px;
+  flex-wrap: wrap;
 }
 
 .nav {
   display: flex;
+  margin-left: auto;
 }
 
 .navList {

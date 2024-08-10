@@ -23,6 +23,9 @@ export default function ConfigModal({
   if (!isOpen) return null
 
   return (
+
+
+    
     <div className={styles.overlay}>
       <div className={styles.modal}>
         <button className={styles.closeButton} onClick={onClose}>

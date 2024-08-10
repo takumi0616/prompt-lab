@@ -7,6 +7,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import GoogleAnalytics from '@/thirdparty/GoogleAnalytics'
 import Header from '@/components/layouts/Header'
 import { ClientSessionProvider } from '@/lib/ClinentSessionProvider'
+import Footer from './components/layouts/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -31,6 +32,7 @@ export default function RootLayout({
             <Header />
           </Suspense>
           {children}
+          <Footer />
           <SpeedInsights />
         </ClientSessionProvider>
       </body>
