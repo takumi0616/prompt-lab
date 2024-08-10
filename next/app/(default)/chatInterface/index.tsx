@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { signOut, useSession } from 'next-auth/react'
 import styles from './index.module.css'
 import LogprobsDisplay from '@/components/layouts/LogprobsDisplay'
 import InputBox from '@/components/common/InputBox'
@@ -10,14 +9,13 @@ import { TokenInfo, ResultData } from '@/types'
 import GeneratedResultsBox from '@/components/common/GeneratedResultsBox'
 
 export default function ChatInterface() {
-  const { data: session } = useSession()
   const [model, setModel] = useState('gpt-4o')
   const [apiKey, setApiKey] = useState('')
   const [prompt, setPrompt] = useState('')
-  const [maxTokens, setMaxTokens] = useState(30)
-  const [seed, setSeed] = useState(27)
-  const [topLogprobs, setTopLogprobs] = useState(10)
-  const [temperature, setTemperature] = useState(0)
+  const [maxTokens, setMaxTokens] = useState(300)
+  const [seed, setSeed] = useState(100)
+  const [topLogprobs, setTopLogprobs] = useState(3)
+  const [temperature, setTemperature] = useState(1)
   const [topP, setTopP] = useState(1)
   const [result, setResult] = useState<ResultData | null>(null)
   const [logprobs, setLogprobs] = useState<TokenInfo[]>([])
@@ -81,23 +79,6 @@ export default function ChatInterface() {
     }
   }
 
-  const handleSaveResult = async () => {
-    if (!result) return
-
-    const response = await fetch('/api/results/save', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ text: result.text }),
-    })
-
-    if (!response.ok) {
-      const errorText = await response.text()
-      setError(`Failed to save result: ${errorText}`)
-    }
-  }
-
   return (
     <>
       <div className={styles.heroContainer}>
@@ -135,7 +116,6 @@ export default function ChatInterface() {
         onClose={() => setIsModalOpen(false)}
       />
 
-      {session && <button onClick={() => signOut()}>Sign out</button>}
       {error && (
         <div
           className={`${styles.bgRed} ${styles.borderRed} ${styles.textRed} ${styles.px} ${styles.py} ${styles.rounded} ${styles.mb}`}
@@ -146,24 +126,21 @@ export default function ChatInterface() {
       )}
       {result && (
         <>
-          <GeneratedResultsBox
-            result={result.text}
-            model={model}
-            maxTokens={maxTokens}
-            seed={seed}
-            topLogprobs={topLogprobs}
-            temperature={temperature}
-            topP={topP}
-          />
-          {session && (
-            <button onClick={handleSaveResult} disabled={isLoading}>
-              Save Result
-            </button>
-          )}
+          <div className={styles.fadeIn}>
+            <GeneratedResultsBox
+              result={result.text}
+              model={model}
+              maxTokens={maxTokens}
+              seed={seed}
+              topLogprobs={topLogprobs}
+              temperature={temperature}
+              topP={topP}
+            />
+          </div>
         </>
       )}
       {logprobs.length > 0 && (
-        <div>
+        <div className={styles.fadeIn}>
           <h2 className={`${styles.bold} ${styles.mb}`}>Log Probabilities:</h2>
           <LogprobsDisplay logprobs={logprobs} />
         </div>
