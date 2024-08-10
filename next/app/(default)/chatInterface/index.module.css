@@ -4,10 +4,10 @@
 
 .heroContainer {
   width: 100%;
-  height: 50vh; /* 画面全体の高さをカバー */
+  height: 50vh;
   display: flex;
-  justify-content: center; /* 水平方向の中央揃え */
-  align-items: center; /* 垂直方向の中央揃え */
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
@@ -107,4 +107,17 @@
 
 .mb {
   margin-bottom: 20px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 1.5s ease-in-out;
 }
