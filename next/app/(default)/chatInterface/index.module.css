@@ -1,7 +1,3 @@
-.container {
-  padding: 20px;
-}
-
 .heroContainer {
   width: 100%;
   height: 50vh;
@@ -24,7 +20,7 @@
 }
 
 .subtitle {
-  font-size: 36px;
+  font-size: 27px;
   font-weight: bold;
   color: #6f627a;
   margin-bottom: 50px;
