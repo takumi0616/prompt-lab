@@ -38,7 +38,7 @@
 }
 
 .loader {
-  border: 4px solid #ffffff;
+  border: 4px solid #333;
   border-top: 4px solid #cccccc;
   border-radius: 50%;
   width: 20px;
