@@ -41,6 +41,7 @@
   },
   "ignorePatterns": ["/*.js"],
   "rules": {
+    "import/no-unresolved": "off",
     "prefer-const": "off",
     "react/prop-types": ["off"],
     "react/react-in-jsx-scope": "off",

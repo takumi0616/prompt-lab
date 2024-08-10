@@ -59,8 +59,14 @@ export interface GenerateButtonProps {
   isLoading: boolean
 }
 
-export interface ResponseBoxProps {
+export interface GenerationResultsProps {
   result: string
+  model: string
+  maxTokens: number
+  seed: number
+  topLogprobs: number
+  temperature: number
+  topP: number
 }
 
 export interface InputBoxProps {

@@ -4,11 +4,10 @@ import { useState } from 'react'
 import { signOut, useSession } from 'next-auth/react'
 import styles from './index.module.css'
 import LogprobsDisplay from '@/components/layouts/LogprobsDisplay'
-import ResponseBox from '@/components/common/ResponseBox'
 import InputBox from '@/components/common/InputBox'
 import ConfigModal from '@/components/modal/ConfigModal'
 import { TokenInfo, ResultData } from '@/types'
-import ParameterBox from '@/components/common/ParameterBox'
+import GeneratedResultsBox from '@/components/common/GeneratedResultsBox'
 
 export default function ChatInterface() {
   const { data: session } = useSession()
@@ -139,8 +138,8 @@ export default function ChatInterface() {
       )}
       {result && (
         <>
-          <ResponseBox result={result.text} />
-          <ParameterBox
+          <GeneratedResultsBox
+            result={result.text}
             model={model}
             maxTokens={maxTokens}
             seed={seed}
