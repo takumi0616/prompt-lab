@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './ConfigModal.module.css'
 import { ConfigModalProps } from '@/types'
 
@@ -20,14 +20,51 @@ export default function ConfigModal({
   isOpen,
   onClose,
 }: ConfigModalProps & { isOpen: boolean; onClose: () => void }) {
-  if (!isOpen) return null
+  const [tempModel, setTempModel] = useState(model)
+  const [tempApiKey, setTempApiKey] = useState(apiKey)
+  const [tempMaxTokens, setTempMaxTokens] = useState(maxTokens)
+  const [tempSeed, setTempSeed] = useState(seed)
+  const [tempTopLogprobs, setTempTopLogprobs] = useState(topLogprobs)
+  const [tempTemperature, setTempTemperature] = useState(temperature)
+  const [tempTopP, setTempTopP] = useState(topP)
+
+  useEffect(() => {
+    if (isOpen) {
+      setTempModel(model)
+      setTempApiKey(apiKey)
+      setTempMaxTokens(maxTokens)
+      setTempSeed(seed)
+      setTempTopLogprobs(topLogprobs)
+      setTempTemperature(temperature)
+      setTempTopP(topP)
+    }
+  }, [isOpen, model, apiKey, maxTokens, seed, topLogprobs, temperature, topP])
+
+  if (!isOpen) {
+    return null
+  }
+
+  const handleSave = () => {
+    setModel(tempModel)
+    setApiKey(tempApiKey)
+    setMaxTokens(tempMaxTokens)
+    setSeed(tempSeed)
+    setTopLogprobs(tempTopLogprobs)
+    setTemperature(tempTemperature)
+    setTopP(tempTopP)
+    onClose()
+  }
+
+  const handleCancel = () => {
+    onClose()
+  }
 
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
         <div className={styles.modalHeader}>
           <h2>ChatGPT Configuration</h2>
-          <button className={styles.closeButton} onClick={onClose}>
+          <button className={styles.closeButton} onClick={handleCancel}>
             &times;
           </button>
           <p>Customize your ChatGPT integration settings.</p>
@@ -39,8 +76,8 @@ export default function ConfigModal({
               <label htmlFor="model">Model Name:</label>
               <select
                 id="model"
-                value={model}
-                onChange={(e) => setModel(e.target.value)}
+                value={tempModel}
+                onChange={(e) => setTempModel(e.target.value)}
               >
                 <option value="gpt-4o">gpt-4o</option>
                 <option value="gpt-4-turbo">gpt-4-turbo</option>
@@ -52,9 +89,9 @@ export default function ConfigModal({
               <input
                 type="password"
                 id="apiKey"
-                value={apiKey}
+                value={tempApiKey}
                 placeholder="Enter your API key"
-                onChange={(e) => setApiKey(e.target.value)}
+                onChange={(e) => setTempApiKey(e.target.value)}
                 required
               />
             </div>
@@ -63,8 +100,8 @@ export default function ConfigModal({
               <input
                 type="number"
                 id="maxTokens"
-                value={maxTokens}
-                onChange={(e) => setMaxTokens(Number(e.target.value))}
+                value={tempMaxTokens}
+                onChange={(e) => setTempMaxTokens(Number(e.target.value))}
                 min="1"
                 required
               />
@@ -74,8 +111,8 @@ export default function ConfigModal({
               <input
                 type="number"
                 id="seed"
-                value={seed}
-                onChange={(e) => setSeed(Number(e.target.value))}
+                value={tempSeed}
+                onChange={(e) => setTempSeed(Number(e.target.value))}
                 required
               />
             </div>
@@ -87,16 +124,16 @@ export default function ConfigModal({
                 <input
                   type="range"
                   id="topLogprobs"
-                  value={topLogprobs}
-                  onChange={(e) => setTopLogprobs(Number(e.target.value))}
+                  value={tempTopLogprobs}
+                  onChange={(e) => setTempTopLogprobs(Number(e.target.value))}
                   min="3"
                   max="10"
                   step="1"
                 />
                 <input
                   type="number"
-                  value={topLogprobs}
-                  onChange={(e) => setTopLogprobs(Number(e.target.value))}
+                  value={tempTopLogprobs}
+                  onChange={(e) => setTempTopLogprobs(Number(e.target.value))}
                 />
               </div>
             </div>
@@ -106,16 +143,16 @@ export default function ConfigModal({
                 <input
                   type="range"
                   id="temperature"
-                  value={temperature}
-                  onChange={(e) => setTemperature(Number(e.target.value))}
+                  value={tempTemperature}
+                  onChange={(e) => setTempTemperature(Number(e.target.value))}
                   min="0"
                   max="2"
-                  step="0.5"
+                  step="0.1"
                 />
                 <input
                   type="number"
-                  value={temperature}
-                  onChange={(e) => setTemperature(Number(e.target.value))}
+                  value={tempTemperature}
+                  onChange={(e) => setTempTemperature(Number(e.target.value))}
                 />
               </div>
             </div>
@@ -125,26 +162,28 @@ export default function ConfigModal({
                 <input
                   type="range"
                   id="topP"
-                  value={topP}
-                  onChange={(e) => setTopP(Number(e.target.value))}
+                  value={tempTopP}
+                  onChange={(e) => setTempTopP(Number(e.target.value))}
                   min="0"
-                  max="2"
-                  step="0.5"
+                  max="1"
+                  step="0.1"
                 />
                 <input
                   type="number"
-                  value={topP}
-                  onChange={(e) => setTopP(Number(e.target.value))}
+                  value={tempTopP}
+                  onChange={(e) => setTempTopP(Number(e.target.value))}
                 />
               </div>
             </div>
           </div>
         </div>
         <div className={styles.modalFooter}>
-          <button className={styles.cancelButton} onClick={onClose}>
+          <button className={styles.cancelButton} onClick={handleCancel}>
             Cancel
           </button>
-          <button className={styles.saveButton}>Save</button>
+          <button className={styles.saveButton} onClick={handleSave}>
+            Save
+          </button>
         </div>
       </div>
     </div>
