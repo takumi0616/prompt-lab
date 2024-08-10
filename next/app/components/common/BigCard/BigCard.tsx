@@ -15,7 +15,7 @@ export default function BigCard({ tokenInfo }: BigCardProps) {
   }
 
   return (
-    <div className={styles.maincard}>
+    <div className={styles.mainCard}>
       <div className={styles.card}>
         <h3 className={styles.title}>{displayToken(tokenInfo.token)}</h3>
         <ul>
