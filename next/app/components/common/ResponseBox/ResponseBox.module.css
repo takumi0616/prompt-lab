@@ -1,7 +1,12 @@
-.mb {
-  margin-bottom: 20px;
-}
-
-.bold {
+.responseBox {
+  background-color: #ffffff;
+  border: solid 4px #7b90a6;
+  border-radius: 25px;
+  padding: 25px;
+  margin-top: 30px;
+  font-size: 24px;
   font-weight: bold;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
