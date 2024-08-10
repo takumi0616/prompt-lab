@@ -100,18 +100,20 @@ export default function ChatInterface() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.hero}>
-        <h1 className={styles.title}>Chat with an AI</h1>
-        <h2 className={styles.subtitle}>Check out the most likely options</h2>
-        <div className={styles.components}>
-          <InputBox
-            apiKey={apiKey}
-            prompt={prompt}
-            setPrompt={setPrompt}
-            setIsModalOpen={setIsModalOpen}
-            handleSubmit={handleSubmit}
-            isLoading={isLoading}
-          />
+      <div className={styles.heroContainer}>
+        <div className={styles.hero}>
+          <h1 className={styles.title}>Chat with an AI</h1>
+          <h2 className={styles.subtitle}>Check out the most likely options</h2>
+          <div className={styles.components}>
+            <InputBox
+              apiKey={apiKey}
+              prompt={prompt}
+              setPrompt={setPrompt}
+              setIsModalOpen={setIsModalOpen}
+              handleSubmit={handleSubmit}
+              isLoading={isLoading}
+            />
+          </div>
         </div>
       </div>
       <ConfigModal
