@@ -4,10 +4,10 @@ import './styles/globals.css'
 import './styles/reset.css'
 import { Suspense } from 'react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import GoogleAnalytics from '@/thirdparty/GoogleAnalytics'
-import Header from '@/components/layouts/Header'
-import { ClientSessionProvider } from '@/lib/ClinentSessionProvider'
 import Footer from './components/layouts/Footer'
+import Header from '@/components/layouts/Header'
+import GoogleAnalytics from '@/thirdparty/GoogleAnalytics'
+import { ClientSessionProvider } from '@/lib/ClinentSessionProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
