@@ -77,12 +77,3 @@ export interface InputBoxProps {
   handleSubmit: (event: React.FormEvent) => Promise<void>
   isLoading: boolean
 }
-
-export interface ParameterBoxProps {
-  model: string
-  maxTokens: number
-  seed: number
-  topLogprobs: number
-  temperature: number
-  topP: number
-}
