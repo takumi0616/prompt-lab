@@ -64,10 +64,10 @@ export default function ConfigModal({
       <div className={styles.modalContent}>
         <div className={styles.modalHeader}>
           <h2>ChatGPT Configuration</h2>
+          <p>Customize your ChatGPT integration settings.</p>
           <button className={styles.closeButton} onClick={handleCancel}>
             &times;
           </button>
-          <p>Customize your ChatGPT integration settings.</p>
         </div>
 
         <div className={styles.modalBody}>

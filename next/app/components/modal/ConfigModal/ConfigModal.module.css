@@ -15,7 +15,7 @@
 .modalContent {
   background-color: #ffffff;
   border-radius: 15px;
-  padding: 20px;
+  padding: 45px;
   width: 800px;
   max-width: 90%;
   position: relative;
@@ -26,10 +26,14 @@
   margin-bottom: 60px;
 }
 
+.modalHeader h2 {
+  margin-bottom: 8px;
+}
+
 .closeButton {
   position: absolute;
   top: 0px;
-  right: 15px;
+  right: 22px;
   background: none;
   border: none;
   font-size: 48px;
@@ -111,7 +115,7 @@
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  width: 70px; /* ボタンの幅を統一 */
+  width: 70px;
   text-align: center;
 }
 
@@ -121,7 +125,7 @@
 
 .saveButton {
   background-color: #e0b1e8;
-  border: 2px solid #7b90a6;
+  border: 2px solid #e0b1e8;
 }
 
 .cancelButton:hover {
