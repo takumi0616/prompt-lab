@@ -3,6 +3,7 @@
   display: grid;
   gap: 16px;
   justify-content: center;
+  margin: 2rem 0rem;
 }
 
 @media (min-width: 768px) {
