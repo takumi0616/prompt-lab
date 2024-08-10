@@ -6,11 +6,14 @@ export default function SmallCard({
   token,
   percentage,
   displayToken,
-}: SmallCardProps) {
+  variant = 'gray',
+}: SmallCardProps & { variant?: 'green' | 'gray' }) {
   return (
-    <li className={styles.smallCard}>
-      <strong>{displayToken(token)}</strong>
-      <strong>{percentage.toFixed(2)}%</strong>
-    </li>
+    <div className={`${styles.smallCard} ${styles[variant]}`}>
+      <p className={`${styles.word} ${variant === 'gray' ? styles.gray : ''}`}>
+        {displayToken(token)}
+      </p>
+      <p className={styles.percent}>{percentage.toFixed(2)}%</p>
+    </div>
   )
 }

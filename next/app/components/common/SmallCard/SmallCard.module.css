@@ -1,7 +1,33 @@
 .smallCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 8px;
+  padding: 20px;
+  width: 360px;
+  height: 60px;
+  border-radius: 25px;
+  font-family: 'Montserrat';
+  font-weight: bold;
 }
 
-.smallCard strong {
-  display: block;
+.smallCard.green {
+  background-color: #dcfce7;
+}
+
+.smallCard.gray {
+  background-color: #f3f4f6;
+}
+
+.word {
+  color: #117318;
+  font-size: 20px;
+}
+
+.word.gray {
+  color: #927c74;
+}
+
+.percent {
+  color: #333333;
 }

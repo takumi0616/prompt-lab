@@ -25,6 +25,10 @@ export default function BigCard({ tokenInfo }: BigCardProps) {
             0,
           )
           const percentage = (expLogprob / totalExpLogprob) * 100
+          const variant =
+            displayToken(tokenInfo.token) === topLogprob.token
+              ? 'green'
+              : 'gray'
 
           return (
             <SmallCard
@@ -32,6 +36,7 @@ export default function BigCard({ tokenInfo }: BigCardProps) {
               token={topLogprob.token}
               percentage={percentage}
               displayToken={displayToken}
+              variant={variant}
             />
           )
         })}
