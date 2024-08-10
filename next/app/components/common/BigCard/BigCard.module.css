@@ -1,6 +1,4 @@
 .maincard {
-  width: 417px;
-  height: 417px;
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border: solid 1px #b9cee0;
@@ -12,8 +10,6 @@
 
 .card {
   color: #000;
-  width: 360px;
-  height: 375px;
   overflow: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
