@@ -1,8 +1,8 @@
 .smallCard {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 8px;
-  background-color: #dcfce7;
   padding: 20px;
   width: 360px;
   height: 60px;
@@ -11,43 +11,23 @@
   font-weight: bold;
 }
 
-.smallCard p {
-  display: flex;
-  align-items: center;
-  font-size: 20px;
+.smallCard.green {
+  background-color: #dcfce7;
+}
+
+.smallCard.gray {
+  background-color: #f3f4f6;
 }
 
 .word {
   color: #117318;
-}
-
-.percent {
-  color: #333333;
-}
-
-.smallCard_other {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  background-color: #f3f4f6;
-  padding: 20px;
-  width: 360px;
-  height: 60px;
-  border-radius: 25px;
-  font-family: 'Montserrat';
-  font-weight: bold;
-}
-
-.smallCard_other p {
-  display: flex;
-  align-items: center;
   font-size: 20px;
 }
 
-.word_other {
+.word.gray {
   color: #927c74;
 }
 
-.percent_other {
+.percent {
   color: #333333;
 }
