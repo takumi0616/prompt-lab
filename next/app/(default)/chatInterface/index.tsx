@@ -99,7 +99,7 @@ export default function ChatInterface() {
   }
 
   return (
-    <div className={styles.container}>
+    <>
       <div className={styles.heroContainer}>
         <div className={styles.hero}>
           <h1 className={styles.title}>Chat with an AI</h1>
@@ -168,6 +168,6 @@ export default function ChatInterface() {
           <LogprobsDisplay logprobs={logprobs} />
         </div>
       )}
-    </div>
+    </>
   )
 }

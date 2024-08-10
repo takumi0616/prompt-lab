@@ -1,15 +1,13 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './styles/globals.css'
 import './styles/reset.css'
 import { Suspense } from 'react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/layouts/Footer'
+import styles from './styles/layout.module.css'
 import Header from '@/components/layouts/Header'
 import GoogleAnalytics from '@/thirdparty/GoogleAnalytics'
 import { ClientSessionProvider } from '@/lib/ClinentSessionProvider'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'GPT-Logprobs',
@@ -26,12 +24,12 @@ export default function RootLayout({
         <GoogleAnalytics />
         <meta name="theme-color" content="#c9d6df" />
       </head>
-      <body className={inter.className}>
+      <body className={styles.body}>
         <ClientSessionProvider>
           <Suspense fallback="...">
             <Header />
           </Suspense>
-          {children}
+          <main className={styles.main}>{children}</main>
           <Footer />
           <SpeedInsights />
         </ClientSessionProvider>
