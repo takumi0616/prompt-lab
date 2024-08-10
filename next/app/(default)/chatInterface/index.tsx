@@ -100,15 +100,20 @@ export default function ChatInterface() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>ChatGPT API Interface</h1>
-      <InputBox
-        apiKey={apiKey}
-        prompt={prompt}
-        setPrompt={setPrompt}
-        setIsModalOpen={setIsModalOpen}
-        handleSubmit={handleSubmit}
-        isLoading={isLoading}
-      />
+      <div className={styles.hero}>
+        <h1 className={styles.title}>Chat with an AI</h1>
+        <h2 className={styles.subtitle}>Check out the most likely options</h2>
+        <div className={styles.components}>
+          <InputBox
+            apiKey={apiKey}
+            prompt={prompt}
+            setPrompt={setPrompt}
+            setIsModalOpen={setIsModalOpen}
+            handleSubmit={handleSubmit}
+            isLoading={isLoading}
+          />
+        </div>
+      </div>
       <ConfigModal
         model={model}
         setModel={setModel}
@@ -127,6 +132,7 @@ export default function ChatInterface() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
+
       {session && <button onClick={() => signOut()}>Sign out</button>}
       {error && (
         <div
