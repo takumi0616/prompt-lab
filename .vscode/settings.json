@@ -15,5 +15,6 @@
   "less.validate": true,
   "css.lint.unknownAtRules": "ignore",
   "figma.autocompleteBlocks": true,
-  "prettier.bracketSameLine": true
+  "prettier.bracketSameLine": true,
+  "files.autoSave": "off"
 }

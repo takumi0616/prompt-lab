@@ -8,9 +8,9 @@ export default function SmallCard({
   displayToken,
 }: SmallCardProps) {
   return (
-    <li className={styles.smallCard}>
-      <strong>{displayToken(token)}</strong>
-      <strong>{percentage.toFixed(2)}%</strong>
-    </li>
+    <div className={styles.smallCard}>
+      <p className={styles.word}>{displayToken(token)}</p>
+      <p className={styles.percent}>{percentage.toFixed(2)}%</p>
+    </div>
   )
 }
