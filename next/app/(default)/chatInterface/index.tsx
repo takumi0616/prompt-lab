@@ -141,7 +141,6 @@ export default function ChatInterface() {
       )}
       {logprobs.length > 0 && (
         <div className={styles.fadeIn}>
-          <h2 className={`${styles.bold} ${styles.mb}`}>Log Probabilities:</h2>
           <LogprobsDisplay logprobs={logprobs} />
         </div>
       )}
