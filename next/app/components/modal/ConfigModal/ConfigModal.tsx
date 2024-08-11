@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styles from './ConfigModal.module.css'
 import { ConfigModalProps } from '@/types'
 
@@ -27,6 +27,41 @@ export default function ConfigModal({
   const [tempTopLogprobs, setTempTopLogprobs] = useState(topLogprobs)
   const [tempTemperature, setTempTemperature] = useState(temperature)
   const [tempTopP, setTempTopP] = useState(topP)
+
+  const modalRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (isOpen && modalRef.current) {
+      fadeIn(modalRef.current)
+    }
+  }, [isOpen])
+
+  const fadeIn = (element: HTMLElement) => {
+    let opacity = 0
+    element.style.opacity = opacity.toString()
+    element.style.display = 'block'
+
+    const timer = setInterval(() => {
+      if (opacity >= 1) {
+        clearInterval(timer)
+      }
+      opacity += 0.1
+      element.style.opacity = opacity.toString()
+    }, 15)
+  }
+
+  const fadeOut = (element: HTMLElement, callback: () => void) => {
+    let opacity = 1
+    const timer = setInterval(() => {
+      if (opacity <= 0) {
+        clearInterval(timer)
+        element.style.display = 'none'
+        callback()
+      }
+      opacity -= 0.1
+      element.style.opacity = opacity.toString()
+    }, 15)
+  }
 
   useEffect(() => {
     if (isOpen) {
@@ -64,16 +99,16 @@ export default function ConfigModal({
     setTopLogprobs(tempTopLogprobs)
     setTemperature(tempTemperature)
     setTopP(tempTopP)
-    onClose()
+    fadeOut(modalRef.current!, onClose)
   }
 
   const handleCancel = () => {
-    onClose()
+    fadeOut(modalRef.current!, onClose)
   }
 
   return (
     <div className={styles.modalOverlay}>
-      <div className={styles.modalContent}>
+      <div ref={modalRef} className={styles.modalContent}>
         <div className={styles.modalHeader}>
           <h2>ChatGPT Configuration</h2>
           <p>Customize your ChatGPT integration settings.</p>
