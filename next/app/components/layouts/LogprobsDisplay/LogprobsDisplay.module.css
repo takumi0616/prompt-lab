@@ -1,19 +1,14 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
 .grid {
   width: 90vw;
   display: grid;
   gap: 16px;
-  justify-content: center;
   margin: 2rem 0rem;
-}
-
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 767px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 12px;
+  justify-content: center;
 }
