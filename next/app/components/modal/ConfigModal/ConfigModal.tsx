@@ -50,6 +50,19 @@ export default function ConfigModal({
     }, 30)
   }
 
+  const fadeOut = (element: HTMLElement, callback: () => void) => {
+    let opacity = 1
+    const timer = setInterval(() => {
+      if (opacity <= 0) {
+        clearInterval(timer)
+        element.style.display = 'none'
+        callback()
+      }
+      opacity -= 0.1
+      element.style.opacity = opacity.toString()
+    }, 30)
+  }
+
   useEffect(() => {
     if (isOpen) {
       setTempModel(model)
@@ -86,11 +99,11 @@ export default function ConfigModal({
     setTopLogprobs(tempTopLogprobs)
     setTemperature(tempTemperature)
     setTopP(tempTopP)
-    onClose()
+    fadeOut(modalRef.current!, onClose)
   }
 
   const handleCancel = () => {
-    onClose()
+    fadeOut(modalRef.current!, onClose)
   }
 
   return (
