@@ -84,7 +84,7 @@ export default function ChatInterface() {
       <div className={styles.heroContainer}>
         <div className={styles.hero}>
           <h1 className={styles.title}>Chat with an AI</h1>
-          <h2 className={styles.subtitle}>Check out the most likely options</h2>
+          <h2 className={styles.subtitle}>Click on the gear icon to set the optimal parameters</h2>
           <div className={styles.components}>
             <InputBox
               apiKey={apiKey}
