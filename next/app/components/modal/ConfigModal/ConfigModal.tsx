@@ -47,7 +47,7 @@ export default function ConfigModal({
       }
       opacity += 0.1
       element.style.opacity = opacity.toString()
-    }, 30)
+    }, 15)
   }
 
   const fadeOut = (element: HTMLElement, callback: () => void) => {
@@ -60,7 +60,7 @@ export default function ConfigModal({
       }
       opacity -= 0.1
       element.style.opacity = opacity.toString()
-    }, 30)
+    }, 15)
   }
 
   useEffect(() => {
