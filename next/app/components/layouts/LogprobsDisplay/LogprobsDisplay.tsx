@@ -5,10 +5,12 @@ import BigCard from '@/components/common/BigCard'
 
 export default function LogprobsDisplay({ logprobs }: LogprobsDisplayProps) {
   return (
-    <div className={styles.grid}>
-      {logprobs.map((tokenInfo, index) => (
-        <BigCard key={index} tokenInfo={tokenInfo} />
-      ))}
+    <div className={styles.container}>
+      <div className={styles.grid}>
+        {logprobs.map((tokenInfo, index) => (
+          <BigCard key={index} tokenInfo={tokenInfo} />
+        ))}
+      </div>
     </div>
   )
 }
