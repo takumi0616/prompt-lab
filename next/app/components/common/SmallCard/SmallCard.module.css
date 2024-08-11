@@ -8,6 +8,7 @@
   border-radius: 25px;
   font-family: 'Montserrat';
   font-weight: bold;
+  text-wrap: nowrap;
 }
 
 .smallCard.green {
