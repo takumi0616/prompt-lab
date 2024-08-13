@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './styles/globals.css'
 import './styles/reset.css'
 import { Suspense } from 'react'
-import { SpeedInsights } from '@vercel/speed-insights/next'
+// import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/layouts/Footer'
 import styles from './styles/layout.module.css'
 import Header from '@/components/layouts/Header'
@@ -31,7 +31,7 @@ export default function RootLayout({
           </Suspense>
           <main className={styles.main}>{children}</main>
           <Footer />
-          <SpeedInsights />
+          {/* <SpeedInsights /> */}
         </ClientSessionProvider>
       </body>
     </html>
