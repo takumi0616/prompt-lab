@@ -40,7 +40,8 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
-  color: #2c3844;}
+  color: #2c3844;
+}
 
 .leftIcons {
   display: flex;
@@ -64,5 +65,14 @@
 }
 
 .iconHover:hover {
+  opacity: 0.5;
+}
+
+.iconHover2 {
+  transition: opacity 0.3s ease;
+  margin-left: 15px;
+}
+
+.iconHover2:hover {
   opacity: 0.5;
 }
