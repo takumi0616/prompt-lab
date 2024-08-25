@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { CiSettings } from 'react-icons/ci'
 import { AiOutlineFileAdd } from 'react-icons/ai'
+import { RiImageAddLine } from 'react-icons/ri'
 import styles from './InputBox.module.css'
 import GenerateButton from '@/components/common/GenerateButton'
 import { InputBoxProps } from '@/types'
@@ -56,6 +57,7 @@ export default function InputBox({
         <div className={styles.icons}>
           <div className={styles.leftIcons}>
             <AiOutlineFileAdd size={40} className={styles.iconHover} />
+            <RiImageAddLine size={37} className={styles.iconHover2} />
           </div>
           <div className={styles.rightIcons}>
             <div className={styles.icon}>
