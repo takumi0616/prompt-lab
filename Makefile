@@ -10,7 +10,6 @@ rebuild:
 	npm run migrate:init
 	npm run postinstall
 	# npm run seed
-	npm run dev
 
 .PHONY: run
 run:
@@ -29,7 +28,6 @@ build:
 	npm run migrate:init
 	npm run postinstall
 	# npm run seed
-	npm run dev
 
 .PHONY: resetdb
 resetdb:
@@ -40,5 +38,5 @@ seed:
 	npm run seed
 
 .PHONY: studio
-build:
+studio:
 	npm run studio
