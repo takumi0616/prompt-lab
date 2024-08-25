@@ -1,18 +1,18 @@
 'use client'
 
 import React from 'react'
-// import { signIn, signOut, useSession } from 'next-auth/react'
+import { signIn, signOut, useSession } from 'next-auth/react'
 import { BiMenuAltLeft } from 'react-icons/bi'
 import styles from './Header.module.css'
 
 export default function Header() {
-  // const { data: session } = useSession()
+  const { data: session } = useSession()
 
   return (
     <header className={styles.header}>
       <BiMenuAltLeft className={styles.icon} size={50} />
       <p className={styles.text}>GPT-Logprobs</p>
-      {/* <nav className={styles.nav}>
+      <nav className={styles.nav}>
         <ul className={styles.navList}>
           {session ? (
             <li className={styles.navItem}>
@@ -32,7 +32,7 @@ export default function Header() {
             </li>
           )}
         </ul>
-      </nav> */}
+      </nav>
     </header>
   )
 }
