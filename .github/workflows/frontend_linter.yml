@@ -17,16 +17,14 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: "18.x"
+          node-version: '18.x'
 
       - name: Install packages
         run: |
-          cd next
           npm install
 
       - name: Run eslint
         run: |
-          cd next
           npm run lint
 
   prettier:
@@ -37,16 +35,14 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: "18.x"
+          node-version: '18.x'
 
       - name: Install packages
         run: |
-          cd next
           npm install
 
       - name: Run format
         run: |
-          cd next
           npm run format
           clean=$(git status | grep "nothing to commit" || true)
           if [ -z "$clean" ]; then
