@@ -2,6 +2,7 @@
 rebuild:
 	rm -rf node_modules
 	npm install
+	npm run db:reset
 	npm run lint
 	npm run lint:fix
 	npm run format
@@ -14,7 +15,6 @@ rebuild:
 .PHONY: run
 run:
 	npm run format
-	npm run build
 	npm run dev
 
 .PHONY: build
