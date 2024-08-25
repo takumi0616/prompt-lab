@@ -23,6 +23,7 @@ export interface ResultData {
       }
     }[]
   }
+  similarityScore?: number
 }
 
 export interface BigCardProps {

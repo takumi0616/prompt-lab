@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { CiSettings } from 'react-icons/ci'
-import { AiOutlineFileAdd } from 'react-icons/ai'
+// import { AiOutlineFileAdd } from 'react-icons/ai'
+// import { RiImageAddLine } from 'react-icons/ri'
 import styles from './InputBox.module.css'
 import GenerateButton from '@/components/common/GenerateButton'
 import { InputBoxProps } from '@/types'
@@ -30,9 +31,11 @@ export default function InputBox({
   }
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
-      document.getElementById('generateButton')?.click()
+      const newText = message + '\n'
+      setMessage(newText)
+      setPrompt(newText)
     }
   }
 
@@ -55,7 +58,8 @@ export default function InputBox({
       <div className={styles.components}>
         <div className={styles.icons}>
           <div className={styles.leftIcons}>
-            <AiOutlineFileAdd size={40} className={styles.iconHover} />
+            {/* <AiOutlineFileAdd size={40} className={styles.iconHover} /> */}
+            {/* <RiImageAddLine size={37} className={styles.iconHover2} /> */}
           </div>
           <div className={styles.rightIcons}>
             <div className={styles.icon}>

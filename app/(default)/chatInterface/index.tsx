@@ -22,6 +22,7 @@ export default function ChatInterface() {
   const [error, setError] = useState<string>('')
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [correctText, setCorrectText] = useState('')
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
@@ -54,7 +55,6 @@ export default function ChatInterface() {
       }
 
       const data: ResultData = await response.json()
-
       setResult(data)
 
       if (data.text) {
@@ -67,6 +67,43 @@ export default function ChatInterface() {
         setLogprobs(data.data.choices[0].logprobs.content)
       } else {
         throw new Error('No logprobs found in API response')
+      }
+
+      // correctTextが空でない場合にEmbedding APIを呼び出す
+      if (correctText.trim() !== '') {
+        const embeddingResponse = await fetch('/api/embedding', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            apiKey,
+            text1: correctText,
+            text2: data.text,
+          }),
+        })
+
+        if (!embeddingResponse.ok) {
+          throw new Error(
+            `Embedding API request failed with status ${embeddingResponse.status}`,
+          )
+        }
+
+        const embeddingData = await embeddingResponse.json()
+        setResult((prevResult) => {
+          if (prevResult) {
+            return {
+              ...prevResult,
+              similarityScore: embeddingData.similarityScore,
+            }
+          } else {
+            return {
+              text: data.text,
+              data: data.data,
+              similarityScore: embeddingData.similarityScore,
+            }
+          }
+        })
       }
     } catch (error: unknown) {
       if (error instanceof Error) {
@@ -87,6 +124,17 @@ export default function ChatInterface() {
           <h2 className={styles.subtitle}>
             Click on the gear icon to set the optimal parameters
           </h2>
+          <div>
+            <textarea
+              placeholder="Enter correct text here..."
+              value={correctText}
+              onChange={(e) => setCorrectText(e.target.value)}
+              style={{ width: '100%', marginBottom: '10px' }}
+            />
+          </div>
+          <div>
+            <p>input box</p>
+          </div>
           <div className={styles.components}>
             <InputBox
               apiKey={apiKey}
@@ -138,6 +186,11 @@ export default function ChatInterface() {
               temperature={temperature}
               topP={topP}
             />
+            {result.similarityScore !== undefined && (
+              <div className={styles.fadeIn}>
+                <h2>Similarity Score: {result.similarityScore}</h2>
+              </div>
+            )}
           </div>
         </>
       )}
