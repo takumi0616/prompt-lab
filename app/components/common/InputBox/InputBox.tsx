@@ -30,15 +30,6 @@ export default function InputBox({
     setMessage(e.target.value)
   }
 
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault()
-      const newText = message + '\n'
-      setMessage(newText)
-      setPrompt(newText)
-    }
-  }
-
   const handleGenerateClick = () => {
     handleSubmit(new Event('submit') as unknown as React.FormEvent)
   }
@@ -52,7 +43,6 @@ export default function InputBox({
           placeholder="Type your message..."
           value={message}
           onChange={handleChange}
-          onKeyDown={handleKeyPress}
         />
       </div>
       <div className={styles.components}>

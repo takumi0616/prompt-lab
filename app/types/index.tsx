@@ -78,3 +78,8 @@ export interface InputBoxProps {
   handleSubmit: (event: React.FormEvent) => Promise<void>
   isLoading: boolean
 }
+
+export interface CorrectBoxProps {
+  correctText: string
+  setCorrectText: (value: string) => void
+}

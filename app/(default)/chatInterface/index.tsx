@@ -7,6 +7,7 @@ import InputBox from '@/components/common/InputBox'
 import ConfigModal from '@/components/modal/ConfigModal'
 import { TokenInfo, ResultData } from '@/types'
 import GeneratedResultsBox from '@/components/common/GeneratedResultsBox'
+import CorrectBox from '@/components/common/CorrectBox'
 
 export default function ChatInterface() {
   const [model, setModel] = useState('gpt-4o')
@@ -124,16 +125,11 @@ export default function ChatInterface() {
           <h2 className={styles.subtitle}>
             Click on the gear icon to set the optimal parameters
           </h2>
-          <div>
-            <textarea
-              placeholder="Enter correct text here..."
-              value={correctText}
-              onChange={(e) => setCorrectText(e.target.value)}
-              style={{ width: '100%', marginBottom: '10px' }}
+          <div className={styles.components}>
+            <CorrectBox
+              correctText={correctText}
+              setCorrectText={setCorrectText}
             />
-          </div>
-          <div>
-            <p>input box</p>
           </div>
           <div className={styles.components}>
             <InputBox

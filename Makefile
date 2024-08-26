@@ -40,3 +40,7 @@ seed:
 .PHONY: studio
 studio:
 	npm run studio
+
+.PHONY: down
+studio:
+	docker compose down
