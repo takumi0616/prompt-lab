@@ -41,10 +41,21 @@ export default function FirstModal({
           onChange={(e) => setApiKey(e.target.value)}
         />
         <div className={styles.outbox}>
-          <div className={styles.link} onClick={onSwitchToExplanation}>
+          <div
+            className={styles.link}
+            onClick={onSwitchToExplanation}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                onSwitchToExplanation()
+              }
+            }}
+            role="button"
+            tabIndex={0}
+          >
             <AiOutlineQuestionCircle />
             <span>APIキーの取得方法を見る。</span>
           </div>
+
           <button className={styles.startButton} onClick={handleStartClick}>
             始める
           </button>

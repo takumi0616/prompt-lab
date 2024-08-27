@@ -6,12 +6,14 @@ type SecondModalProps = {
   onClose: () => void
   onBack: () => void // FirstModal に戻るための関数を追加
   onNext: () => void
+  onFirst: () => void
 }
 
 export default function SecondModal({
   onClose,
   onBack,
   onNext,
+  onFirst,
 }: SecondModalProps) {
   return (
     <div className={styles.modalOverlay}>
@@ -47,7 +49,17 @@ export default function SecondModal({
             </button>
           </div>
         </div>
-        <div className={styles.backFirst} onClick={onBack}>
+        <div
+          className={styles.backFirst}
+          onClick={onFirst}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              onFirst()
+            }
+          }}
+          role="button"
+          tabIndex={0}
+        >
           <p className={styles.backFirstText}> &larr;APIキーの入力に戻る。</p>
         </div>
       </div>

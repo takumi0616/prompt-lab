@@ -47,7 +47,17 @@ export default function FourthModal({
           </div>
         </div>
 
-        <div className={styles.backFirst} onClick={onFirst}>
+        <div
+          className={styles.backFirst}
+          onClick={onFirst}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              onFirst()
+            }
+          }}
+          role="button"
+          tabIndex={0}
+        >
           <p className={styles.backFirstText}> &larr;APIキーの入力に戻る。</p>
         </div>
       </div>

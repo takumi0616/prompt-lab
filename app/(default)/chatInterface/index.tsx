@@ -233,6 +233,7 @@ export default function ChatInterface() {
           onClose={handleCloseSecondModal}
           onBack={handleBackToFirstModal}
           onNext={handleSwitchToThirdModal}
+          onFirst={handleBackToFirstModal}
         />
       )}
 
