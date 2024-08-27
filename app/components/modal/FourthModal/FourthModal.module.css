@@ -1,0 +1,131 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  font-weight: bold;
+}
+
+.modalContent {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 40px;
+  width: 500px;
+  max-width: 90%;
+  text-align: center;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: 0px;
+  right: 22px;
+  background: none;
+  border: none;
+  font-size: 36px;
+  cursor: pointer;
+  color: #7b90a6;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.modalintro {
+  border: 1px solid #ccc; 
+  border-radius: 10px; 
+  padding: 20px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  margin-bottom: 20px; 
+  text-align: left; 
+}
+
+
+.step {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 20px;
+}
+.icon {
+  margin-right: 8px; 
+}
+
+.subtitleText {
+  display: inline-block;
+}
+
+.description {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #2c3844;
+}
+
+.navigation {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.backButton,
+.nextButton {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.backButton:hover,
+.nextButton:hover {
+  background-color: #f0f0f0;
+  color: #666;
+  border-color: #666;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    border-color 0.3s;
+}
+
+.backButton {
+  background-color: #ffffff;
+  color: #333;
+  border: 2px solid #333;
+}
+
+.nextButton {
+  background-color: #ffffff;
+  color: #333;
+  border: 2px solid #333;
+}
+
+.backFirst {
+  text-align: right;
+  margin-top: 10px; 
+}
+
+.backFirstText {
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.backFirstText:hover {
+  color: #666;
+}

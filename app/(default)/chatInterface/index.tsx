@@ -1,10 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './index.module.css'
 import LogprobsDisplay from '@/components/layouts/LogprobsDisplay'
 import InputBox from '@/components/common/InputBox'
 import ConfigModal from '@/components/modal/ConfigModal'
+import FirstModal from '@/components/modal/FirstModal'
+import SecondModal from '@/components/modal/SecondModal'
+import ThirdModal from '@/components/modal/ThirdModal'
+import FourthModal from '@/components/modal/FourthModal'
 import { TokenInfo, ResultData } from '@/types'
 import GeneratedResultsBox from '@/components/common/GeneratedResultsBox'
 import CorrectBox from '@/components/common/CorrectBox'
@@ -24,6 +28,15 @@ export default function ChatInterface() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [correctText, setCorrectText] = useState('')
+  const [isFirstModalOpen, setIsFirstModalOpen] = useState(true) // 初期状態で FirstModal を表示
+  const [isSecondModalOpen, setIsSecondModalOpen] = useState(false) // SecondModalの状態を追加
+  const [isThirdModalOpen, setIsThirdModalOpen] = useState(false) // ThirdModalの状態を追加
+  const [isFourthModalOpen, setIsFourthModalOpen] = useState(false) // FourthModalの状態を追加
+
+  useEffect(() => {
+    // コンポーネントがマウントされたときに FirstModal を表示
+    setIsFirstModalOpen(true)
+  }, [])
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
@@ -117,6 +130,52 @@ export default function ChatInterface() {
     }
   }
 
+  const handleCloseFirstModal = () => {
+    setIsFirstModalOpen(false)
+  }
+
+  const handleSwitchToExplanation = () => {
+    setIsFirstModalOpen(false)
+    setIsSecondModalOpen(true)
+  }
+
+  const handleCloseSecondModal = () => {
+    setIsSecondModalOpen(false)
+  }
+
+  const handleSwitchToThirdModal = () => {
+    setIsSecondModalOpen(false)
+    setIsThirdModalOpen(true)
+  }
+
+  const handleCloseThirdModal = () => {
+    setIsThirdModalOpen(false)
+  }
+
+  const handleBackToSecondModal = () => {
+    setIsThirdModalOpen(false)
+    setIsSecondModalOpen(true)
+  }
+  const handleSwitchToFourthModal = () => {
+    setIsThirdModalOpen(false)
+    setIsFourthModalOpen(true)
+  }
+
+  const handleCloseFourthModal = () => {
+    setIsFourthModalOpen(false)
+  }
+
+  const handleBackToThirdModal = () => {
+    setIsFourthModalOpen(false)
+    setIsThirdModalOpen(true)
+  }
+  const handleBackToFirstModal = () => {
+    setIsSecondModalOpen(false)
+    setIsThirdModalOpen(false)
+    setIsFourthModalOpen(false)
+    setIsFirstModalOpen(true)
+  }
+
   return (
     <>
       <div className={styles.heroContainer}>
@@ -161,6 +220,39 @@ export default function ChatInterface() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
+
+      {isFirstModalOpen && (
+        <FirstModal
+          onClose={handleCloseFirstModal}
+          onSwitchToExplanation={handleSwitchToExplanation}
+        />
+      )}
+
+      {isSecondModalOpen && (
+        <SecondModal
+          onClose={handleCloseSecondModal}
+          onBack={handleBackToFirstModal}
+          onNext={handleSwitchToThirdModal}
+        />
+      )}
+
+      {isThirdModalOpen && (
+        <ThirdModal
+          onClose={handleCloseThirdModal}
+          onBack={handleBackToSecondModal}
+          onFirst={handleBackToFirstModal}
+          onNext={handleSwitchToFourthModal}
+        />
+      )}
+
+      {isFourthModalOpen && (
+        <FourthModal
+          onClose={handleCloseFourthModal}
+          onBack={handleBackToThirdModal}
+          onFirst={handleBackToFirstModal}
+          onNext={() => console.log('次へ')}
+        />
+      )}
 
       {error && (
         <div
