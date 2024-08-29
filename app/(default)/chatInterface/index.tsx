@@ -6,9 +6,7 @@ import LogprobsDisplay from '@/components/layouts/LogprobsDisplay'
 import InputBox from '@/components/common/InputBox'
 import ConfigModal from '@/components/modal/ConfigModal'
 import FirstModal from '@/components/modal/FirstModal'
-import SecondModal from '@/components/modal/SecondModal'
-import ThirdModal from '@/components/modal/ThirdModal'
-import FourthModal from '@/components/modal/FourthModal'
+import InstructionModal from '@/components/modal/InstructionModal'
 import { TokenInfo, ResultData } from '@/types'
 import GeneratedResultsBox from '@/components/common/GeneratedResultsBox'
 import CorrectBox from '@/components/common/CorrectBox'
@@ -28,13 +26,10 @@ export default function ChatInterface() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [correctText, setCorrectText] = useState('')
-  const [isFirstModalOpen, setIsFirstModalOpen] = useState(true) // 初期状態で FirstModal を表示
-  const [isSecondModalOpen, setIsSecondModalOpen] = useState(false) // SecondModalの状態を追加
-  const [isThirdModalOpen, setIsThirdModalOpen] = useState(false) // ThirdModalの状態を追加
-  const [isFourthModalOpen, setIsFourthModalOpen] = useState(false) // FourthModalの状態を追加
+  const [isFirstModalOpen, setIsFirstModalOpen] = useState(true)
+  const [isInstructionModalOpen, setIsInstructionModalOpen] = useState(false)
 
   useEffect(() => {
-    // コンポーネントがマウントされたときに FirstModal を表示
     setIsFirstModalOpen(true)
   }, [])
 
@@ -83,7 +78,6 @@ export default function ChatInterface() {
         throw new Error('No logprobs found in API response')
       }
 
-      // correctTextが空でない場合にEmbedding APIを呼び出す
       if (correctText.trim() !== '') {
         const embeddingResponse = await fetch('/api/embedding', {
           method: 'POST',
@@ -134,45 +128,17 @@ export default function ChatInterface() {
     setIsFirstModalOpen(false)
   }
 
-  const handleSwitchToExplanation = () => {
+  const handleSwitchToInstruction = () => {
     setIsFirstModalOpen(false)
-    setIsSecondModalOpen(true)
+    setIsInstructionModalOpen(true)
   }
 
-  const handleCloseSecondModal = () => {
-    setIsSecondModalOpen(false)
+  const handleCloseInstructionModal = () => {
+    setIsInstructionModalOpen(false)
   }
 
-  const handleSwitchToThirdModal = () => {
-    setIsSecondModalOpen(false)
-    setIsThirdModalOpen(true)
-  }
-
-  const handleCloseThirdModal = () => {
-    setIsThirdModalOpen(false)
-  }
-
-  const handleBackToSecondModal = () => {
-    setIsThirdModalOpen(false)
-    setIsSecondModalOpen(true)
-  }
-  const handleSwitchToFourthModal = () => {
-    setIsThirdModalOpen(false)
-    setIsFourthModalOpen(true)
-  }
-
-  const handleCloseFourthModal = () => {
-    setIsFourthModalOpen(false)
-  }
-
-  const handleBackToThirdModal = () => {
-    setIsFourthModalOpen(false)
-    setIsThirdModalOpen(true)
-  }
   const handleBackToFirstModal = () => {
-    setIsSecondModalOpen(false)
-    setIsThirdModalOpen(false)
-    setIsFourthModalOpen(false)
+    setIsInstructionModalOpen(false)
     setIsFirstModalOpen(true)
   }
 
@@ -224,34 +190,14 @@ export default function ChatInterface() {
       {isFirstModalOpen && (
         <FirstModal
           onClose={handleCloseFirstModal}
-          onSwitchToExplanation={handleSwitchToExplanation}
+          onSwitchToExplanation={handleSwitchToInstruction}
         />
       )}
 
-      {isSecondModalOpen && (
-        <SecondModal
-          onClose={handleCloseSecondModal}
-          onBack={handleBackToFirstModal}
-          onNext={handleSwitchToThirdModal}
+      {isInstructionModalOpen && (
+        <InstructionModal
+          onClose={handleCloseInstructionModal}
           onFirst={handleBackToFirstModal}
-        />
-      )}
-
-      {isThirdModalOpen && (
-        <ThirdModal
-          onClose={handleCloseThirdModal}
-          onBack={handleBackToSecondModal}
-          onFirst={handleBackToFirstModal}
-          onNext={handleSwitchToFourthModal}
-        />
-      )}
-
-      {isFourthModalOpen && (
-        <FourthModal
-          onClose={handleCloseFourthModal}
-          onBack={handleBackToThirdModal}
-          onFirst={handleBackToFirstModal}
-          onNext={() => console.log('次へ')}
         />
       )}
 

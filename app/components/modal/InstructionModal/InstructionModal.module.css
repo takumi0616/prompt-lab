@@ -40,7 +40,7 @@
   color: #333;
 }
 
-.modalintro {
+.modalIntro {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 20px;
@@ -84,6 +84,10 @@
   margin-bottom: 20px;
 }
 
+.imageRounded {
+  border-radius: 12px;
+}
+
 .navigation {
   display: flex;
   justify-content: flex-end;
@@ -122,15 +126,21 @@
   border: 2px solid #333;
 }
 
-.backFirst {
-  text-align: right;
+.disabledButton {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.backFirstBox {
   margin-top: 10px;
+  text-align: right;
 }
 
 .backFirstText {
   font-size: 14px;
   cursor: pointer;
   transition: color 0.3s ease;
+  display: inline-block;
 }
 
 .backFirstText:hover {
