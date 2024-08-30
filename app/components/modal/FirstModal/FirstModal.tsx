@@ -5,17 +5,20 @@ import styles from './FirstModal.module.css'
 type FirstModalProps = {
   onClose: () => void
   onSwitchToExplanation: () => void
+  setApiKey: (key: string) => void
 }
 
 export default function FirstModal({
   onClose,
   onSwitchToExplanation,
+  setApiKey,
 }: FirstModalProps) {
-  const [apiKey, setApiKey] = React.useState('')
+  const [localApiKey, setLocalApiKey] = React.useState('')
 
   const handleStartClick = () => {
-    if (apiKey) {
-      // ここでAPIキーを保存して、モーダルを閉じる処理などを行う
+    if (localApiKey) {
+      // 親コンポーネントから渡された setApiKey を使用してAPIキーを設定
+      setApiKey(localApiKey)
       onClose()
     } else {
       alert('APIキーを入力してください')
@@ -34,11 +37,11 @@ export default function FirstModal({
         </p>
         <h2 className={styles.apititle}>APIキー</h2>
         <input
-          type="text"
+          type="password"
           className={styles.input}
           placeholder="sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-          value={apiKey}
-          onChange={(e) => setApiKey(e.target.value)}
+          value={localApiKey}
+          onChange={(e) => setLocalApiKey(e.target.value)} // ローカルなAPIキーの状態を更新
         />
         <div className={styles.outbox}>
           <button className={styles.link} onClick={onSwitchToExplanation}>

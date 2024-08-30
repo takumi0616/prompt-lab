@@ -191,6 +191,7 @@ export default function ChatInterface() {
         <FirstModal
           onClose={handleCloseFirstModal}
           onSwitchToExplanation={handleSwitchToInstruction}
+          setApiKey={setApiKey} // APIキーを設定する関数を渡す
         />
       )}
 
