@@ -29,6 +29,13 @@ export default function ConfigModal({
   const [tempTopP, setTempTopP] = useState(topP)
 
   const modalRef = useRef<HTMLDivElement>(null)
+  const [showModelTooltip, setShowModelTooltip] = useState(false)
+  const [showApiKeyTooltip, setShowApiKeyTooltip] = useState(false)
+  const [showMaxTokensTooltip, setShowMaxTokensTooltip] = useState(false)
+  const [showSeedNumberTooltip, setShowSeedNumberTooltip] = useState(false)
+  const [showTopLogprobsTooltip, setShowTopLogprobsTooltip] = useState(false)
+  const [showTemperatureTooltip, setShowTemperatureTooltip] = useState(false)
+  const [showTopPTooltip, setShowTopPTooltip] = useState(false)
 
   useEffect(() => {
     if (isOpen && modalRef.current) {
@@ -119,7 +126,11 @@ export default function ConfigModal({
 
         <div className={styles.modalBody}>
           <div className={styles.formGroups}>
-            <div className={styles.formGroup}>
+            <div
+              className={styles.formGroup}
+              onMouseEnter={() => setShowModelTooltip(true)}
+              onMouseLeave={() => setShowModelTooltip(false)}
+            >
               <label htmlFor="model">Model Name:</label>
               <select
                 id="model"
@@ -130,8 +141,15 @@ export default function ConfigModal({
                 <option value="gpt-4-turbo">gpt-4-turbo</option>
                 <option value="gpt-4o-mini">gpt-4o-mini</option>
               </select>
+              {showModelTooltip && (
+                <div className={styles.tooltip}>AAAAAAAAAAAAAAAAAAAAAAA</div>
+              )}
             </div>
-            <div className={styles.formGroup}>
+            <div
+              className={styles.formGroup}
+              onMouseEnter={() => setShowApiKeyTooltip(true)}
+              onMouseLeave={() => setShowApiKeyTooltip(false)}
+            >
               <label htmlFor="apiKey">API Key:</label>
               <input
                 type="password"
@@ -141,8 +159,17 @@ export default function ConfigModal({
                 onChange={(e) => setTempApiKey(e.target.value)}
                 required
               />
+              {showApiKeyTooltip && (
+                <div className={styles.tooltip}>
+                  BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+                </div>
+              )}
             </div>
-            <div className={styles.formGroup}>
+            <div
+              className={styles.formGroup}
+              onMouseEnter={() => setShowMaxTokensTooltip(true)}
+              onMouseLeave={() => setShowMaxTokensTooltip(false)}
+            >
               <label htmlFor="maxTokens">Max Tokens:</label>
               <input
                 type="number"
@@ -152,8 +179,17 @@ export default function ConfigModal({
                 min="1"
                 required
               />
+              {showMaxTokensTooltip && (
+                <div className={styles.tooltip}>
+                  CCCCCCCCCCCCCCCCCCCCCSCCCCC
+                </div>
+              )}
             </div>
-            <div className={styles.formGroup}>
+            <div
+              className={styles.formGroup}
+              onMouseEnter={() => setShowSeedNumberTooltip(true)}
+              onMouseLeave={() => setShowSeedNumberTooltip(false)}
+            >
               <label htmlFor="seed">Seed Number:</label>
               <input
                 type="number"
@@ -162,10 +198,19 @@ export default function ConfigModal({
                 onChange={(e) => setTempSeed(Number(e.target.value))}
                 required
               />
+              {showSeedNumberTooltip && (
+                <div className={styles.tooltip}>
+                  DDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+                </div>
+              )}
             </div>
           </div>
           <div className={styles.sliderGroups}>
-            <div className={styles.sliderGroup}>
+            <div
+              className={styles.sliderGroup}
+              onMouseEnter={() => setShowTopLogprobsTooltip(true)}
+              onMouseLeave={() => setShowTopLogprobsTooltip(false)}
+            >
               <label htmlFor="topLogprobs">Top Logprobs:</label>
               <div className={styles.sliderContainer}>
                 <input
@@ -182,9 +227,18 @@ export default function ConfigModal({
                   value={tempTopLogprobs}
                   onChange={(e) => setTempTopLogprobs(Number(e.target.value))}
                 />
+                {showTopLogprobsTooltip && (
+                  <div className={styles.tooltip}>
+                    EEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+                  </div>
+                )}
               </div>
             </div>
-            <div className={styles.sliderGroup}>
+            <div
+              className={styles.sliderGroup}
+              onMouseEnter={() => setShowTemperatureTooltip(true)}
+              onMouseLeave={() => setShowTemperatureTooltip(false)}
+            >
               <label htmlFor="temperature">Temperature:</label>
               <div className={styles.sliderContainer}>
                 <input
@@ -201,9 +255,18 @@ export default function ConfigModal({
                   value={tempTemperature}
                   onChange={(e) => setTempTemperature(Number(e.target.value))}
                 />
+                {showTemperatureTooltip && (
+                  <div className={styles.tooltip}>
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                  </div>
+                )}
               </div>
             </div>
-            <div className={styles.sliderGroup}>
+            <div
+              className={styles.sliderGroup}
+              onMouseEnter={() => setShowTopPTooltip(true)}
+              onMouseLeave={() => setShowTopPTooltip(false)}
+            >
               <label htmlFor="topP">Top P:</label>
               <div className={styles.sliderContainer}>
                 <input
@@ -220,6 +283,9 @@ export default function ConfigModal({
                   value={tempTopP}
                   onChange={(e) => setTempTopP(Number(e.target.value))}
                 />
+                {showTopPTooltip && (
+                  <div className={styles.tooltip}>GGGGGGGGGGGGGGGGGGGGGGGG</div>
+                )}
               </div>
             </div>
           </div>
