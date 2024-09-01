@@ -157,10 +157,7 @@
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 12px;
-  white-space: nowrap;
   z-index: 1000;
-  visibility: visible;
-
   max-width: 150px;
   word-wrap: break-word;
   white-space: normal;
