@@ -3,11 +3,17 @@ import './styles/globals.css'
 import './styles/reset.css'
 import { Suspense } from 'react'
 // import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Montserrat } from 'next/font/google'
 import Footer from './components/layouts/Footer'
 import styles from './styles/layout.module.css'
 import Header from '@/components/layouts/Header'
 import GoogleAnalytics from '@/thirdparty/GoogleAnalytics'
 import { ClientSessionProvider } from '@/lib/ClinentSessionProvider'
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+})
 
 export const metadata: Metadata = {
   title: 'GPT-Logprobs',
@@ -24,7 +30,7 @@ export default function RootLayout({
         <GoogleAnalytics />
         <meta name="theme-color" content="#c9d6df" />
       </head>
-      <body className={styles.body}>
+      <body className={`${styles.body} ${montserrat.className}`}>
         <ClientSessionProvider>
           <Suspense fallback="...">
             <Header />
