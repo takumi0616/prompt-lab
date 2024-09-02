@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AiOutlineQuestionCircle } from 'react-icons/ai'
 import { RxCross1 } from 'react-icons/rx'
 import styles from './FirstModal.module.css'
@@ -14,7 +14,7 @@ export default function FirstModal({
   onSwitchToExplanation,
   setApiKey,
 }: FirstModalProps) {
-  const [localApiKey, setLocalApiKey] = React.useState('')
+  const [localApiKey, setLocalApiKey] = useState('')
 
   const handleStartClick = () => {
     if (localApiKey) {
