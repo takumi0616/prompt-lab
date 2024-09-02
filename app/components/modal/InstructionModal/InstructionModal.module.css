@@ -14,6 +14,7 @@
 
 .modalContent {
   background-color: #ffffff;
+  font-size: 16px;
   border-radius: 15px;
   padding: 40px;
   width: 500px;
@@ -24,18 +25,18 @@
 
 .closeButton {
   position: absolute;
-  top: 0px;
-  right: 22px;
+  top: 18px;
+  right: 18px;
   background: none;
   border: none;
-  font-size: 36px;
+  font-size: 25px;
   cursor: pointer;
   color: #7b90a6;
 }
 
 .title {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 19px;
+  margin-bottom: 20px;
   font-weight: bold;
   color: #333;
 }
@@ -58,14 +59,19 @@
 
 .subtitle {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  text-wrap: wrap;
   font-size: 20px;
   color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .icon {
-  margin-right: 8px;
+  margin: 2px 8px 0 0;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: #3b82f6;
 }
 
 .subtitleText {
@@ -74,8 +80,9 @@
 
 .description {
   font-size: 14px;
-  margin-bottom: 10px;
-  color: #2c3844;
+  font-weight: normal;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .image {
@@ -132,7 +139,7 @@
 }
 
 .backFirstBox {
-  margin-top: 10px;
+  margin-top: 20px;
   text-align: right;
 }
 

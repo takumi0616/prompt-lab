@@ -1,11 +1,12 @@
 import React from 'react'
 import { AiOutlineQuestionCircle } from 'react-icons/ai'
+import { RxCross1 } from 'react-icons/rx'
 import styles from './FirstModal.module.css'
 
 type FirstModalProps = {
   onClose: () => void
   onSwitchToExplanation: () => void
-  setApiKey: (key: string) => void
+  setApiKey: (key: string) => void // setApiKeyの型を定義
 }
 
 export default function FirstModal({
@@ -17,8 +18,7 @@ export default function FirstModal({
 
   const handleStartClick = () => {
     if (localApiKey) {
-      // 親コンポーネントから渡された setApiKey を使用してAPIキーを設定
-      setApiKey(localApiKey)
+      setApiKey(localApiKey) // setApiKeyを呼び出す
       onClose()
     } else {
       alert('APIキーを入力してください')
@@ -26,16 +26,16 @@ export default function FirstModal({
   }
 
   return (
-    <div className={styles.firstmodalOverlay}>
-      <div className={styles.firstmodalContent}>
+    <div className={styles.firstModalOverlay}>
+      <div className={styles.firstModalContent}>
         <button className={styles.closeButton} onClick={onClose}>
-          &times;
+          <RxCross1 />
         </button>
         <h1 className={styles.title}>ChatGPTのAPIキーを入力</h1>
         <p className={styles.description}>
           APIキーを入力してGPT-Logprobsを始めましょう。お持ちでない場合は、取得方法をご案内します。
         </p>
-        <h2 className={styles.apititle}>APIキー</h2>
+        <h2 className={styles.apiTitle}>APIキー</h2>
         <input
           type="password"
           className={styles.input}

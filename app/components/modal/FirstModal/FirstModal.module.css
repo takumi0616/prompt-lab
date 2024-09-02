@@ -1,4 +1,4 @@
-.firstmodalOverlay {
+.firstModalOverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -12,7 +12,7 @@
   font-weight: bold;
 }
 
-.firstmodalContent {
+.firstModalContent {
   background-color: #ffffff;
   border-radius: 15px;
   padding: 40px;
@@ -24,11 +24,11 @@
 
 .closeButton {
   position: absolute;
-  top: 0px;
-  right: 22px;
+  top: 18px;
+  right: 18px;
   background: none;
   border: none;
-  font-size: 36px;
+  font-size: 25px;
   cursor: pointer;
   color: #7b90a6;
 }
@@ -43,20 +43,22 @@
 .description {
   text-align: left;
   font-size: 14px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   color: #2c3844;
+  font-weight: normal;
 }
 
-.apititle {
+.apiTitle {
   text-align: left;
   font-size: 20px;
   color: #333;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .input {
   width: 100%;
-  padding: 10px;
+  padding: 10px 20px;
+  font-weight: normal;
   border-radius: 8px;
   border: 2px solid #b6c5d5;
   font-size: 16px;
