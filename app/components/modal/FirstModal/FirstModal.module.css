@@ -1,0 +1,109 @@
+.firstModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  font-weight: bold;
+}
+
+.firstModalContent {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 40px;
+  width: 500px;
+  max-width: 90%;
+  text-align: center;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+  color: #7b90a6;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.description {
+  text-align: left;
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #2c3844;
+  font-weight: normal;
+}
+
+.apiTitle {
+  text-align: left;
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 20px;
+  font-weight: normal;
+  border-radius: 8px;
+  border: 2px solid #b6c5d5;
+  font-size: 16px;
+  margin-bottom: 20px;
+  outline: none;
+  box-shadow: none;
+}
+
+.outbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  font-size: 14px;
+  color: #007bff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s; /* 色の変化を滑らかにする */
+}
+
+.link:hover {
+  color: #80bfff; /* 色を薄くする */
+}
+
+.startButton {
+  padding: 12px 24px;
+  background-color: #333333;
+  color: #f0f7ff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.startButton:hover {
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    border-color 0.3s;
+  background-color: #a6a6a6;
+}

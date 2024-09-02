@@ -1,10 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './index.module.css'
 import LogprobsDisplay from '@/components/layouts/LogprobsDisplay'
 import InputBox from '@/components/common/InputBox'
 import ConfigModal from '@/components/modal/ConfigModal'
+import FirstModal from '@/components/modal/FirstModal'
+import InstructionModal from '@/components/modal/InstructionModal'
 import { TokenInfo, ResultData } from '@/types'
 import GeneratedResultsBox from '@/components/common/GeneratedResultsBox'
 import CorrectBox from '@/components/common/CorrectBox'
@@ -24,6 +26,12 @@ export default function ChatInterface() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [correctText, setCorrectText] = useState('')
+  const [isFirstModalOpen, setIsFirstModalOpen] = useState(true)
+  const [isInstructionModalOpen, setIsInstructionModalOpen] = useState(false)
+
+  useEffect(() => {
+    setIsFirstModalOpen(true)
+  }, [])
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
@@ -70,7 +78,6 @@ export default function ChatInterface() {
         throw new Error('No logprobs found in API response')
       }
 
-      // correctTextが空でない場合にEmbedding APIを呼び出す
       if (correctText.trim() !== '') {
         const embeddingResponse = await fetch('/api/embedding', {
           method: 'POST',
@@ -117,6 +124,24 @@ export default function ChatInterface() {
     }
   }
 
+  const handleCloseFirstModal = () => {
+    setIsFirstModalOpen(false)
+  }
+
+  const handleSwitchToInstruction = () => {
+    setIsFirstModalOpen(false)
+    setIsInstructionModalOpen(true)
+  }
+
+  const handleCloseInstructionModal = () => {
+    setIsInstructionModalOpen(false)
+  }
+
+  const handleBackToFirstModal = () => {
+    setIsInstructionModalOpen(false)
+    setIsFirstModalOpen(true)
+  }
+
   return (
     <>
       <div className={styles.heroContainer}>
@@ -161,6 +186,21 @@ export default function ChatInterface() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
+
+      {isFirstModalOpen && (
+        <FirstModal
+          onClose={handleCloseFirstModal}
+          onSwitchToExplanation={handleSwitchToInstruction}
+          setApiKey={setApiKey} // APIキーを設定する関数を渡す
+        />
+      )}
+
+      {isInstructionModalOpen && (
+        <InstructionModal
+          onClose={handleCloseInstructionModal}
+          onFirst={handleBackToFirstModal}
+        />
+      )}
 
       {error && (
         <div
