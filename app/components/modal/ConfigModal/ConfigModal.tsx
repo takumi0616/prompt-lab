@@ -142,7 +142,9 @@ export default function ConfigModal({
                 <option value="gpt-4o-mini">gpt-4o-mini</option>
               </select>
               {showModelTooltip && (
-                <div className={styles.tooltip}>AAAAAAAAAAAAAAAAAAAAAAA</div>
+                <div className={styles.tooltip}>
+                  使用するGPTモデルを選択してください
+                </div>
               )}
             </div>
             <div
@@ -161,7 +163,7 @@ export default function ConfigModal({
               />
               {showApiKeyTooltip && (
                 <div className={styles.tooltip}>
-                  BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+                  OpenAIのAPIキーを入力してください
                 </div>
               )}
             </div>
@@ -181,7 +183,7 @@ export default function ConfigModal({
               />
               {showMaxTokensTooltip && (
                 <div className={styles.tooltip}>
-                  CCCCCCCCCCCCCCCCCCCCCSCCCCC
+                  生成可能な文字数を変更できます
                 </div>
               )}
             </div>
@@ -200,7 +202,7 @@ export default function ConfigModal({
               />
               {showSeedNumberTooltip && (
                 <div className={styles.tooltip}>
-                  DDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+                  設定する値によって出力のバリエーションが変化します
                 </div>
               )}
             </div>
@@ -229,7 +231,7 @@ export default function ConfigModal({
                 />
                 {showTopLogprobsTooltip && (
                   <div className={styles.tooltip}>
-                    EEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+                    表示するログの数を変更できます
                   </div>
                 )}
               </div>
@@ -257,7 +259,7 @@ export default function ConfigModal({
                 />
                 {showTemperatureTooltip && (
                   <div className={styles.tooltip}>
-                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    値が低いほど正解確率の高い単語が選択されます
                   </div>
                 )}
               </div>
@@ -284,7 +286,9 @@ export default function ConfigModal({
                   onChange={(e) => setTempTopP(Number(e.target.value))}
                 />
                 {showTopPTooltip && (
-                  <div className={styles.tooltip}>GGGGGGGGGGGGGGGGGGGGGGGG</div>
+                  <div className={styles.tooltip}>
+                    値が高いほど多様な語が選ばれやすくなります
+                  </div>
                 )}
               </div>
             </div>
