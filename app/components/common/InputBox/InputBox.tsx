@@ -1,7 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { CiSettings } from 'react-icons/ci'
-// import { AiOutlineFileAdd } from 'react-icons/ai'
-// import { RiImageAddLine } from 'react-icons/ri'
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs'
 import styles from './InputBox.module.css'
 import GenerateButton from '@/components/common/GenerateButton'
@@ -16,6 +14,7 @@ export default function InputBox({
   isToggled,
   setIsToggled,
   isLoading,
+  setIsTextareaExpanded,
 }: InputBoxProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [message, setMessage] = useState(prompt)
@@ -25,8 +24,10 @@ export default function InputBox({
     if (textarea) {
       textarea.style.height = 'auto'
       textarea.style.height = `${textarea.scrollHeight}px`
+      const lineCount = textarea.value.split('\n').length
+      setIsTextareaExpanded(lineCount > 5)
     }
-  }, [message])
+  }, [message, setIsTextareaExpanded])
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setPrompt(e.target.value)
@@ -55,9 +56,6 @@ export default function InputBox({
       <div className={styles.components}>
         <div className={styles.icons}>
           <div className={styles.leftIcons}>
-            {/* <AiOutlineFileAdd size={40} className={styles.iconHover} /> */}
-            {/* <RiImageAddLine size={37} className={styles.iconHover2} /> */}
-
             {isToggled ? (
               <BsToggleOn
                 size={48}
@@ -71,7 +69,7 @@ export default function InputBox({
                 className={styles.iconHover}
               />
             )}
-            <div className={styles.iconintro}>
+            <div className={styles.iconIntro}>
               <p>Enable Expected Answer</p>
             </div>
           </div>
