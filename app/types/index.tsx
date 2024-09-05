@@ -79,6 +79,7 @@ export interface InputBoxProps {
   isToggled: boolean
   setIsToggled: (value: boolean) => void
   isLoading: boolean
+  setIsTextareaExpanded: (value: boolean) => void
 }
 
 export interface CorrectBoxProps {
