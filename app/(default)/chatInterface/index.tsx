@@ -244,7 +244,9 @@ export default function ChatInterface() {
             />
             {result.similarityScore !== undefined && (
               <div className={styles.fadeIn}>
-                <h2>Similarity Score: {result.similarityScore}</h2>
+                <h2 className={styles.scoreText}>
+                  Similarity Score: {result.similarityScore}
+                </h2>
               </div>
             )}
           </div>

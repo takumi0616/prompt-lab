@@ -48,7 +48,7 @@
 
 .hideComponent p {
   font-weight: bold;
-  font-size: 20px;  
+  font-size: 20px;
   color: #333;
   margin: 1.5rem 0 0.3rem 0;
 }
@@ -138,4 +138,10 @@
 
 .fadeIn {
   animation: fadeIn 1.5s ease-in-out;
+}
+
+.scoreText {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
 }
