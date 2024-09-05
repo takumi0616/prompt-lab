@@ -5,7 +5,6 @@
   border-radius: 25px;
   border: 2px solid #7b90a6;
   background-color: #f0f7ff;
-  width: 70vw;
   padding: 15px;
 }
 
@@ -48,9 +47,10 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin-left: 16px;
 }
 
-.iconintro {
+.iconIntro {
   margin-left: 10px;
   position: relative;
   font-weight: bold;
