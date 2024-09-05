@@ -5,8 +5,6 @@
   border-radius: 25px;
   border: 2px solid #7b90a6;
   background-color: #f0f7ff;
-  width: 70vw;
-  max-width: 900px !important;
   padding: 15px;
   margin-top: 4px;
 }
@@ -19,7 +17,7 @@
   flex-grow: 1;
   resize: none;
   border: none;
-  outline: none;
+  outline: none;  
   box-shadow: none;
   padding: 7px;
   border-radius: 25px;
