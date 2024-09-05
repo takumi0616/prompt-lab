@@ -39,6 +39,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 15px;
   margin-top: 20px;
   color: #2c3844;
 }
@@ -47,6 +48,12 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.iconintro {
+  margin-left: 10px;
+  position: relative;
+  font-weight: bold;
 }
 
 .rightIcons {

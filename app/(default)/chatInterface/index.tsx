@@ -28,6 +28,7 @@ export default function ChatInterface() {
   const [correctText, setCorrectText] = useState('')
   const [isFirstModalOpen, setIsFirstModalOpen] = useState(true)
   const [isInstructionModalOpen, setIsInstructionModalOpen] = useState(false)
+  const [isToggled, setIsToggled] = useState(false)
 
   useEffect(() => {
     setIsFirstModalOpen(true)
@@ -150,12 +151,7 @@ export default function ChatInterface() {
           <h2 className={styles.subtitle}>
             Click on the gear icon to set the optimal parameters
           </h2>
-          <div className={styles.components}>
-            <CorrectBox
-              correctText={correctText}
-              setCorrectText={setCorrectText}
-            />
-          </div>
+
           <div className={styles.components}>
             <InputBox
               apiKey={apiKey}
@@ -163,9 +159,22 @@ export default function ChatInterface() {
               setPrompt={setPrompt}
               setIsModalOpen={setIsModalOpen}
               handleSubmit={handleSubmit}
+              isToggled={isToggled} // ここでトグルの状態を渡す
+              setIsToggled={setIsToggled} // トグルの変更関数を渡す
               isLoading={isLoading}
             />
           </div>
+          {isToggled && (
+            <div className={styles.components}>
+              <div className={styles.hideComponet}>
+                <p>Expected Answer</p>
+                <CorrectBox
+                  correctText={correctText}
+                  setCorrectText={setCorrectText}
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <ConfigModal

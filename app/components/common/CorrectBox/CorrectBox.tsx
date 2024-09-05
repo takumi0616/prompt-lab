@@ -1,20 +1,40 @@
 'use client'
 
-import React from 'react'
+import React, { useRef, useState, useEffect } from 'react'
+import styles from './CorrectBox.module.css'
 import { CorrectBoxProps } from '@/types'
 
 const CorrectBox: React.FC<CorrectBoxProps> = ({
   correctText,
   setCorrectText,
 }) => {
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const [message, setMessage] = useState(correctText)
+
+  useEffect(() => {
+    const textarea = textareaRef.current
+    if (textarea) {
+      textarea.style.height = 'auto'
+      textarea.style.height = `${textarea.scrollHeight}px`
+    }
+  }, [message])
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setCorrectText(e.target.value)
+    setMessage(e.target.value)
+  }
+
   return (
-    <div>
-      <textarea
-        placeholder="Enter correct text here..."
-        value={correctText}
-        onChange={(e) => setCorrectText(e.target.value)}
-        style={{ width: '100%', marginBottom: '10px' }}
-      />
+    <div className={styles.correctBox}>
+      <div className={styles.component}>
+        <textarea
+          ref={textareaRef}
+          placeholder="Enter correct text here..."
+          value={message}
+          onChange={handleChange}
+          className={styles.textarea}
+        />
+      </div>
     </div>
   )
 }

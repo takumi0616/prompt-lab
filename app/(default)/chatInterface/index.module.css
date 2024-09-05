@@ -1,6 +1,6 @@
 .heroContainer {
   width: 100%;
-  height: 55vh;
+  height: 80vh;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -29,6 +29,20 @@
 .components {
   display: flex;
   justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.hideComponet {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.hideComponet p {
+  font-weight: bold;
+  margin-top: 20px;
 }
 
 .form {

@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react'
 import { CiSettings } from 'react-icons/ci'
 // import { AiOutlineFileAdd } from 'react-icons/ai'
 // import { RiImageAddLine } from 'react-icons/ri'
+import { BsToggleOff, BsToggleOn } from 'react-icons/bs'
 import styles from './InputBox.module.css'
 import GenerateButton from '@/components/common/GenerateButton'
 import { InputBoxProps } from '@/types'
@@ -12,6 +13,8 @@ export default function InputBox({
   setPrompt,
   setIsModalOpen,
   handleSubmit,
+  isToggled,
+  setIsToggled,
   isLoading,
 }: InputBoxProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
@@ -34,6 +37,10 @@ export default function InputBox({
     handleSubmit(new Event('submit') as unknown as React.FormEvent)
   }
 
+  const toggleSwitch = () => {
+    setIsToggled(!isToggled)
+  }
+
   return (
     <div className={styles.inputBox}>
       <div className={styles.components}>
@@ -50,6 +57,23 @@ export default function InputBox({
           <div className={styles.leftIcons}>
             {/* <AiOutlineFileAdd size={40} className={styles.iconHover} /> */}
             {/* <RiImageAddLine size={37} className={styles.iconHover2} /> */}
+
+            {isToggled ? (
+              <BsToggleOn
+                size={48}
+                onClick={toggleSwitch}
+                className={styles.iconHover}
+              />
+            ) : (
+              <BsToggleOff
+                size={48}
+                onClick={toggleSwitch}
+                className={styles.iconHover}
+              />
+            )}
+            <div className={styles.iconintro}>
+              <p>Enable Expected Answer</p>
+            </div>
           </div>
           <div className={styles.rightIcons}>
             <div className={styles.icon}>
