@@ -152,7 +152,7 @@
 }
 
 .slideDown {
-  animation: slideDown 0.5s  ease-in-out;
+  animation: slideDown 0.5s ease-in-out;
 }
 
 @keyframes slideUp {

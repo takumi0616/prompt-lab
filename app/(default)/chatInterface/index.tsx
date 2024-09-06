@@ -37,20 +37,29 @@ export default function ChatInterface() {
   }, [])
 
   useEffect(() => {
-    if (isToggled) {
-      setIsTextareaExpanded(true)
+    const handleTextareaExpansion = () => {
+      if (isToggled) {
+        setIsTextareaExpanded(true)
+        setIsHidden(false)
+      } else {
+        const timer = setTimeout(() => {
+          setIsHidden(true)
+        }, 500)
+        return () => clearTimeout(timer)
+      }
     }
-  }, [isToggled])
 
-  useEffect(() => {
-    if (isToggled) {
-      setIsHidden(false)
-    } else {
-      setTimeout(() => {
-        setIsHidden(true)
-      }, 500)
+    const handleResultExpansion = () => {
+      if (result) {
+        setIsTextareaExpanded(true)
+      } else if (!result && !isToggled) {
+        setIsTextareaExpanded(false)
+      }
     }
-  }, [isToggled])
+
+    handleTextareaExpansion()
+    handleResultExpansion()
+  }, [isToggled, result])
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
@@ -186,10 +195,9 @@ export default function ChatInterface() {
             isLoading={isLoading}
             setIsTextareaExpanded={setIsTextareaExpanded}
           />
-
           <div
-            className={`${styles.components}
-             ${isToggled ? styles.slideDown : styles.slideUp}
+            className={`${styles.components} 
+            ${isToggled ? styles.slideDown : styles.slideUp}
               ${isHidden ? styles.hidden : ''}`}
           >
             <div className={styles.hideComponent}>
@@ -257,7 +265,7 @@ export default function ChatInterface() {
               topP={topP}
             />
             {result.similarityScore !== undefined && (
-              <div className={styles.fadeIn}>
+              <div className={`${styles.fadeIn} ${styles.mb}`}>
                 <h2 className={styles.scoreText}>
                   Similarity Score: {result.similarityScore}
                 </h2>
@@ -267,7 +275,7 @@ export default function ChatInterface() {
         </>
       )}
       {logprobs.length > 0 && (
-        <div className={styles.fadeIn}>
+        <div className={`${styles.fadeIn} ${styles.mb}`}>
           <LogprobsDisplay logprobs={logprobs} />
         </div>
       )}
