@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { Element, scroller } from 'react-scroll'
 import styles from './index.module.css'
 import LogprobsDisplay from '@/components/layouts/LogprobsDisplay'
 import InputBox from '@/components/common/InputBox'
@@ -31,6 +32,15 @@ export default function ChatInterface() {
   const [isToggled, setIsToggled] = useState(false)
   const [isTextareaExpanded, setIsTextareaExpanded] = useState(false)
   const [isHidden, setIsHidden] = useState(true)
+
+  useEffect(() => {
+    if (result) {
+      scroller.scrollTo('generatedResultsBox', {
+        duration: 800,
+        smooth: 'true',
+      })
+    }
+  }, [result])
 
   useEffect(() => {
     setIsFirstModalOpen(true)
@@ -255,15 +265,17 @@ export default function ChatInterface() {
       {result && (
         <>
           <div className={styles.fadeIn}>
-            <GeneratedResultsBox
-              result={result.text}
-              model={model}
-              maxTokens={maxTokens}
-              seed={seed}
-              topLogprobs={topLogprobs}
-              temperature={temperature}
-              topP={topP}
-            />
+            <Element name="generatedResultsBox">
+              <GeneratedResultsBox
+                result={result.text}
+                model={model}
+                maxTokens={maxTokens}
+                seed={seed}
+                topLogprobs={topLogprobs}
+                temperature={temperature}
+                topP={topP}
+              />
+            </Element>
             {result.similarityScore !== undefined && (
               <div className={`${styles.fadeIn} ${styles.mb}`}>
                 <h2 className={styles.scoreText}>
