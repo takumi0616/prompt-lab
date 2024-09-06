@@ -24,12 +24,6 @@ export default function InputBox({
     if (textarea) {
       textarea.style.height = 'auto'
       textarea.style.height = `${textarea.scrollHeight}px`
-      const lineCount = textarea.value.split('\n').length
-      if (lineCount > 5) {
-        setIsTextareaExpanded(true)
-      } else if (!isToggled) {
-        setIsTextareaExpanded(false)
-      }
     }
   }, [message, setIsTextareaExpanded, isToggled])
 
