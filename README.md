@@ -14,7 +14,7 @@
 
 <h2>🚀 Demo</h2>
 
-[https://gpt-logprobs.vercel.app/](https://gpt-logprobs.vercel.app/)
+[https://probtrace.netlify.app/](https://probtrace.netlify.app/)
 
 <h2>Project Screenshots:</h2>
 
