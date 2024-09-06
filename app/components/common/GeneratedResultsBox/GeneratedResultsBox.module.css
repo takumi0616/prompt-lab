@@ -1,16 +1,12 @@
 .responseBox {
-  margin-left: 12px;
-  margin-right: 12px;
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  margin-top: 30px;
   margin-bottom: 20px;
   font-size: 24px;
   font-family: 'Montserrat';
   font-weight: bold;
-  max-width: 100%;
-  word-wrap: break-word;
+  width: 95vw;
   overflow-wrap: break-word;
   display: grid;
   grid-template-rows: 76.08px auto auto;
