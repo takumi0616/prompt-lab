@@ -4,11 +4,9 @@
 }
 
 .grid {
-  width: 90vw;
+  width: 95vw;
   display: grid;
-  gap: 16px;
-  margin: 2rem 0rem;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 12px;
+  grid-gap: 12px;
   justify-content: center;
 }
