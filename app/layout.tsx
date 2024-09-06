@@ -1,14 +1,13 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
+import { Montserrat } from 'next/font/google'
+import styles from './styles/layout.module.css'
 import './styles/globals.css'
 import './styles/reset.css'
-import { Suspense } from 'react'
-// import { SpeedInsights } from '@vercel/speed-insights/next'
-import { Montserrat } from 'next/font/google'
-import Footer from './components/layouts/Footer'
-import styles from './styles/layout.module.css'
-import Header from '@/components/layouts/Header'
-import GoogleAnalytics from '@/thirdparty/GoogleAnalytics'
+import { Footer, Header } from './components/layouts'
 import { ClientSessionProvider } from '@/lib/ClinentSessionProvider'
+import GoogleAnalytics from '@/thirdparty/GoogleAnalytics'
+// import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const montserrat = Montserrat({
   subsets: ['latin'],

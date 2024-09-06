@@ -3,14 +3,16 @@
 import { useState, useEffect } from 'react'
 import { Element, scroller } from 'react-scroll'
 import styles from './index.module.css'
-import LogprobsDisplay from '@/components/layouts/LogprobsDisplay'
-import InputBox from '@/components/common/InputBox'
-import ConfigModal from '@/components/modal/ConfigModal'
-import FirstModal from '@/components/modal/FirstModal'
-import InstructionModal from '@/components/modal/InstructionModal'
 import { TokenInfo, ResultData } from '@/types'
-import GeneratedResultsBox from '@/components/common/GeneratedResultsBox'
-import CorrectBox from '@/components/common/CorrectBox'
+import {
+  ConfigModal,
+  CorrectBox,
+  FirstModal,
+  GeneratedResultsBox,
+  InputBox,
+  InstructionModal,
+} from '@/components/common'
+import { LogprobsDisplay } from '@/components/layouts'
 
 export default function ChatInterface() {
   const [model, setModel] = useState('gpt-4o')
