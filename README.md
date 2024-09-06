@@ -1,34 +1,66 @@
-# gpt-logprobs
+<h1 align="center" id="title">GPT-Logprobs</h1>
 
-ハッカソン2024/8 で作成
 
-## 起動の手順
+<img src="https://img.shields.io/badge/-Next.js-000000.svg?logo=next.js&style=popout">
+<img src="https://img.shields.io/badge/-React-000000.svg?logo=react&style=popout">
+<img src="https://img.shields.io/badge/-TypeScript-000000.svg?logo=typescript&style=popout">
+<img src="https://img.shields.io/badge/-Figma-000000.svg?logo=figma&style=popout">
+<img src="https://img.shields.io/badge/-Prisma-000000.svg?logo=prisma&style=popout">
+<img src="https://img.shields.io/badge/-Postgresql-000000.svg?logo=postgresql&style=popout">
 
-- ファーストコマンド
 
-  - make build
 
-- アプリ立ち上げ
+<p id="description">生成AIの出力に自身がない人に向けた、プロンプト作成のための指標を提供するWebアプリです。パラメータを設定し、結果を確認しながらプロンプトのクオリティ向上のための体験ができます。</p>
 
-  - make run
+<h2>🚀 Demo</h2>
 
-- アプリ再起動
+[https://gpt-logprobs.vercel.app/](https://gpt-logprobs.vercel.app/)
 
-  - make rebuild
+<h2>Project Screenshots:</h2>
 
-- prisma studio 立ち上げ
+<img src="/public/screenshot.png" alt="project-image">
 
-  - make studio
+<h2>🛠️ Installation and Running</h2>
 
-- DB のリセット
+<p>1. ファーストコマンド</p>
 
-  - make dbreset
+```
+make build
+```
 
-- seedの適用
+<p>2. アプリ立ち上げ</p>
 
-  - make seed
+```
+make run
+```
 
-## branch の命名規則
+<p>アプリ再起動</p>
+
+```
+make rebuild
+```
+
+<p>prisma studio 立ち上げ</p>
+
+```
+make studio
+```
+
+<p>DB のリセット</p>
+
+```
+make dbreset
+```
+
+<p>seedの適用</p>
+
+```
+make seed
+```
+
+<h2>🍰 Contribution Guidelines:</h2>
+
+#### branch の命名規則
 
 - main ブランチ
   - 本番用ブランチ
@@ -39,7 +71,7 @@
   - バグの修正などを行うブランチ，develop ブランチから派生
   - ex) fix/dodo/2-fix-view-env
 
-## コミットの命名規則
+#### コミットの命名規則
 
 - コミットメッセージは issue 番号を載せる
 - コミットメッセージは行った開発を端的にわかりやすく書く（長すぎないように注意する）
