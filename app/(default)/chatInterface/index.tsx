@@ -38,6 +38,7 @@ export default function ChatInterface() {
       scroller.scrollTo('generatedResultsBox', {
         duration: 800,
         smooth: 'true',
+        offset: -30,
       })
     }
   }, [result])
