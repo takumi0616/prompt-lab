@@ -76,7 +76,10 @@ export interface InputBoxProps {
   setPrompt: (value: string) => void
   setIsModalOpen: (value: boolean) => void
   handleSubmit: (event: React.FormEvent) => Promise<void>
+  isToggled: boolean
+  setIsToggled: (value: boolean) => void
   isLoading: boolean
+  setIsTextareaExpanded: (value: boolean) => void
 }
 
 export interface CorrectBoxProps {

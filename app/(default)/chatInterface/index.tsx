@@ -28,10 +28,29 @@ export default function ChatInterface() {
   const [correctText, setCorrectText] = useState('')
   const [isFirstModalOpen, setIsFirstModalOpen] = useState(true)
   const [isInstructionModalOpen, setIsInstructionModalOpen] = useState(false)
+  const [isToggled, setIsToggled] = useState(false)
+  const [isTextareaExpanded, setIsTextareaExpanded] = useState(false)
+  const [isHidden, setIsHidden] = useState(true)
 
   useEffect(() => {
     setIsFirstModalOpen(true)
   }, [])
+
+  useEffect(() => {
+    if (isToggled) {
+      setIsTextareaExpanded(true)
+    }
+  }, [isToggled])
+
+  useEffect(() => {
+    if (isToggled) {
+      setIsHidden(false)
+    } else {
+      setTimeout(() => {
+        setIsHidden(true)
+      }, 500)
+    }
+  }, [isToggled])
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
@@ -144,27 +163,42 @@ export default function ChatInterface() {
 
   return (
     <>
-      <div className={styles.heroContainer}>
+      <div
+        className={`${styles.heroContainer} ${
+          isTextareaExpanded ? styles.expanded : ''
+        }`}
+      >
         <div className={styles.hero}>
           <h1 className={styles.title}>Chat with an AI</h1>
           <h2 className={styles.subtitle}>
             Click on the gear icon to set the optimal parameters
           </h2>
-          <div className={styles.components}>
-            <CorrectBox
-              correctText={correctText}
-              setCorrectText={setCorrectText}
-            />
-          </div>
-          <div className={styles.components}>
-            <InputBox
-              apiKey={apiKey}
-              prompt={prompt}
-              setPrompt={setPrompt}
-              setIsModalOpen={setIsModalOpen}
-              handleSubmit={handleSubmit}
-              isLoading={isLoading}
-            />
+        </div>
+        <div className={styles.components}>
+          <InputBox
+            apiKey={apiKey}
+            prompt={prompt}
+            setPrompt={setPrompt}
+            setIsModalOpen={setIsModalOpen}
+            handleSubmit={handleSubmit}
+            isToggled={isToggled}
+            setIsToggled={setIsToggled}
+            isLoading={isLoading}
+            setIsTextareaExpanded={setIsTextareaExpanded}
+          />
+
+          <div
+            className={`${styles.components}
+             ${isToggled ? styles.slideDown : styles.slideUp}
+              ${isHidden ? styles.hidden : ''}`}
+          >
+            <div className={styles.hideComponent}>
+              <p>Expected Answer</p>
+              <CorrectBox
+                correctText={correctText}
+                setCorrectText={setCorrectText}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -191,7 +225,7 @@ export default function ChatInterface() {
         <FirstModal
           onClose={handleCloseFirstModal}
           onSwitchToExplanation={handleSwitchToInstruction}
-          setApiKey={setApiKey} // APIキーを設定する関数を渡す
+          setApiKey={setApiKey}
         />
       )}
 
@@ -224,7 +258,9 @@ export default function ChatInterface() {
             />
             {result.similarityScore !== undefined && (
               <div className={styles.fadeIn}>
-                <h2>Similarity Score: {result.similarityScore}</h2>
+                <h2 className={styles.scoreText}>
+                  Similarity Score: {result.similarityScore}
+                </h2>
               </div>
             )}
           </div>
