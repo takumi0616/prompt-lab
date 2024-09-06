@@ -1,13 +1,13 @@
 <h1 align="center" id="title">GPT-Logprobs</h1>
 
-
-<img src="https://img.shields.io/badge/-Next.js-000000.svg?logo=next.js&style=popout">
-<img src="https://img.shields.io/badge/-React-000000.svg?logo=react&style=popout">
-<img src="https://img.shields.io/badge/-TypeScript-000000.svg?logo=typescript&style=popout">
-<img src="https://img.shields.io/badge/-Figma-000000.svg?logo=figma&style=popout">
-<img src="https://img.shields.io/badge/-Prisma-000000.svg?logo=prisma&style=popout">
-<img src="https://img.shields.io/badge/-Postgresql-000000.svg?logo=postgresql&style=popout">
-
+<p align="center" style="align: center;">
+  <img src="https://img.shields.io/badge/-Next.js-000000.svg?logo=next.js&style=popout">
+  <img src="https://img.shields.io/badge/-React-000000.svg?logo=react&style=popout">
+  <img src="https://img.shields.io/badge/-TypeScript-000000.svg?logo=typescript&style=popout">
+  <img src="https://img.shields.io/badge/-Figma-000000.svg?logo=figma&style=popout">
+  <img src="https://img.shields.io/badge/-Prisma-000000.svg?logo=prisma&style=popout">
+  <img src="https://img.shields.io/badge/-Postgresql-000000.svg?logo=postgresql&style=popout">
+</p>
 
 
 <p id="description">生成AIの出力に自身がない人に向けた、プロンプト作成のための指標を提供するWebアプリです。パラメータを設定し、結果を確認しながらプロンプトのクオリティ向上のための体験ができます。</p>
