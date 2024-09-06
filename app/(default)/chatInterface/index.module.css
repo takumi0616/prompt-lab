@@ -140,6 +140,40 @@
   animation: fadeIn 1.5s ease-in-out;
 }
 
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.slideDown {
+  animation: slideDown 1.5s ease-in-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+}
+
+.slideUp {
+  animation: slideUp 1.5s ease-in-out;
+}
+
+.hidden {
+  display: none;
+}
+
 .scoreText {
   font-size: 24px;
   font-weight: bold;

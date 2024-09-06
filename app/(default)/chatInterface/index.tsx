@@ -30,6 +30,7 @@ export default function ChatInterface() {
   const [isInstructionModalOpen, setIsInstructionModalOpen] = useState(false)
   const [isToggled, setIsToggled] = useState(false)
   const [isTextareaExpanded, setIsTextareaExpanded] = useState(false)
+  const [isHidden, setIsHidden] = useState(true)
 
   useEffect(() => {
     setIsFirstModalOpen(true)
@@ -38,6 +39,16 @@ export default function ChatInterface() {
   useEffect(() => {
     if (isToggled) {
       setIsTextareaExpanded(true)
+    }
+  }, [isToggled])
+
+  useEffect(() => {
+    if (isToggled) {
+      setIsHidden(false)
+    } else {
+      setTimeout(() => {
+        setIsHidden(true)
+      }, 1500)
     }
   }, [isToggled])
 
@@ -175,17 +186,20 @@ export default function ChatInterface() {
             isLoading={isLoading}
             setIsTextareaExpanded={setIsTextareaExpanded}
           />
-          {isToggled && (
-            <div className={styles.components}>
-              <div className={styles.hideComponent}>
-                <p>Expected Answer</p>
-                <CorrectBox
-                  correctText={correctText}
-                  setCorrectText={setCorrectText}
-                />
-              </div>
+
+          <div
+            className={`${styles.components}
+             ${isToggled ? styles.slideDown : styles.slideUp}
+              ${isHidden ? styles.hidden : ''}`}
+          >
+            <div className={styles.hideComponent}>
+              <p>Expected Answer</p>
+              <CorrectBox
+                correctText={correctText}
+                setCorrectText={setCorrectText}
+              />
             </div>
-          )}
+          </div>
         </div>
       </div>
       <ConfigModal
