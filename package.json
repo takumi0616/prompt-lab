@@ -23,6 +23,7 @@
     "@vercel/speed-insights": "^1.0.12",
     "next": "14.2.5",
     "next-auth": "^4.24.7",
+    "next-intl": "^3.19.4",
     "numpy": "^0.0.1",
     "openai": "^4.56.0",
     "react": "^18",
