@@ -41,6 +41,7 @@
   font-size: 15px;
   margin-top: 20px;
   color: #2c3844;
+  flex-wrap: wrap;
 }
 
 .leftIcons {
@@ -82,4 +83,22 @@
 
 .iconHover2:hover {
   opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+  .icons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .rightIcons {
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .leftIcons {
+    justify-content: flex-start;
+    width: 100%;
+  }
 }

@@ -1,4 +1,4 @@
-<h1 align="center" id="title">GPT-Logprobs</h1>
+<h1 align="center" id="title">Prompt Lab</h1>
 
 <p align="center" style="align: center;">
   <img src="https://img.shields.io/badge/-Next.js-000000.svg?logo=next.js&style=popout">
@@ -9,12 +9,11 @@
   <img src="https://img.shields.io/badge/-Postgresql-000000.svg?logo=postgresql&style=popout">
 </p>
 
-
 <p id="description">生成AIの出力に自身がない人に向けた、プロンプト作成のための指標を提供するWebアプリです。パラメータを設定し、結果を確認しながらプロンプトのクオリティ向上のための体験ができます。</p>
 
 <h2>🚀 Demo</h2>
 
-[https://probtrace.netlify.app/](https://probtrace.netlify.app/)
+[https://ai-prompt-lab.vercel.app/](https://ai-prompt-lab.vercel.app/)
 
 <h2>Project Screenshots:</h2>
 

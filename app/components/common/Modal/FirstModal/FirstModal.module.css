@@ -79,11 +79,11 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  transition: color 0.3s; /* 色の変化を滑らかにする */
+  transition: color 0.3s;
 }
 
 .link:hover {
-  color: #80bfff; /* 色を薄くする */
+  color: #80bfff;
 }
 
 .startButton {
