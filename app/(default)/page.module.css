@@ -170,3 +170,37 @@
 .mb {
   margin-bottom: 20px;
 }
+
+.sidebarToggleButton {
+  position: absolute;
+  top: 20%;
+  transform: translateY(-50%);
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  transition: left 0.3s ease;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebarToggleButton {
+  left: 0;
+}
+
+.sidebarOpen + .sidebarToggleButton {
+  left: 40%;
+}
+
+.sidebar {
+  width: 0;
+  height: 100%;
+  background-color: #f0f0f0;
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+
+.sidebarOpen {
+  width: 40%;
+}

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Element, scroller } from 'react-scroll'
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 import styles from './page.module.css'
 import { TokenInfo, ResultData } from '@/types'
 import {
@@ -185,15 +186,24 @@ export default function Home() {
     setIsFirstModalOpen(true)
   }
 
+  const renderSidebarToggleButton = () => {
+    return (
+      <button className={styles.sidebarToggleButton} onClick={toggleSidebar}>
+        {isSidebarOpen ? <FaArrowLeft size={24} /> : <FaArrowRight size={24} />}
+      </button>
+    )
+  }
+
   return (
     <>
-      <Header onMenuClick={toggleSidebar} />
+      <Header />
       <div className={styles.container}>
         <div
           className={`${styles.sidebar} ${isSidebarOpen ? styles.sidebarOpen : ''}`}
         >
           <SideBar isOpen={isSidebarOpen} />
         </div>
+        {renderSidebarToggleButton()}
         <div
           className={`${styles.heroContainer} ${isSidebarOpen ? styles.sidebarOpen : ''}`}
         >

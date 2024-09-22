@@ -2,15 +2,15 @@
 
 import React from 'react'
 // import { signIn, signOut, useSession } from 'next-auth/react'
-import { BiMenuAltLeft } from 'react-icons/bi'
+import { ImLab } from 'react-icons/im'
 import styles from './Header.module.css'
 
-export default function Header({ onMenuClick }: { onMenuClick: () => void }) {
+export default function Header() {
   // const { data: session } = useSession()
 
   return (
     <header className={styles.header}>
-      <BiMenuAltLeft className={styles.icon} size={50} onClick={onMenuClick} />
+      <ImLab className={styles.icon} size={34} />
       <p className={styles.text}>Prompt Lab</p>
       {/* <nav className={styles.nav}>
         <ul className={styles.navList}>
