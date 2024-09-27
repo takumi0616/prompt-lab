@@ -6,7 +6,7 @@ import styles from './FirstModal.module.css'
 type FirstModalProps = {
   onClose: () => void
   onSwitchToExplanation: () => void
-  setApiKey: (key: string) => void // setApiKeyの型を定義
+  setApiKey: (key: string) => void
 }
 
 export default function FirstModal({
@@ -18,7 +18,7 @@ export default function FirstModal({
 
   const handleStartClick = () => {
     if (localApiKey) {
-      setApiKey(localApiKey) // setApiKeyを呼び出す
+      setApiKey(localApiKey)
       onClose()
     } else {
       alert('APIキーを入力してください')
@@ -33,7 +33,7 @@ export default function FirstModal({
         </button>
         <h1 className={styles.title}>ChatGPTのAPIキーを入力</h1>
         <p className={styles.description}>
-          APIキーを入力してGPT-Logprobsを始めましょう。お持ちでない場合は、取得方法をご案内します。
+          APIキーを入力してPrompt-Labを始めましょう。お持ちでない場合は、取得方法をご案内します。
         </p>
         <h2 className={styles.apiTitle}>APIキー</h2>
         <input
@@ -41,7 +41,7 @@ export default function FirstModal({
           className={styles.input}
           placeholder="sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
           value={localApiKey}
-          onChange={(e) => setLocalApiKey(e.target.value)} // ローカルなAPIキーの状態を更新
+          onChange={(e) => setLocalApiKey(e.target.value)}
         />
         <div className={styles.outbox}>
           <button className={styles.link} onClick={onSwitchToExplanation}>

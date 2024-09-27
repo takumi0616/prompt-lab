@@ -20,7 +20,7 @@ const steps = [
       'Open AI社のAPIページにアクセスし、「Start building」をクリックしてください。',
     image: '/SecondModalView.png',
     alt: 'Open AIのアカウント作成画面',
-    icon: <TbCircleNumber1Filled className={styles.icon} />, // ステップ1のアイコン
+    icon: <TbCircleNumber1Filled className={styles.icon} />,
   },
   {
     step: 2,
@@ -30,7 +30,7 @@ const steps = [
       'TOP画面の左側のネジアイコン「Settings」から「Billing」を選択し、「Add payment details」をクリックします。個人名義で登録する場合は「Individual」、企業名義で登録する場合は「Company」を選択します。',
     image: '/ThirdModalView.png',
     alt: '支払い情報登録画面',
-    icon: <TbCircleNumber2Filled className={styles.icon} />, // ステップ2のアイコン
+    icon: <TbCircleNumber2Filled className={styles.icon} />,
   },
   {
     step: 3,
@@ -40,7 +40,7 @@ const steps = [
       'クレジットカードの情報を登録します。支払情報の登録後、「Your subscription was created successfully」と表示されれば、支払い情報の登録は完了です。',
     image: '/FourthModalView.png',
     alt: 'クレジットカード',
-    icon: <TbCircleNumber3Filled className={styles.icon} />, // ステップ3のアイコン
+    icon: <TbCircleNumber3Filled className={styles.icon} />,
   },
   {
     step: 4,
@@ -50,7 +50,7 @@ const steps = [
       'TOP画面の左上の鍵アイコン「API keys」を選択し、「+Create new secret key」をクリックします。',
     image: '/FifthModalView.png',
     alt: 'API keys-1',
-    icon: <TbCircleNumber4Filled className={styles.icon} />, // ステップ3のアイコン
+    icon: <TbCircleNumber4Filled className={styles.icon} />,
   },
   {
     step: 5,
@@ -60,7 +60,7 @@ const steps = [
       'NameでAPIキーの名前を決め、「Create secret key」をクリックします。',
     image: '/SixthModalView.png',
     alt: 'API keys-2',
-    icon: <TbCircleNumber5Filled className={styles.icon} />, // ステップ3のアイコン
+    icon: <TbCircleNumber5Filled className={styles.icon} />,
   },
   {
     step: 6,
@@ -70,9 +70,8 @@ const steps = [
       'ポップアップ表示される「Create new secret key」から、APIキーの情報をコピーしてメモしましょう。',
     image: '/SeventhModalView.png',
     alt: 'API keys-3',
-    icon: <TbCircleNumber6Filled className={styles.icon} />, // ステップ3のアイコン
+    icon: <TbCircleNumber6Filled className={styles.icon} />,
   },
-  // さらに必要なステップを追加
 ]
 
 type InstructionModalProps = {
