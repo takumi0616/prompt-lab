@@ -1,5 +1,100 @@
 {
-  "HomePage": {
-    "title": "Hello!"
+  "chatInterface": {
+    "Chat with an AI": "Chat with an AI",
+    "Click on the gear icon to set the optimal parameters": "Click on the gear icon to set the optimal parameters",
+    "Expected Answer": "Expected Answer",
+    "Error": "Error",
+    "Similarity Score": "Similarity Score"
+  },
+  "Header": {
+    "prompt-lab": "prompt-lab"
+  },
+  "CorrectBox": {
+    "Enter correct text here": "Enter correct text here..."
+  },
+  "GenerateButton": {
+    "Generate": "生成する",
+    "Enter the prompt or API_Key": "Enter the prompt or API_Key"
+  },
+  "GeneratedResultsBox": {
+    "GenerationResults": "Generation Results",
+    "Model": "Model",
+    "MaxTokens": "Max Tokens",
+    "Seed": "Seed",
+    "TopLogprobs": "Top Logprobs",
+    "Temperature": "Temperature",
+    "TopP": "Top P"
+  },
+  "InputBox": {
+    "Type your message": "  Type your message...",
+    "EnableExpectedAnswer": "Enable Expected Answer"
+  },
+  "ConfigModal": {
+    "Header": "ChatGPT Configuration",
+    "Description": "Customize your ChatGPT integration settings.",
+    "ModelName": "Model Name:",
+    "ApiKey": "API Key:",
+    "MaxTokens": "Max Tokens:",
+    "SeedNumber": "Seed Number:",
+    "TopLogprobs": "Top Logprobs:",
+    "Temperature": "Temperature:",
+    "TopP": "Top P:",
+    "Cancel": "Cancel",
+    "Save": "Save",
+    "TooltipModel": "Select the GPT model to use",
+    "TooltipApiKey": "Enter your OpenAI API key",
+    "TooltipMaxTokens": "Change the number of tokens that can be generated",
+    "TooltipSeedNumber": "The value set here affects the variation of outputs",
+    "TooltipTopLogprobs": "Change the number of logs to display",
+    "TooltipTemperature": "Lower values select more probable words",
+    "TooltipTopP": "Higher values make it more likely to select diverse words"
+  },
+  "FirstModal": {
+    "modalTitle": "Enter Your ChatGPT API Key",
+    "modalDescription": "Enter your API key to start using GPT-Logprobs. If you don't have one, we will guide you on how to obtain it.",
+    "apiKeyTitle": "API Key",
+    "apiKeyRequired": "Please enter your API key",
+    "apiKeyInstructions": "See how to get your API key.",
+    "startButton": "Start"
+  },
+  "InstructionModal": {
+    "modalTitle": "How to Obtain ChatGPT API Key",
+    "step": "Step",
+    "of": "of",
+    "backButton": "Back",
+    "nextButton": "Next",
+    "returnToApiKeyInput": "Return to API Key Input.",
+    "steps": {
+      "step1": {
+        "title": "How to Obtain ChatGPT API Key",
+        "subtitle": "Create and log in to your OpenAI account",
+        "description": "Visit the OpenAI API page and click 'Start building'."
+      },
+      "step2": {
+        "title": "How to Obtain ChatGPT API Key",
+        "subtitle": "Register payment information - 1",
+        "description": "From the settings gear icon on the top left, select 'Billing' and click 'Add payment details'. Choose 'Individual' for personal accounts or 'Company' for business accounts."
+      },
+      "step3": {
+        "title": "How to Obtain ChatGPT API Key",
+        "subtitle": "Register payment information - 2",
+        "description": "Enter your credit card information. After registering your payment details, if you see 'Your subscription was created successfully', the payment information registration is complete."
+      },
+      "step4": {
+        "title": "How to Obtain ChatGPT API Key",
+        "subtitle": "Obtain API key - 1",
+        "description": "Select the key icon 'API keys' on the top left and click '+Create new secret key'."
+      },
+      "step5": {
+        "title": "How to Obtain ChatGPT API Key",
+        "subtitle": "Obtain API key - 2",
+        "description": "Decide the name for your API key and click 'Create secret key'."
+      },
+      "step6": {
+        "title": "How to Obtain ChatGPT API Key",
+        "subtitle": "Obtain API key - 3",
+        "description": "From the pop-up 'Create new secret key', copy the API key information and make a note of it."
+      }
+    }
   }
 }

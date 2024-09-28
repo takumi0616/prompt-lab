@@ -1,5 +1,100 @@
 {
-  "HomePage": {
-    "title": "こんにちは!"
+  "chatInterface": {
+    "Chat with an AI": "AIとのチャット",
+    "Click on the gear icon to set the optimal parameters": "ギアアイコンをクリックして最適なパラメータを設定してください",
+    "Expected Answer": "予想される答え",
+    "Error": "エラー",
+    "Similarity Score": "類似度スコア"
+  },
+  "Header": {
+    "prompt-lab": "AI研究所"
+  },
+  "CorrectBox": {
+    "Enter correct text here": "正しいテキストをここに入力してください"
+  },
+  "GenerateButton": {
+    "Generate": "生成する",
+    "Enter the prompt or API_Key": "プロンプト、もしくはAPI_Keyを入力してください"
+  },
+  "GeneratedResultsBox": {
+    "GenerationResults": "生成結果",
+    "Model": "モデル",
+    "MaxTokens": "最大トークン数",
+    "Seed": "シード",
+    "TopLogprobs": "TopLogprobs",
+    "Temperature": "温度",
+    "TopP": "Top P"
+  },
+  "InputBox": {
+    "Type your message": "メッセージを入力してください",
+    "EnableExpectedAnswer": "予想される答えを有効"
+  },
+  "ConfigModal": {
+    "Header": "ChatGPT設定",
+    "Description": "ChatGPT統合設定をカスタマイズします。",
+    "ModelName": "モデル名:",
+    "ApiKey": "APIキー:",
+    "MaxTokens": "最大トークン数:",
+    "SeedNumber": "シード番号:",
+    "TopLogprobs": "Top Logprobs:",
+    "Temperature": "温度:",
+    "TopP": "Top P:",
+    "Cancel": "キャンセル",
+    "Save": "保存",
+    "TooltipModel": "使用するGPTモデルを選択してください",
+    "TooltipApiKey": "OpenAIのAPIキーを入力してください",
+    "TooltipMaxTokens": "生成可能な文字数を変更できます",
+    "TooltipSeedNumber": "設定する値によって出力のバリエーションが変化します",
+    "TooltipTopLogprobs": "表示するログの数を変更できます",
+    "TooltipTemperature": "値が低いほど正解確率の高い単語が選択されます",
+    "TooltipTopP": "値が高いほど多様な語が選ばれやすくなります"
+  },
+  "FirstModal": {
+    "modalTitle": "ChatGPTのAPIキーを入力",
+    "modalDescription": "APIキーを入力してGPT-Logprobsを始めましょう。お持ちでない場合は、取得方法をご案内します。",
+    "apiKeyTitle": "APIキー",
+    "apiKeyRequired": "APIキーを入力してください",
+    "apiKeyInstructions": "APIキーの取得方法を見る。",
+    "startButton": "始める"
+  },
+  "InstructionModal": {
+    "modalTitle": "ChatGPT APIキーの取得方法",
+    "step": "ステップ",
+    "of": "の",
+    "backButton": "戻る",
+    "nextButton": "次へ",
+    "returnToApiKeyInput": "APIキーの入力に戻る。",
+    "steps": {
+      "step1": {
+        "title": "ChatGPT APIキーの取得方法",
+        "subtitle": "Open AI社のアカウントを作成・ログインする",
+        "description": "Open AI社のAPIページにアクセスし、「Start building」をクリックしてください。"
+      },
+      "step2": {
+        "title": "ChatGPT APIキーの取得方法",
+        "subtitle": "支払い情報を登録する-1",
+        "description": "TOP画面の左側のネジアイコン「Settings」から「Billing」を選択し、「Add payment details」をクリックします。個人名義で登録する場合は「Individual」、企業名義で登録する場合は「Company」を選択します。"
+      },
+      "step3": {
+        "title": "ChatGPT APIキーの取得方法",
+        "subtitle": "支払い情報を登録する-2",
+        "description": "クレジットカードの情報を登録します。支払情報の登録後、「Your subscription was created successfully」と表示されれば、支払い情報の登録は完了です。"
+      },
+      "step4": {
+        "title": "ChatGPT APIキーの取得方法",
+        "subtitle": "APIキーを取得する-1",
+        "description": "TOP画面の左上の鍵アイコン「API keys」を選択し、「+Create new secret key」をクリックします。"
+      },
+      "step5": {
+        "title": "ChatGPT APIキーの取得方法",
+        "subtitle": "APIキーを取得する-2",
+        "description": "NameでAPIキーの名前を決め、「Create secret key」をクリックします。"
+      },
+      "step6": {
+        "title": "ChatGPT APIキーの取得方法",
+        "subtitle": "APIキーを取得する-3",
+        "description": "ポップアップ表示される「Create new secret key」から、APIキーの情報をコピーしてメモしましょう。"
+      }
+    }
   }
 }

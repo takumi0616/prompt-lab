@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useRef, useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 import styles from './CorrectBox.module.css'
 import { CorrectBoxProps } from '@/types'
 
@@ -24,12 +25,14 @@ const CorrectBox: React.FC<CorrectBoxProps> = ({
     setMessage(e.target.value)
   }
 
+  const t = useTranslations('CorrectBox')
+
   return (
     <div className={styles.correctBox}>
       <div className={styles.component}>
         <textarea
           ref={textareaRef}
-          placeholder="Enter correct text here..."
+          placeholder={t('Enter correct text here')}
           value={message}
           onChange={handleChange}
           className={styles.textarea}
