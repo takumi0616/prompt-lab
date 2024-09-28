@@ -101,7 +101,6 @@ const InstructionModal: React.FC<InstructionModalProps> = ({
           <RxCross1 />
         </button>
         <h1 className={styles.title}>{steps[currentStep].title}</h1>
-
         <div className={styles.modalIntro}>
           <p className={styles.step}>
             Step {steps[currentStep].step} of {steps.length}
@@ -121,7 +120,6 @@ const InstructionModal: React.FC<InstructionModalProps> = ({
             className={styles.imageRounded}
           />
         </div>
-
         <div className={styles.navigation}>
           <button
             onClick={handleBack}
