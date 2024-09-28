@@ -13,7 +13,7 @@
     "Enter correct text here": "Enter correct text here..."
   },
   "GenerateButton": {
-    "Generate": "生成する",
+    "Generate": "Generate",
     "Enter the prompt or API_Key": "Enter the prompt or API_Key"
   },
   "GeneratedResultsBox": {
