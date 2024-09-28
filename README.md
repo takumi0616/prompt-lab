@@ -1,4 +1,4 @@
-<h1 align="center" id="title">GPT-Logprobs</h1>
+<h1 align="center" id="title">prompt-lab</h1>
 
 <p align="center" style="align: center;">
   <img src="https://img.shields.io/badge/-Next.js-000000.svg?logo=next.js&style=popout">

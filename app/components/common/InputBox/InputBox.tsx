@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { CiSettings } from 'react-icons/ci'
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs'
+import { useTranslations } from 'next-intl'
 import styles from './InputBox.module.css'
 import GenerateButton from '@/components/common/GenerateButton'
 import { InputBoxProps } from '@/types'
@@ -18,6 +19,7 @@ export default function InputBox({
 }: InputBoxProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [message, setMessage] = useState(prompt)
+  const t = useTranslations('InputBox')
 
   useEffect(() => {
     const textarea = textareaRef.current
@@ -46,7 +48,7 @@ export default function InputBox({
         <textarea
           ref={textareaRef}
           className={styles.textarea}
-          placeholder="Type your message..."
+          placeholder={t('Type your message')}
           value={message}
           onChange={handleChange}
         />
@@ -68,7 +70,7 @@ export default function InputBox({
               />
             )}
             <div className={styles.iconIntro}>
-              <p>Enable Expected Answer</p>
+              <p>{t('EnableExpectedAnswer')}</p>
             </div>
           </div>
           <div className={styles.rightIcons}>

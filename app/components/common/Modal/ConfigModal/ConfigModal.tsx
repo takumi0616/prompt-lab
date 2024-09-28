@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { useTranslations } from 'next-intl'
 import styles from './ConfigModal.module.css'
 import { ConfigModalProps } from '@/types'
 
@@ -29,6 +30,8 @@ export default function ConfigModal({
   const [tempTopP, setTempTopP] = useState(topP)
 
   const modalRef = useRef<HTMLDivElement>(null)
+  const t = useTranslations('ConfigModal')
+
   const [showModelTooltip, setShowModelTooltip] = useState(false)
   const [showApiKeyTooltip, setShowApiKeyTooltip] = useState(false)
   const [showMaxTokensTooltip, setShowMaxTokensTooltip] = useState(false)
@@ -117,8 +120,8 @@ export default function ConfigModal({
     <div className={styles.modalOverlay}>
       <div ref={modalRef} className={styles.modalContent}>
         <div className={styles.modalHeader}>
-          <h2>ChatGPT Configuration</h2>
-          <p>Customize your ChatGPT integration settings.</p>
+          <h2>{t('Header')}</h2>
+          <p>{t('Description')}</p>
           <button className={styles.closeButton} onClick={handleCancel}>
             &times;
           </button>
@@ -131,7 +134,7 @@ export default function ConfigModal({
               onMouseEnter={() => setShowModelTooltip(true)}
               onMouseLeave={() => setShowModelTooltip(false)}
             >
-              <label htmlFor="model">Model Name:</label>
+              <label htmlFor="model">{t('ModelName')}</label>
               <select
                 id="model"
                 value={tempModel}
@@ -142,9 +145,7 @@ export default function ConfigModal({
                 <option value="gpt-4o-mini">gpt-4o-mini</option>
               </select>
               {showModelTooltip && (
-                <div className={styles.tooltip}>
-                  使用するGPTモデルを選択してください
-                </div>
+                <div className={styles.tooltip}>{t('TooltipModel')}</div>
               )}
             </div>
             <div
@@ -152,19 +153,17 @@ export default function ConfigModal({
               onMouseEnter={() => setShowApiKeyTooltip(true)}
               onMouseLeave={() => setShowApiKeyTooltip(false)}
             >
-              <label htmlFor="apiKey">API Key:</label>
+              <label htmlFor="apiKey">{t('ApiKey')}</label>
               <input
                 type="password"
                 id="apiKey"
                 value={tempApiKey}
-                placeholder="Enter your API key"
+                placeholder={t('ApiKey')}
                 onChange={(e) => setTempApiKey(e.target.value)}
                 required
               />
               {showApiKeyTooltip && (
-                <div className={styles.tooltip}>
-                  OpenAIのAPIキーを入力してください
-                </div>
+                <div className={styles.tooltip}>{t('TooltipApiKey')}</div>
               )}
             </div>
             <div
@@ -172,7 +171,7 @@ export default function ConfigModal({
               onMouseEnter={() => setShowMaxTokensTooltip(true)}
               onMouseLeave={() => setShowMaxTokensTooltip(false)}
             >
-              <label htmlFor="maxTokens">Max Tokens:</label>
+              <label htmlFor="maxTokens">{t('MaxTokens')}</label>
               <input
                 type="number"
                 id="maxTokens"
@@ -182,9 +181,7 @@ export default function ConfigModal({
                 required
               />
               {showMaxTokensTooltip && (
-                <div className={styles.tooltip}>
-                  生成可能な文字数を変更できます
-                </div>
+                <div className={styles.tooltip}>{t('TooltipMaxTokens')}</div>
               )}
             </div>
             <div
@@ -192,7 +189,7 @@ export default function ConfigModal({
               onMouseEnter={() => setShowSeedNumberTooltip(true)}
               onMouseLeave={() => setShowSeedNumberTooltip(false)}
             >
-              <label htmlFor="seed">Seed Number:</label>
+              <label htmlFor="seed">{t('SeedNumber')}</label>
               <input
                 type="number"
                 id="seed"
@@ -201,9 +198,7 @@ export default function ConfigModal({
                 required
               />
               {showSeedNumberTooltip && (
-                <div className={styles.tooltip}>
-                  設定する値によって出力のバリエーションが変化します
-                </div>
+                <div className={styles.tooltip}>{t('TooltipSeedNumber')}</div>
               )}
             </div>
           </div>
@@ -213,7 +208,7 @@ export default function ConfigModal({
               onMouseEnter={() => setShowTopLogprobsTooltip(true)}
               onMouseLeave={() => setShowTopLogprobsTooltip(false)}
             >
-              <label htmlFor="topLogprobs">Top Logprobs:</label>
+              <label htmlFor="topLogprobs">{t('TopLogprobs')}</label>
               <div className={styles.sliderContainer}>
                 <input
                   type="range"
@@ -231,7 +226,7 @@ export default function ConfigModal({
                 />
                 {showTopLogprobsTooltip && (
                   <div className={styles.tooltip}>
-                    表示するログの数を変更できます
+                    {t('TooltipTopLogprobs')}
                   </div>
                 )}
               </div>
@@ -241,7 +236,7 @@ export default function ConfigModal({
               onMouseEnter={() => setShowTemperatureTooltip(true)}
               onMouseLeave={() => setShowTemperatureTooltip(false)}
             >
-              <label htmlFor="temperature">Temperature:</label>
+              <label htmlFor="temperature">{t('Temperature')}</label>
               <div className={styles.sliderContainer}>
                 <input
                   type="range"
@@ -259,7 +254,7 @@ export default function ConfigModal({
                 />
                 {showTemperatureTooltip && (
                   <div className={styles.tooltip}>
-                    値が低いほど正解確率の高い単語が選択されます
+                    {t('TooltipTemperature')}
                   </div>
                 )}
               </div>
@@ -269,7 +264,7 @@ export default function ConfigModal({
               onMouseEnter={() => setShowTopPTooltip(true)}
               onMouseLeave={() => setShowTopPTooltip(false)}
             >
-              <label htmlFor="topP">Top P:</label>
+              <label htmlFor="topP">{t('TopP')}</label>
               <div className={styles.sliderContainer}>
                 <input
                   type="range"
@@ -286,9 +281,7 @@ export default function ConfigModal({
                   onChange={(e) => setTempTopP(Number(e.target.value))}
                 />
                 {showTopPTooltip && (
-                  <div className={styles.tooltip}>
-                    値が高いほど多様な語が選ばれやすくなります
-                  </div>
+                  <div className={styles.tooltip}>{t('TooltipTopP')}</div>
                 )}
               </div>
             </div>
@@ -296,10 +289,10 @@ export default function ConfigModal({
         </div>
         <div className={styles.modalFooter}>
           <button className={styles.cancelButton} onClick={handleCancel}>
-            Cancel
+            {t('Cancel')}
           </button>
           <button className={styles.saveButton} onClick={handleSave}>
-            Save
+            {t('Save')}
           </button>
         </div>
       </div>

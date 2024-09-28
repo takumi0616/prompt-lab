@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 import { Element, scroller } from 'react-scroll'
 import styles from './index.module.css'
 import { TokenInfo, ResultData } from '@/types'
@@ -15,6 +16,7 @@ import {
 import { LogprobsDisplay } from '@/components/layouts'
 
 export default function ChatInterface() {
+  const t = useTranslations('chatInterface')
   const [model, setModel] = useState('gpt-4o')
   const [apiKey, setApiKey] = useState('')
   const [prompt, setPrompt] = useState('')
@@ -191,9 +193,9 @@ export default function ChatInterface() {
         }`}
       >
         <div className={styles.hero}>
-          <h1 className={styles.title}>Chat with an AI</h1>
+          <h1 className={styles.title}>{t('Chat with an AI')}</h1>
           <h2 className={styles.subtitle}>
-            Click on the gear icon to set the optimal parameters
+            {t('Click on the gear icon to set the optimal parameters')}
           </h2>
         </div>
         <div className={styles.components}>
@@ -214,7 +216,7 @@ export default function ChatInterface() {
               ${isHidden ? styles.hidden : ''}`}
           >
             <div className={styles.hideComponent}>
-              <p>Expected Answer</p>
+              <p>{t('Expected Answer')}</p>
               <CorrectBox
                 correctText={correctText}
                 setCorrectText={setCorrectText}
@@ -261,7 +263,7 @@ export default function ChatInterface() {
         <div
           className={`${styles.bgRed} ${styles.borderRed} ${styles.textRed} ${styles.px} ${styles.py} ${styles.rounded} ${styles.mb}`}
         >
-          <h2 className={styles.bold}>Error:</h2>
+          <h2 className={styles.bold}>{t('Error')}:</h2>
           <p>{error}</p>
         </div>
       )}
@@ -282,7 +284,7 @@ export default function ChatInterface() {
             {result.similarityScore !== undefined && (
               <div className={`${styles.fadeIn} ${styles.mb}`}>
                 <h2 className={styles.scoreText}>
-                  Similarity Score: {result.similarityScore}
+                  {t('Similarity Score')}: {result.similarityScore}
                 </h2>
               </div>
             )}

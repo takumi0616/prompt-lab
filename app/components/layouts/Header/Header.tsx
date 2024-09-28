@@ -2,16 +2,17 @@
 
 import React from 'react'
 // import { signIn, signOut, useSession } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
 import { BiMenuAltLeft } from 'react-icons/bi'
 import styles from './Header.module.css'
 
 export default function Header() {
   // const { data: session } = useSession()
-
+  const t = useTranslations('Header')
   return (
     <header className={styles.header}>
       <BiMenuAltLeft className={styles.icon} size={50} />
-      <p className={styles.text}>GPT-Logprobs</p>
+      <p className={styles.text}>{t('prompt-lab')}</p>
       {/* <nav className={styles.nav}>
         <ul className={styles.navList}>
           {session ? (

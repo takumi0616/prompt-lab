@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { AiOutlineQuestionCircle } from 'react-icons/ai'
 import { RxCross1 } from 'react-icons/rx'
+import { useTranslations } from 'next-intl'
 import styles from './FirstModal.module.css'
 
 type FirstModalProps = {
@@ -15,13 +16,14 @@ export default function FirstModal({
   setApiKey,
 }: FirstModalProps) {
   const [localApiKey, setLocalApiKey] = useState('')
+  const t = useTranslations('FirstModal')
 
   const handleStartClick = () => {
     if (localApiKey) {
       setApiKey(localApiKey) // setApiKeyを呼び出す
       onClose()
     } else {
-      alert('APIキーを入力してください')
+      alert(t('apiKeyRequired'))
     }
   }
 
@@ -31,11 +33,9 @@ export default function FirstModal({
         <button className={styles.closeButton} onClick={onClose}>
           <RxCross1 />
         </button>
-        <h1 className={styles.title}>ChatGPTのAPIキーを入力</h1>
-        <p className={styles.description}>
-          APIキーを入力してGPT-Logprobsを始めましょう。お持ちでない場合は、取得方法をご案内します。
-        </p>
-        <h2 className={styles.apiTitle}>APIキー</h2>
+        <h1 className={styles.title}>{t('modalTitle')}</h1>
+        <p className={styles.description}>{t('modalDescription')}</p>
+        <h2 className={styles.apiTitle}>{t('apiKeyTitle')}</h2>
         <input
           type="password"
           className={styles.input}
@@ -46,11 +46,11 @@ export default function FirstModal({
         <div className={styles.outbox}>
           <button className={styles.link} onClick={onSwitchToExplanation}>
             <AiOutlineQuestionCircle />
-            <span>APIキーの取得方法を見る。</span>
+            <span>{t('apiKeyInstructions')}</span>
           </button>
 
           <button className={styles.startButton} onClick={handleStartClick}>
-            始める
+            {t('startButton')}
           </button>
         </div>
       </div>

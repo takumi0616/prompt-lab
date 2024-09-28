@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import styles from './GenerateButton.module.css'
 import { GenerateButtonProps } from '@/types'
 
@@ -9,7 +10,7 @@ export default function GenerateButton({
   className,
 }: GenerateButtonProps) {
   const [showTooltip, setShowTooltip] = useState(false)
-
+  const t = useTranslations('GenerateButton')
   return (
     <div
       className={styles.buttonContainer}
@@ -26,12 +27,14 @@ export default function GenerateButton({
           (disabled || isLoading) && styles.disabled
         }`}
       >
-        {isLoading ? <div className={styles.loader}></div> : <p>Generate</p>}
+        {isLoading ? (
+          <div className={styles.loader}></div>
+        ) : (
+          <p>{t('Generate')}</p>
+        )}
       </button>
       {showTooltip && (
-        <div className={styles.tooltip}>
-          プロンプト、もしくはAPI_Keyを入力してください
-        </div>
+        <div className={styles.tooltip}>{t('Enter the prompt or API_Key')}</div>
       )}
     </div>
   )

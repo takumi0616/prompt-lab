@@ -9,71 +9,8 @@ import {
   TbCircleNumber6Filled,
 } from 'react-icons/tb'
 import { RxCross1 } from 'react-icons/rx'
+import { useTranslations } from 'next-intl'
 import styles from './InstructionModal.module.css'
-
-const steps = [
-  {
-    step: 1,
-    title: 'ChatGPT APIキーの取得方法',
-    subtitle: 'Open AI社のアカウントを作成・ログインする',
-    description:
-      'Open AI社のAPIページにアクセスし、「Start building」をクリックしてください。',
-    image: '/SecondModalView.png',
-    alt: 'Open AIのアカウント作成画面',
-    icon: <TbCircleNumber1Filled className={styles.icon} />, // ステップ1のアイコン
-  },
-  {
-    step: 2,
-    title: 'ChatGPT APIキーの取得方法',
-    subtitle: '支払い情報を登録する-1',
-    description:
-      'TOP画面の左側のネジアイコン「Settings」から「Billing」を選択し、「Add payment details」をクリックします。個人名義で登録する場合は「Individual」、企業名義で登録する場合は「Company」を選択します。',
-    image: '/ThirdModalView.png',
-    alt: '支払い情報登録画面',
-    icon: <TbCircleNumber2Filled className={styles.icon} />, // ステップ2のアイコン
-  },
-  {
-    step: 3,
-    title: 'ChatGPT APIキーの取得方法',
-    subtitle: '支払い情報を登録する-2',
-    description:
-      'クレジットカードの情報を登録します。支払情報の登録後、「Your subscription was created successfully」と表示されれば、支払い情報の登録は完了です。',
-    image: '/FourthModalView.png',
-    alt: 'クレジットカード',
-    icon: <TbCircleNumber3Filled className={styles.icon} />, // ステップ3のアイコン
-  },
-  {
-    step: 4,
-    title: 'ChatGPT APIキーの取得方法',
-    subtitle: 'APIキーを取得する-1',
-    description:
-      'TOP画面の左上の鍵アイコン「API keys」を選択し、「+Create new secret key」をクリックします。',
-    image: '/FifthModalView.png',
-    alt: 'API keys-1',
-    icon: <TbCircleNumber4Filled className={styles.icon} />, // ステップ3のアイコン
-  },
-  {
-    step: 5,
-    title: 'ChatGPT APIキーの取得方法',
-    subtitle: 'APIキーを取得する-2',
-    description:
-      'NameでAPIキーの名前を決め、「Create secret key」をクリックします。',
-    image: '/SixthModalView.png',
-    alt: 'API keys-2',
-    icon: <TbCircleNumber5Filled className={styles.icon} />, // ステップ3のアイコン
-  },
-  {
-    step: 6,
-    title: 'ChatGPT APIキーの取得方法',
-    subtitle: 'APIキーを取得する-3',
-    description:
-      'ポップアップ表示される「Create new secret key」から、APIキーの情報をコピーしてメモしましょう。',
-    image: '/SeventhModalView.png',
-    alt: 'API keys-3',
-    icon: <TbCircleNumber6Filled className={styles.icon} />, // ステップ3のアイコン
-  },
-  // さらに必要なステップを追加
-]
 
 type InstructionModalProps = {
   onClose: () => void
@@ -84,7 +21,65 @@ const InstructionModal: React.FC<InstructionModalProps> = ({
   onClose,
   onFirst,
 }) => {
+  const t = useTranslations('InstructionModal')
   const [currentStep, setCurrentStep] = useState(0)
+
+  const steps = [
+    {
+      step: 1,
+      title: t('steps.step1.title'),
+      subtitle: t('steps.step1.subtitle'),
+      description: t('steps.step1.description'),
+      image: '/SecondModalView.png',
+      alt: 'Open AIのアカウント作成画面',
+      icon: <TbCircleNumber1Filled className={styles.icon} />,
+    },
+    {
+      step: 2,
+      title: t('steps.step2.title'),
+      subtitle: t('steps.step2.subtitle'),
+      description: t('steps.step2.description'),
+      image: '/ThirdModalView.png',
+      alt: '支払い情報登録画面',
+      icon: <TbCircleNumber2Filled className={styles.icon} />,
+    },
+    {
+      step: 3,
+      title: t('steps.step3.title'),
+      subtitle: t('steps.step3.subtitle'),
+      description: t('steps.step3.description'),
+      image: '/FourthModalView.png',
+      alt: 'クレジットカード',
+      icon: <TbCircleNumber3Filled className={styles.icon} />,
+    },
+    {
+      step: 4,
+      title: t('steps.step4.title'),
+      subtitle: t('steps.step4.subtitle'),
+      description: t('steps.step4.description'),
+      image: '/FifthModalView.png',
+      alt: 'API keys-1',
+      icon: <TbCircleNumber4Filled className={styles.icon} />,
+    },
+    {
+      step: 5,
+      title: t('steps.step5.title'),
+      subtitle: t('steps.step5.subtitle'),
+      description: t('steps.step5.description'),
+      image: '/SixthModalView.png',
+      alt: 'API keys-2',
+      icon: <TbCircleNumber5Filled className={styles.icon} />,
+    },
+    {
+      step: 6,
+      title: t('steps.step6.title'),
+      subtitle: t('steps.step6.subtitle'),
+      description: t('steps.step6.description'),
+      image: '/SeventhModalView.png',
+      alt: 'API keys-3',
+      icon: <TbCircleNumber6Filled className={styles.icon} />,
+    },
+  ]
 
   const handleNext = () => {
     setCurrentStep((prev) => (prev < steps.length - 1 ? prev + 1 : prev))
@@ -103,7 +98,7 @@ const InstructionModal: React.FC<InstructionModalProps> = ({
         <h1 className={styles.title}>{steps[currentStep].title}</h1>
         <div className={styles.modalIntro}>
           <p className={styles.step}>
-            Step {steps[currentStep].step} of {steps.length}
+            {t('step')} {steps[currentStep].step} {t('of')} {steps.length}
           </p>
           <h2 className={styles.subtitle}>
             {steps[currentStep].icon}
@@ -128,7 +123,7 @@ const InstructionModal: React.FC<InstructionModalProps> = ({
               currentStep === 0 ? styles.disabledButton : ''
             }`}
           >
-            &larr; 戻る
+            &larr; {t('backButton')}
           </button>
           <button
             onClick={handleNext}
@@ -137,12 +132,12 @@ const InstructionModal: React.FC<InstructionModalProps> = ({
               currentStep === steps.length - 1 ? styles.disabledButton : ''
             }`}
           >
-            次へ &rarr;
+            {t('nextButton')} &rarr;
           </button>
         </div>
         <div className={styles.backFirstBox}>
           <button className={styles.backFirst} onClick={onFirst}>
-            &larr;APIキーの入力に戻る。
+            &larr;{t('returnToApiKeyInput')}
           </button>
         </div>
       </div>
