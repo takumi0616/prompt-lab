@@ -18,6 +18,7 @@
   border-radius: 15px;
   padding: 40px;
   width: 500px;
+  height: 670px;
   max-width: 90%;
   text-align: center;
   position: relative;
@@ -48,6 +49,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   text-align: left;
+  height: 450px;
 }
 
 .step {
