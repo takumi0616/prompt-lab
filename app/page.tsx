@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Element, scroller } from 'react-scroll'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -21,6 +21,9 @@ import { LogprobsDisplay, Header, Footer } from '@/components/layouts'
 import SideBar from '@/components/layouts/SideBar'
 
 export default function Home() {
+  const [checkboxStates, setCheckboxStates] = useState<boolean[]>(
+    new Array(20).fill(false),
+  )
   const [model, setModel] = useState('gpt-4o')
   const [apiKey, setApiKey] = useState('')
   const [prompt, setPrompt] = useState('')
@@ -64,9 +67,12 @@ export default function Home() {
   useEffect(() => {
     if (isToggled) {
       // Expected Answerを表示
-      // ここでは `isHidden` を使わず、直接 `isToggled` を使用して表示制御します
     }
   }, [isToggled, result])
+
+  const resetCheckboxes = () => {
+    setCheckboxStates(new Array(20).fill(false))
+  }
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
@@ -156,6 +162,7 @@ export default function Home() {
       }
     } finally {
       setIsLoading(false)
+      resetCheckboxes()
     }
   }
 
@@ -216,7 +223,11 @@ export default function Home() {
         <div
           className={`${styles.sidebar} ${isSidebarOpen ? styles.sidebarOpen : ''}`}
         >
-          <SideBar isOpen={isSidebarOpen} />
+          <SideBar
+            isOpen={isSidebarOpen}
+            checkboxStates={checkboxStates}
+            setCheckboxStates={setCheckboxStates}
+          />
         </div>
         {renderSidebarToggleButton()}
         <div
