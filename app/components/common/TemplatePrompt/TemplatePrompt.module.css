@@ -1,0 +1,28 @@
+/* app/components/common/TemplatePrompt.module.css */
+
+.templatePrompt {
+  padding: 20px;
+}
+
+.templateList {
+  list-style: none;
+  padding: 0;
+}
+
+.templateItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.templateTitle {
+  flex: 1;
+  cursor: pointer;
+}
+
+.insertButton {
+  padding: 5px 10px;
+  cursor: pointer;
+}

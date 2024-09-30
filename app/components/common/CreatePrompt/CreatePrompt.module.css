@@ -1,0 +1,17 @@
+.createPrompt {
+  padding: 20px;
+}
+
+.question {
+  margin-bottom: 15px;
+}
+
+.question label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.question input {
+  width: 100%;
+  padding: 8px;
+}

@@ -8,10 +8,13 @@ import { TokenInfo, ResultData } from '@/types'
 import {
   ConfigModal,
   CorrectBox,
+  CreatePrompt,
   FirstModal,
   GeneratedResultsBox,
   InputBox,
   InstructionModal,
+  TemplateModal,
+  TemplatePrompt,
 } from '@/components/common'
 import { LogprobsDisplay, Header, Footer } from '@/components/layouts'
 import SideBar from '@/components/layouts/SideBar'
@@ -36,6 +39,9 @@ export default function Home() {
   const [isToggled, setIsToggled] = useState(false)
   const [isHidden, setIsHidden] = useState(true)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const [selectedOption, setSelectedOption] = useState('promptBox')
+  const [isTemplateModalOpen, setIsTemplateModalOpen] = useState(false)
+  const [selectedTemplatePrompt, setSelectedTemplatePrompt] = useState('')
 
   const toggleSidebar = () => {
     setIsSidebarOpen((prevState) => !prevState)
@@ -194,6 +200,25 @@ export default function Home() {
     )
   }
 
+  const handleCreatePromptComplete = (generatedPrompt: string) => {
+    setPrompt(generatedPrompt)
+    setSelectedOption('promptBox')
+  }
+
+  const handleTemplatePromptSelect = (prompt: string) => {
+    setPrompt(prompt)
+    setSelectedOption('promptBox')
+  }
+
+  const handleTemplateModalOpen = (prompt: string) => {
+    setSelectedTemplatePrompt(prompt)
+    setIsTemplateModalOpen(true)
+  }
+
+  const handleTemplateModalClose = () => {
+    setIsTemplateModalOpen(false)
+  }
+
   return (
     <>
       <Header />
@@ -207,35 +232,105 @@ export default function Home() {
         <div
           className={`${styles.heroContainer} ${isSidebarOpen ? styles.sidebarOpen : ''}`}
         >
-          <div className={styles.hero}>
-            <h1 className={styles.title}>Chat with an AI</h1>
-            <h2 className={styles.subtitle}>
-              Click on the gear icon to set the optimal parameters
-            </h2>
-          </div>
-          <div className={styles.componentTop}>
-            <InputBox
-              apiKey={apiKey}
-              prompt={prompt}
-              setPrompt={setPrompt}
-              setIsModalOpen={setIsModalOpen}
-              handleSubmit={handleSubmit}
-              isToggled={isToggled}
-              setIsToggled={setIsToggled}
-              isLoading={isLoading}
-            />
-            <div
-              className={`${styles.componentBottom} ${isToggled ? styles.slideDown : styles.slideUp} ${isHidden ? styles.hidden : ''}`}
+          <div className={styles.menu}>
+            <button
+              onClick={() => setSelectedOption('promptBox')}
+              className={
+                selectedOption === 'promptBox' ? styles.activeButton : ''
+              }
             >
-              <div className={styles.hideComponent}>
-                <p>Expected Answer</p>
-                <CorrectBox
-                  correctText={correctText}
-                  setCorrectText={setCorrectText}
-                />
-              </div>
-            </div>
+              Prompt Box
+            </button>
+            <button
+              onClick={() => setSelectedOption('thinkPromptTogether')}
+              className={
+                selectedOption === 'thinkPromptTogether'
+                  ? styles.activeButton
+                  : ''
+              }
+            >
+              Think of a prompt together
+            </button>
+            <button
+              onClick={() => setSelectedOption('templatePrompt')}
+              className={
+                selectedOption === 'templatePrompt' ? styles.activeButton : ''
+              }
+            >
+              Template Prompt
+            </button>
           </div>
+
+          {selectedOption === 'promptBox' && (
+            <>
+              <div className={styles.hero}>
+                <h1 className={styles.title}>Chat with an AI</h1>
+                <h2 className={styles.subtitle}>
+                  Click on the gear icon to set the optimal parameters
+                </h2>
+              </div>
+              <div className={styles.componentTop}>
+                <InputBox
+                  apiKey={apiKey}
+                  prompt={prompt}
+                  setPrompt={setPrompt}
+                  setIsModalOpen={setIsModalOpen}
+                  handleSubmit={handleSubmit}
+                  isToggled={isToggled}
+                  setIsToggled={setIsToggled}
+                  isLoading={isLoading}
+                />
+                <div
+                  className={`${styles.componentBottom} ${
+                    isToggled ? styles.slideDown : styles.slideUp
+                  } ${isHidden ? styles.hidden : ''}`}
+                >
+                  <div className={styles.hideComponent}>
+                    <p>Expected Answer</p>
+                    <CorrectBox
+                      correctText={correctText}
+                      setCorrectText={setCorrectText}
+                    />
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+          {selectedOption === 'thinkPromptTogether' && (
+            <>
+              <div className={styles.hero}>
+                <h1 className={styles.title}>Chat with an AI</h1>
+                <h2 className={styles.subtitle}>
+                  Click on the gear icon to set the optimal parameters
+                </h2>
+              </div>
+              <CreatePrompt onComplete={handleCreatePromptComplete} />
+            </>
+          )}
+          {selectedOption === 'templatePrompt' && (
+            <>
+              <div className={styles.hero}>
+                <h1 className={styles.title}>Chat with an AI</h1>
+                <h2 className={styles.subtitle}>
+                  Click on the gear icon to set the optimal parameters
+                </h2>
+              </div>
+              <TemplatePrompt
+                onSelectPrompt={handleTemplatePromptSelect}
+                onOpenModal={handleTemplateModalOpen}
+              />
+            </>
+          )}
+          {/* TemplateModalの表示 */}
+          {isTemplateModalOpen && (
+            <TemplateModal
+              prompt={selectedTemplatePrompt}
+              onClose={handleTemplateModalClose}
+              onInsert={() =>
+                handleTemplatePromptSelect(selectedTemplatePrompt)
+              }
+            />
+          )}
         </div>
       </div>
       <ConfigModal

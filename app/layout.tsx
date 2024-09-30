@@ -6,7 +6,6 @@ import './styles/globals.css'
 import './styles/reset.css'
 import { ClientSessionProvider } from '@/lib/ClinentSessionProvider'
 import GoogleAnalytics from '@/thirdparty/GoogleAnalytics'
-// import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -32,7 +31,6 @@ export default function RootLayout({
         <ClientSessionProvider>
           <Suspense fallback="..."></Suspense>
           <main className={styles.main}>{children}</main>
-          {/* <SpeedInsights /> */}
         </ClientSessionProvider>
       </body>
     </html>

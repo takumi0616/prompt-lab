@@ -204,3 +204,25 @@
 .sidebarOpen {
   width: 40%;
 }
+
+.menu {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.menu button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.menu .activeButton {
+  background-color: #0070f3;
+  color: white;
+}
+
+.menu button:not(.activeButton) {
+  background-color: transparent;
+  color: #0070f3;
+}

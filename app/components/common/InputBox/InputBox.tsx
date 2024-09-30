@@ -39,6 +39,10 @@ export default function InputBox({
     setIsToggled(!isToggled)
   }
 
+  useEffect(() => {
+    setMessage(prompt)
+  }, [prompt])
+
   return (
     <div className={styles.inputBox}>
       <div className={styles.components}>
