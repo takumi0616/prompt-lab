@@ -1,17 +1,33 @@
 'use client'
 
 import React from 'react'
-// import { signIn, signOut, useSession } from 'next-auth/react'
 import { ImLab } from 'react-icons/im'
 import styles from './Header.module.css'
 
 export default function Header() {
-  // const { data: session } = useSession()
+  const handleReload = () => {
+    window.location.reload()
+  }
+
+  const handleKeyPress = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      handleReload()
+    }
+  }
 
   return (
     <header className={styles.header}>
-      <ImLab className={styles.icon} size={34} />
-      <p className={styles.text}>Prompt Lab</p>
+      <div
+        onClick={handleReload}
+        onKeyPress={handleKeyPress}
+        tabIndex={0} // キーボードフォーカスを可能にする
+        role="button" // ボタンの役割を明示する
+        className={styles.clickableArea} // スタイルを適用するためにclassを付ける
+      >
+        <ImLab className={styles.icon} size={34} />
+        <p className={styles.text}>Prompt Lab</p>
+      </div>
+
       {/* <nav className={styles.nav}>
         <ul className={styles.navList}>
           {session ? (

@@ -41,6 +41,12 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.clickableArea {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
 .text {
   font-size: 32px;
   font-weight: bold;

@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { Element, scroller } from 'react-scroll'
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6'
+import { motion, AnimatePresence } from 'framer-motion'
 import styles from './page.module.css'
 import { TokenInfo, ResultData } from '@/types'
 import {
@@ -37,7 +38,6 @@ export default function Home() {
   const [isFirstModalOpen, setIsFirstModalOpen] = useState(true)
   const [isInstructionModalOpen, setIsInstructionModalOpen] = useState(false)
   const [isToggled, setIsToggled] = useState(false)
-  const [isHidden, setIsHidden] = useState(true)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [selectedOption, setSelectedOption] = useState('promptBox')
   const [isTemplateModalOpen, setIsTemplateModalOpen] = useState(false)
@@ -52,7 +52,7 @@ export default function Home() {
       scroller.scrollTo('generatedResultsBox', {
         duration: 800,
         smooth: 'true',
-        offset: -30,
+        offset: -100,
       })
     }
   }, [result])
@@ -62,25 +62,10 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    const handleTextareaExpansion = () => {
-      if (isToggled) {
-        setIsHidden(false)
-      } else {
-        const timer = setTimeout(() => {
-          setIsHidden(true)
-        }, 500)
-        return () => clearTimeout(timer)
-      }
+    if (isToggled) {
+      // Expected Answerを表示
+      // ここでは `isHidden` を使わず、直接 `isToggled` を使用して表示制御します
     }
-
-    const handleResultExpansion = () => {
-      if (!result && !isToggled) {
-        // 特定の条件下で他の処理が実行されるロジック
-      }
-    }
-
-    handleTextareaExpansion()
-    handleResultExpansion()
   }, [isToggled, result])
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -195,7 +180,11 @@ export default function Home() {
   const renderSidebarToggleButton = () => {
     return (
       <button className={styles.sidebarToggleButton} onClick={toggleSidebar}>
-        {isSidebarOpen ? <FaArrowLeft size={24} /> : <FaArrowRight size={24} />}
+        {isSidebarOpen ? (
+          <FaChevronLeft size={24} />
+        ) : (
+          <FaChevronRight size={24} />
+        )}
       </button>
     )
   }
@@ -230,98 +219,113 @@ export default function Home() {
         </div>
         {renderSidebarToggleButton()}
         <div
-          className={`${styles.heroContainer} ${isSidebarOpen ? styles.sidebarOpen : ''}`}
+          className={`${styles.heroContainer} ${isSidebarOpen ? styles.heroContainerSidebarOpen : ''}`}
         >
-          <div className={styles.menu}>
-            <button
-              onClick={() => setSelectedOption('promptBox')}
-              className={
-                selectedOption === 'promptBox' ? styles.activeButton : ''
-              }
-            >
-              Prompt Box
-            </button>
-            <button
-              onClick={() => setSelectedOption('thinkPromptTogether')}
-              className={
-                selectedOption === 'thinkPromptTogether'
-                  ? styles.activeButton
-                  : ''
-              }
-            >
-              Think of a prompt together
-            </button>
-            <button
-              onClick={() => setSelectedOption('templatePrompt')}
-              className={
-                selectedOption === 'templatePrompt' ? styles.activeButton : ''
-              }
-            >
-              Template Prompt
-            </button>
+          <div className={styles.menuContainer}>
+            <div className={styles.menu}>
+              <button
+                onClick={() => setSelectedOption('promptBox')}
+                className={
+                  selectedOption === 'promptBox' ? styles.activeButton : ''
+                }
+              >
+                Prompt Box
+              </button>
+              <button
+                onClick={() => setSelectedOption('thinkPromptTogether')}
+                className={
+                  selectedOption === 'thinkPromptTogether'
+                    ? styles.activeButton
+                    : ''
+                }
+              >
+                Think of a prompt together
+              </button>
+              <button
+                onClick={() => setSelectedOption('templatePrompt')}
+                className={
+                  selectedOption === 'templatePrompt' ? styles.activeButton : ''
+                }
+              >
+                Template Prompt
+              </button>
+            </div>
           </div>
 
-          {selectedOption === 'promptBox' && (
-            <>
-              <div className={styles.hero}>
-                <h1 className={styles.title}>Chat with an AI</h1>
-                <h2 className={styles.subtitle}>
-                  Click on the gear icon to set the optimal parameters
-                </h2>
-              </div>
-              <div className={styles.componentTop}>
-                <InputBox
-                  apiKey={apiKey}
-                  prompt={prompt}
-                  setPrompt={setPrompt}
-                  setIsModalOpen={setIsModalOpen}
-                  handleSubmit={handleSubmit}
-                  isToggled={isToggled}
-                  setIsToggled={setIsToggled}
-                  isLoading={isLoading}
-                />
-                <div
-                  className={`${styles.componentBottom} ${
-                    isToggled ? styles.slideDown : styles.slideUp
-                  } ${isHidden ? styles.hidden : ''}`}
-                >
-                  <div className={styles.hideComponent}>
-                    <p>Expected Answer</p>
-                    <CorrectBox
-                      correctText={correctText}
-                      setCorrectText={setCorrectText}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selectedOption}
+              initial={{ x: 300, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -300, opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className={styles.transitionContainer}
+            >
+              {selectedOption === 'promptBox' && (
+                <>
+                  <div className={styles.hero}>
+                    <h1 className={styles.title}>Chat with an AI</h1>
+                    <h2 className={styles.subtitle}>
+                      Click on the gear icon to set the optimal parameters
+                    </h2>
+                  </div>
+                  <div className={styles.componentTop}>
+                    <InputBox
+                      apiKey={apiKey}
+                      prompt={prompt}
+                      setPrompt={setPrompt}
+                      setIsModalOpen={setIsModalOpen}
+                      handleSubmit={handleSubmit}
+                      isToggled={isToggled}
+                      setIsToggled={setIsToggled}
+                      isLoading={isLoading}
+                    />
+                    {isToggled && (
+                      <div className={styles.componentBottom}>
+                        <div className={styles.hideComponent}>
+                          <p>Expected Answer</p>
+                          <CorrectBox
+                            correctText={correctText}
+                            setCorrectText={setCorrectText}
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </>
+              )}
+              {selectedOption === 'thinkPromptTogether' && (
+                <>
+                  <div className={styles.hero}>
+                    <h1 className={styles.title}>Chat with an AI</h1>
+                    <h2 className={styles.subtitle}>
+                      Click on the gear icon to set the optimal parameters
+                    </h2>
+                  </div>
+                  <div className={styles.componentTop}>
+                    <CreatePrompt onComplete={handleCreatePromptComplete} />
+                  </div>
+                </>
+              )}
+              {selectedOption === 'templatePrompt' && (
+                <>
+                  <div className={styles.hero}>
+                    <h1 className={styles.title}>Chat with an AI</h1>
+                    <h2 className={styles.subtitle}>
+                      Click on the gear icon to set the optimal parameters
+                    </h2>
+                  </div>
+                  <div className={styles.componentTop}>
+                    <TemplatePrompt
+                      onSelectPrompt={handleTemplatePromptSelect}
+                      onOpenModal={handleTemplateModalOpen}
                     />
                   </div>
-                </div>
-              </div>
-            </>
-          )}
-          {selectedOption === 'thinkPromptTogether' && (
-            <>
-              <div className={styles.hero}>
-                <h1 className={styles.title}>Chat with an AI</h1>
-                <h2 className={styles.subtitle}>
-                  Click on the gear icon to set the optimal parameters
-                </h2>
-              </div>
-              <CreatePrompt onComplete={handleCreatePromptComplete} />
-            </>
-          )}
-          {selectedOption === 'templatePrompt' && (
-            <>
-              <div className={styles.hero}>
-                <h1 className={styles.title}>Chat with an AI</h1>
-                <h2 className={styles.subtitle}>
-                  Click on the gear icon to set the optimal parameters
-                </h2>
-              </div>
-              <TemplatePrompt
-                onSelectPrompt={handleTemplatePromptSelect}
-                onOpenModal={handleTemplateModalOpen}
-              />
-            </>
-          )}
-          {/* TemplateModalの表示 */}
+                </>
+              )}
+            </motion.div>
+          </AnimatePresence>
+
           {isTemplateModalOpen && (
             <TemplateModal
               prompt={selectedTemplatePrompt}

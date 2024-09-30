@@ -21,6 +21,7 @@
     "@prisma/client": "^5.18.0",
     "@vercel/postgres": "^0.9.0",
     "@vercel/speed-insights": "^1.0.12",
+    "framer-motion": "^11.9.0",
     "next": "14.2.5",
     "next-auth": "^4.24.7",
     "numpy": "^0.0.1",
