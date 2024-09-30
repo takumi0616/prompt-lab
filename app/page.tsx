@@ -297,9 +297,9 @@ export default function Home() {
               {selectedOption === 'thinkPromptTogether' && (
                 <>
                   <div className={styles.hero}>
-                    <h1 className={styles.title}>Chat with an AI</h1>
+                    <h1 className={styles.title}>Create your prompt</h1>
                     <h2 className={styles.subtitle}>
-                      Click on the gear icon to set the optimal parameters
+                      You can create a prompt just by answering a question
                     </h2>
                   </div>
                   <div className={styles.componentTop}>
@@ -310,9 +310,9 @@ export default function Home() {
               {selectedOption === 'templatePrompt' && (
                 <>
                   <div className={styles.hero}>
-                    <h1 className={styles.title}>Chat with an AI</h1>
+                    <h1 className={styles.title}>Select the template</h1>
                     <h2 className={styles.subtitle}>
-                      Click on the gear icon to set the optimal parameters
+                      Click the insert button and use the prompt
                     </h2>
                   </div>
                   <div className={styles.componentTop}>

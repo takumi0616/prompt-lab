@@ -62,12 +62,12 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* 上揃えに変更 */
+  justify-content: flex-start;
   text-align: center;
   align-items: center;
   transition: width 0.3s ease;
   overflow: hidden;
-  padding-top: 30vh; /* 必要に応じて上部の余白を調整 */
+  padding-top: 30vh;
 }
 
 .heroContainerSidebarOpen {
@@ -81,7 +81,7 @@
 .menuContainer {
   position: relative;
   width: 100%;
-  min-height: 60px; /* メニュー全体の最小高さを固定 */
+  min-height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,8 +91,8 @@
 .menu {
   display: flex;
   justify-content: center;
-  align-items: center; /* ボタンが中央に揃うようにする */
-  min-height: 60px; /* メニュー内のボタンエリアも最小高さを設定 */
+  align-items: center;
+  min-height: 60px;
 }
 
 .menu button {

@@ -20,9 +20,9 @@ export default function Header() {
       <div
         onClick={handleReload}
         onKeyPress={handleKeyPress}
-        tabIndex={0} // キーボードフォーカスを可能にする
-        role="button" // ボタンの役割を明示する
-        className={styles.clickableArea} // スタイルを適用するためにclassを付ける
+        tabIndex={0}
+        role="button"
+        className={styles.clickableArea}
       >
         <ImLab className={styles.icon} size={34} />
         <p className={styles.text}>Prompt Lab</p>

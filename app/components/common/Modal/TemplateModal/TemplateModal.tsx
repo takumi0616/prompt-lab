@@ -1,5 +1,3 @@
-// app/components/common/TemplateModal.tsx
-
 import React from 'react'
 import styles from './TemplateModal.module.css'
 

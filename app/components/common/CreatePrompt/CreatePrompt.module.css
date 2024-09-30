@@ -1,17 +1,20 @@
 .createPrompt {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .question {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-.question label {
-  display: block;
-  margin-bottom: 5px;
+.buttonContainer {
+  display: flex;
+  gap: 10px;
 }
 
-.question input {
-  width: 100%;
-  padding: 8px;
+.button {
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
 }
