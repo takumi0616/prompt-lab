@@ -1,26 +1,3 @@
-.header {
-  height: 8vh;
-  display: flex;
-  align-items: center;
-  background-color: #edc3e7;
-  font-size: 30px;
-  font-family: 'Montserrat';
-  font-weight: bold;
-  color: #2c3844;
-  padding: 13px;
-}
-
-.icon {
-  display: flex;
-  color: #2c3844;
-  padding-bottom: 3px;
-}
-
-.text {
-  margin-left: 25px;
-  flex-wrap: wrap;
-}
-
 .nav {
   display: flex;
   margin-left: auto;
@@ -48,4 +25,34 @@
 .navLink:hover {
   background-color: #f7c9e3;
   color: #000;
+}
+
+.header {
+  width: 100%;
+  height: 80px;
+  background-color: #edc3e7;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.clickableArea {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.text {
+  font-size: 32px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.icon {
+  cursor: pointer;
 }

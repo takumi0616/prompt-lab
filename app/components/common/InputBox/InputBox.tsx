@@ -14,7 +14,6 @@ export default function InputBox({
   isToggled,
   setIsToggled,
   isLoading,
-  setIsTextareaExpanded,
 }: InputBoxProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [message, setMessage] = useState(prompt)
@@ -25,7 +24,7 @@ export default function InputBox({
       textarea.style.height = 'auto'
       textarea.style.height = `${textarea.scrollHeight}px`
     }
-  }, [message, setIsTextareaExpanded, isToggled])
+  }, [message, isToggled])
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setPrompt(e.target.value)
@@ -39,6 +38,10 @@ export default function InputBox({
   const toggleSwitch = () => {
     setIsToggled(!isToggled)
   }
+
+  useEffect(() => {
+    setMessage(prompt)
+  }, [prompt])
 
   return (
     <div className={styles.inputBox}>
