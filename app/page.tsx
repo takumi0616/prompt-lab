@@ -197,6 +197,7 @@ export default function Home() {
   const handleTemplatePromptSelect = (prompt: string) => {
     setPrompt(prompt)
     setSelectedOption('promptBox')
+    setIsTemplateModalOpen(false)
   }
 
   const handleTemplateModalOpen = (prompt: string) => {

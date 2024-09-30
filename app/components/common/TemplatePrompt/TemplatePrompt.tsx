@@ -39,7 +39,6 @@ const TemplatePrompt: React.FC<TemplatePromptProps> = ({
 
   return (
     <div className={styles.templatePrompt}>
-      <h3>テンプレートから選択</h3>
       <div className={styles.templateGrid}>
         {templates.map((template, index) => (
           <div key={index} className={styles.templateCard}>

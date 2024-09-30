@@ -71,6 +71,6 @@
   border-radius: 5px;
   font-size: 12px;
   white-space: nowrap;
-  z-index: 1000;
+  z-index: 800;
   visibility: visible;
 }
