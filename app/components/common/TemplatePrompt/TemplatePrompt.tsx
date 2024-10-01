@@ -1,9 +1,15 @@
 import React from 'react'
-import { FaEnvelope, FaPlane, FaPenFancy, FaShoppingCart, FaUtensils } from 'react-icons/fa'
+import {
+  FaEnvelope,
+  FaPlane,
+  FaPenFancy,
+  FaShoppingCart,
+  FaUtensils,
+} from 'react-icons/fa'
 import { IoLogoWechat } from 'react-icons/io5'
-import { SiLibreofficeimpress } from "react-icons/si";
-import { BiDetail } from "react-icons/bi";
-import { MdOutlineRateReview } from "react-icons/md";
+import { SiLibreofficeimpress } from 'react-icons/si'
+import { BiDetail } from 'react-icons/bi'
+import { MdOutlineRateReview } from 'react-icons/md'
 import styles from './TemplatePrompt.module.css'
 
 interface TemplatePromptProps {
@@ -56,19 +62,22 @@ const templates = [
     title: '資料作成',
     subTitle: ' 自社の新しいソフトウェアに関する資料作成',
     icon: <SiLibreofficeimpress />,
-    prompt: 'あなたは大手企業に勤めるソフトウェアの担当者です。新しいソフトウェアに関する資料の骨子を作成してください。',
+    prompt:
+      'あなたは大手企業に勤めるソフトウェアの担当者です。新しいソフトウェアに関する資料の骨子を作成してください。',
   },
   {
     title: '会議アジェンダ作成',
     subTitle: ' 週次チームミーティングのアジェンダ',
     icon: <BiDetail />,
-    prompt: 'あなたはチームリーダーです。週次チームミーティングのためのアジェンダを作成してください。',
+    prompt:
+      'あなたはチームリーダーです。週次チームミーティングのためのアジェンダを作成してください。',
   },
   {
     title: '製品レビュー作成',
     subTitle: ' 新製品のスマートフォンに関するレビュー',
     icon: <MdOutlineRateReview />,
-    prompt: 'あなたはテクノロジーレビュアーです。最新のスマートフォンの製品レビューを作成してください。',
+    prompt:
+      'あなたはテクノロジーレビュアーです。最新のスマートフォンの製品レビューを作成してください。',
   },
 ]
 
