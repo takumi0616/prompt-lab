@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './BigCard.module.css'
-import SmallCard from '@/components/common/SmallCard'
-import { BigCardProps } from '@/types'
+import SmallCard from '@/app/components/common/SmallCard'
+import { BigCardProps } from '@/app/types'
 
 export default function BigCard({ tokenInfo }: BigCardProps) {
   const displayToken = (token: string) => {

@@ -2,8 +2,8 @@ import React, { useRef, useState, useEffect } from 'react'
 import { CiSettings } from 'react-icons/ci'
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs'
 import styles from './InputBox.module.css'
-import GenerateButton from '@/components/common/GenerateButton'
-import { InputBoxProps } from '@/types'
+import GenerateButton from '@/app/components/common/GenerateButton'
+import { InputBoxProps } from '@/app/types'
 
 export default function InputBox({
   apiKey,

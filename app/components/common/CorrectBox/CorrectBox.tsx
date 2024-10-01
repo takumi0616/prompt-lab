@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect } from 'react'
 import styles from './CorrectBox.module.css'
-import { CorrectBoxProps } from '@/types'
+import { CorrectBoxProps } from '@/app/types'
 
 const CorrectBox: React.FC<CorrectBoxProps> = ({
   correctText,

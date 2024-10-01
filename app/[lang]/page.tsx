@@ -5,7 +5,7 @@ import { Element, scroller } from 'react-scroll'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6'
 import { motion, AnimatePresence } from 'framer-motion'
 import styles from './page.module.css'
-import { TokenInfo, ResultData } from '@/types'
+import { TokenInfo, ResultData } from '@/app/types'
 import {
   ConfigModal,
   CorrectBox,
@@ -16,9 +16,9 @@ import {
   InstructionModal,
   TemplateModal,
   TemplatePrompt,
-} from '@/components/common'
-import { LogprobsDisplay, Header, Footer } from '@/components/layouts'
-import SideBar from '@/components/layouts/SideBar'
+} from '@/app/components/common'
+import { LogprobsDisplay, Header, Footer } from '@/app/components/layouts'
+import SideBar from '@/app/components/layouts/SideBar'
 
 export default function Home() {
   const [checkboxStates, setCheckboxStates] = useState<boolean[]>(

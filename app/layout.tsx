@@ -4,8 +4,8 @@ import { Montserrat } from 'next/font/google'
 import styles from './styles/layout.module.css'
 import './styles/globals.css'
 import './styles/reset.css'
-import { ClientSessionProvider } from '@/lib/ClinentSessionProvider'
-import GoogleAnalytics from '@/thirdparty/GoogleAnalytics'
+import { ClientSessionProvider } from '@/app/lib/ClinentSessionProvider'
+import GoogleAnalytics from '@/app/thirdparty/GoogleAnalytics'
 
 const montserrat = Montserrat({
   subsets: ['latin'],

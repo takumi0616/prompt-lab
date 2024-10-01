@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styles from './ConfigModal.module.css'
-import { ConfigModalProps } from '@/types'
+import { ConfigModalProps } from '@/app/types'
 
 export default function ConfigModal({
   model,

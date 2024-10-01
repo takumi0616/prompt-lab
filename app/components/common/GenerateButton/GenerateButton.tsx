@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './GenerateButton.module.css'
-import { GenerateButtonProps } from '@/types'
+import { GenerateButtonProps } from '@/app/types'
 
 export default function GenerateButton({
   onClick,

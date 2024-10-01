@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './GeneratedResultsBox.module.css'
-import { GenerationResultsProps } from '@/types'
+import { GenerationResultsProps } from '@/app/types'
 
 export default function GeneratedResultsBox({
   result,
