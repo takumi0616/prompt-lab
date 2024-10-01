@@ -85,3 +85,41 @@ export interface CorrectBoxProps {
   correctText: string
   setCorrectText: (value: string) => void
 }
+
+export interface Tip {
+  id: number
+  title: string
+  example: string
+}
+
+export interface SideBarProps {
+  isOpen: boolean
+  checkboxStates: boolean[]
+  setCheckboxStates: React.Dispatch<React.SetStateAction<boolean[]>>
+}
+
+export interface TemplatePromptProps {
+  onSelectPrompt: (prompt: string) => void
+  onOpenModal: (prompt: string) => void
+}
+
+export interface TemplateModalProps {
+  prompt: string
+  onClose: () => void
+  onInsert: () => void
+}
+
+export interface InstructionModalProps {
+  onClose: () => void
+  onFirst: () => void
+}
+
+export interface FirstModalProps {
+  onClose: () => void
+  onSwitchToExplanation: () => void
+  setApiKey: (key: string) => void
+}
+
+export interface CreatePromptProps {
+  onComplete: (generatedPrompt: string) => void
+}

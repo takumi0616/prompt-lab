@@ -1,17 +1,6 @@
 import React from 'react'
 import styles from './SideBar.module.css'
-
-interface Tip {
-  id: number
-  title: string
-  example: string
-}
-
-interface SideBarProps {
-  isOpen: boolean
-  checkboxStates: boolean[]
-  setCheckboxStates: React.Dispatch<React.SetStateAction<boolean[]>>
-}
+import { Tip, SideBarProps } from '@/app/types'
 
 const tips: Tip[] = [
   {
@@ -77,48 +66,28 @@ const tips: Tip[] = [
   },
   {
     id: 12,
-    title: '特定のスタイルやトーンを指定する',
-    example: '例: 「友人に話すようなカジュアルな口調で教えてください。」',
-  },
-  {
-    id: 13,
     title: 'デリミター（区切り記号）を使って明確にする',
     example: "例: 「次の文章を '---' で囲みます：---ここに文章---」",
   },
   {
-    id: 14,
+    id: 13,
     title: '複雑なタスクを分割する',
     example: '例: 「まず問題の要点をまとめ、その後解決策を提案してください。」',
   },
   {
-    id: 15,
+    id: 14,
     title: '特定の情報に基づいて回答するよう指示する',
     example: "例: 「以下のテキストを参考に答えてください： 'テキスト内容'」",
   },
   {
-    id: 16,
+    id: 15,
     title: '回答の長さを指定する',
     example: '例: 「100文字以内で説明してください。」',
   },
   {
-    id: 17,
-    title: 'ユーザーとの対話を促す',
-    example: '例: 「不明な点があれば質問してください。」',
-  },
-  {
-    id: 18,
-    title: '繰り返しを使って強調する',
-    example: '例: 「安全第一、安全第一、安全第一を心がけてください。」',
-  },
-  {
-    id: 19,
+    id: 16,
     title: '問題解決のプロセスを示す',
     example: '例: 「以下の数式を解いて、その過程を説明してください。」',
-  },
-  {
-    id: 20,
-    title: '特定のフォーマットやスタイルを維持する',
-    example: '例: 「元の文章のスタイルを保ちつつ、誤字を修正してください。」',
   },
 ]
 

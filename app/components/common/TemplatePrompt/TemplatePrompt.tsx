@@ -1,11 +1,7 @@
 import React from 'react'
 import { FaEnvelope, FaPlane } from 'react-icons/fa'
 import styles from './TemplatePrompt.module.css'
-
-interface TemplatePromptProps {
-  onSelectPrompt: (prompt: string) => void
-  onOpenModal: (prompt: string) => void
-}
+import { TemplatePromptProps } from '@/app/types'
 
 const templates = [
   {
@@ -24,10 +20,10 @@ const templates = [
   },
 ]
 
-const TemplatePrompt: React.FC<TemplatePromptProps> = ({
+export default function TemplatePrompt({
   onSelectPrompt,
   onOpenModal,
-}) => {
+}: TemplatePromptProps) {
   const handleKeyDown = (
     event: React.KeyboardEvent<HTMLDivElement>,
     prompt: string,
@@ -69,5 +65,3 @@ const TemplatePrompt: React.FC<TemplatePromptProps> = ({
     </div>
   )
 }
-
-export default TemplatePrompt

@@ -1,11 +1,8 @@
 import React, { useState } from 'react'
 import styles from './CreatePrompt.module.css'
+import { CreatePromptProps } from '@/app/types'
 
-interface CreatePromptProps {
-  onComplete: (generatedPrompt: string) => void
-}
-
-const CreatePrompt: React.FC<CreatePromptProps> = ({ onComplete }) => {
+export default function CreatePrompt({ onComplete }: CreatePromptProps) {
   const [answers, setAnswers] = useState<string[]>(['', '', ''])
   const [currentQuestion, setCurrentQuestion] = useState(0)
 
@@ -68,5 +65,3 @@ const CreatePrompt: React.FC<CreatePromptProps> = ({ onComplete }) => {
     </div>
   )
 }
-
-export default CreatePrompt

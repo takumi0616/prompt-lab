@@ -10,6 +10,7 @@ import {
 } from 'react-icons/tb'
 import { RxCross1 } from 'react-icons/rx'
 import styles from './InstructionModal.module.css'
+import { InstructionModalProps } from '@/app/types'
 
 const steps = [
   {
@@ -74,15 +75,10 @@ const steps = [
   },
 ]
 
-type InstructionModalProps = {
-  onClose: () => void
-  onFirst: () => void
-}
-
-const InstructionModal: React.FC<InstructionModalProps> = ({
+export default function InstructionModal({
   onClose,
   onFirst,
-}) => {
+}: InstructionModalProps) {
   const [currentStep, setCurrentStep] = useState(0)
 
   const handleNext = () => {
@@ -148,5 +144,3 @@ const InstructionModal: React.FC<InstructionModalProps> = ({
     </div>
   )
 }
-
-export default InstructionModal

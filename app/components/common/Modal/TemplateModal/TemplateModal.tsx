@@ -1,17 +1,12 @@
 import React from 'react'
 import styles from './TemplateModal.module.css'
+import { TemplateModalProps } from '@/app/types'
 
-interface TemplateModalProps {
-  prompt: string
-  onClose: () => void
-  onInsert: () => void
-}
-
-const TemplateModal: React.FC<TemplateModalProps> = ({
+export default function TemplateModal({
   prompt,
   onClose,
   onInsert,
-}) => {
+}: TemplateModalProps) {
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
@@ -25,5 +20,3 @@ const TemplateModal: React.FC<TemplateModalProps> = ({
     </div>
   )
 }
-
-export default TemplateModal
