@@ -67,7 +67,7 @@
   align-items: center;
   transition: width 0.3s ease;
   overflow: hidden;
-  padding-top: 30vh;
+  padding-top: 25vh;
 }
 
 .heroContainerSidebarOpen {
