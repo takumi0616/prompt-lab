@@ -106,7 +106,7 @@ export default function SideBar({
     <div
       className={`${styles.sidebar} ${isOpen ? styles.open : styles.closed}`}
     >
-      <h2 className={styles.title}>プロンプトチェックシート</h2>
+      <h2 className={styles.title}>プロンプトチェックシート（全16個）</h2>
       <div className={styles.content}>
         {tips.map((tip, index) => (
           <div key={tip.id} className={styles.tipItem}>
