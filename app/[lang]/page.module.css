@@ -41,6 +41,20 @@
   z-index: 800;
 }
 
+@keyframes fuwafuwaX {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(18px);
+  }
+}
+
+.fuwafuwa {
+  animation: fuwafuwaX 2s infinite ease-in-out;
+}
+
 .sidebarOpen + .sidebarToggleButton {
   left: calc(40% + 10px);
 }

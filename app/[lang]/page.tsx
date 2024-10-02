@@ -188,7 +188,12 @@ export default function Home() {
 
   const renderSidebarToggleButton = () => {
     return (
-      <button className={styles.sidebarToggleButton} onClick={toggleSidebar}>
+      <button
+        className={`${styles.sidebarToggleButton} ${
+          !isSidebarOpen ? styles.fuwafuwa : ''
+        }`}
+        onClick={toggleSidebar}
+      >
         {isSidebarOpen ? (
           <FaChevronLeft size={24} />
         ) : (
@@ -233,7 +238,9 @@ export default function Home() {
         </div>
         {renderSidebarToggleButton()}
         <div
-          className={`${styles.heroContainer} ${isSidebarOpen ? styles.heroContainerSidebarOpen : ''}`}
+          className={`${styles.heroContainer} ${
+            isSidebarOpen ? styles.heroContainerSidebarOpen : ''
+          }`}
         >
           <div className={styles.menuContainer}>
             <div className={styles.menu}>
@@ -300,10 +307,10 @@ export default function Home() {
                     {isToggled && (
                       <AnimatePresence>
                         <motion.div
-                          initial={{ opacity: 0, y: -10 }} // 最初は透明で上から少しずれた位置
-                          animate={{ opacity: 1, y: 0 }} // 表示される際は透明度を上げて位置を元に戻す
-                          exit={{ opacity: 0, y: -10 }} // 消える際は透明度を下げて上に移動
-                          transition={{ duration: 0.5 }} // 0.5秒でアニメーション
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.5 }}
                           className={styles.componentBottom}
                         >
                           <div className={styles.hideComponent}>
