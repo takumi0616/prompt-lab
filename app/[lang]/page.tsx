@@ -298,15 +298,23 @@ export default function Home() {
                       isLoading={isLoading}
                     />
                     {isToggled && (
-                      <div className={styles.componentBottom}>
-                        <div className={styles.hideComponent}>
-                          <p>Expected Answer</p>
-                          <CorrectBox
-                            correctText={correctText}
-                            setCorrectText={setCorrectText}
-                          />
-                        </div>
-                      </div>
+                      <AnimatePresence>
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }} // 最初は透明で上から少しずれた位置
+                          animate={{ opacity: 1, y: 0 }} // 表示される際は透明度を上げて位置を元に戻す
+                          exit={{ opacity: 0, y: -10 }} // 消える際は透明度を下げて上に移動
+                          transition={{ duration: 0.5 }} // 0.5秒でアニメーション
+                          className={styles.componentBottom}
+                        >
+                          <div className={styles.hideComponent}>
+                            <p>Expected Answer</p>
+                            <CorrectBox
+                              correctText={correctText}
+                              setCorrectText={setCorrectText}
+                            />
+                          </div>
+                        </motion.div>
+                      </AnimatePresence>
                     )}
                   </div>
                 </>

@@ -147,14 +147,6 @@
   padding-right: 100px;
 }
 
-.componentBottom {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  box-sizing: border-box;
-  flex-direction: column;
-}
-
 .hero {
   margin-bottom: 20px;
 }
@@ -230,11 +222,15 @@
   margin-bottom: 20px;
 }
 
-.hideComponent p {
-  font-weight: bold;
-  font-size: 20px;
-  color: #333;
-  margin: 1.5rem 0 0.3rem 0;
+.componentBottom {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  flex-direction: column;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 .hideComponent {
@@ -242,4 +238,11 @@
   flex-direction: column;
   text-align: left;
   box-sizing: border-box;
+}
+
+.hideComponent p {
+  font-weight: bold;
+  font-size: 20px;
+  color: #333;
+  margin: 1.5rem 0 0.3rem 0;
 }

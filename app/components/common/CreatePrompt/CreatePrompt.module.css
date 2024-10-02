@@ -10,6 +10,16 @@
   align-items: center;
   margin-bottom: 30px;
   width: 80%;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .question {

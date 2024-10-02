@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './CreatePrompt.module.css'
 import { CreatePromptProps } from '@/app/types'
 
@@ -40,6 +40,12 @@ export default function CreatePrompt({ onComplete }: CreatePromptProps) {
     Array(questions.length).fill(''),
   )
   const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [showQuestion, setShowQuestion] = useState(true)
+
+  // 初回レンダリング時に `show` クラスを適用
+  useEffect(() => {
+    setShowQuestion(true)
+  }, [])
 
   const handleComplete = () => {
     let generatedPrompt = ''
@@ -83,7 +89,11 @@ export default function CreatePrompt({ onComplete }: CreatePromptProps) {
 
   const handleNext = () => {
     if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1)
+      setShowQuestion(false) // 一度非表示にする
+      setTimeout(() => {
+        setCurrentQuestion(currentQuestion + 1)
+        setShowQuestion(true) // 新しい質問を表示する
+      }, 300) // アニメーションに合わせてタイミング調整
     } else {
       handleComplete()
     }
@@ -91,7 +101,11 @@ export default function CreatePrompt({ onComplete }: CreatePromptProps) {
 
   const handlePrevious = () => {
     if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1)
+      setShowQuestion(false) // 一度非表示にする
+      setTimeout(() => {
+        setCurrentQuestion(currentQuestion - 1)
+        setShowQuestion(true) // 新しい質問を表示する
+      }, 300) // アニメーションに合わせてタイミング調整
     }
   }
 
@@ -103,7 +117,11 @@ export default function CreatePrompt({ onComplete }: CreatePromptProps) {
 
   return (
     <div className={styles.createPrompt}>
-      <div className={styles.questionContainer}>
+      <div
+        className={`${styles.questionContainer} ${
+          showQuestion ? styles.show : ''
+        }`}
+      >
         <p className={styles.question}>{questions[currentQuestion].question}</p>
         <p className={styles.subTitle}>{questions[currentQuestion].subTitle}</p>
         <p className={styles.example}>{questions[currentQuestion].example}</p>
