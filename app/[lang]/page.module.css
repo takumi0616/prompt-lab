@@ -229,3 +229,17 @@
 .mb {
   margin-bottom: 20px;
 }
+
+.hideComponent p {
+  font-weight: bold;
+  font-size: 20px;
+  color: #333;
+  margin: 1.5rem 0 0.3rem 0;
+}
+
+.hideComponent {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  box-sizing: border-box;
+}
