@@ -85,7 +85,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 }
 
 .menu {
@@ -93,30 +93,44 @@
   justify-content: center;
   align-items: center;
   min-height: 60px;
+  border-radius: 18px;
+  background-color: rgba(123, 144, 166, 0.18);
+  box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.25) inset;
 }
 
 .menu button {
+  display: flex;
   margin: 0 10px;
   padding: 10px 20px;
   cursor: pointer;
   border: none;
   background-color: transparent;
-  color: #0070f3;
+  color: #2e3d4d;
+  font-weight: 700;
   font-size: 16px;
   transition:
     background-color 0.3s,
     color 0.3s;
+  border-radius: 12px;
+}
+
+.menu .icon {
+  margin-right: 12px;
 }
 
 .menu .activeButton {
-  background-color: #0070f3;
-  color: white;
-  border-radius: 5px;
+  display: flex;
+  background-color: #f0f7ff;
+  color: #333333;
+  font-weight: 700;
+  border-radius: 12px;
+  box-sizing: border-box;
+  box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.25);
 }
 
 .menu button:not(.activeButton):hover {
   background-color: #e0e0e0;
-  border-radius: 5px;
+  border-radius: 12px;
 }
 
 .hidden {
