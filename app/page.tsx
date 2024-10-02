@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react'
 import { Element, scroller } from 'react-scroll'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6'
 import { motion, AnimatePresence } from 'framer-motion'
-import { BsFillRocketTakeoffFill, BsChatTextFill } from 'react-icons/bs';
-import { IoMdBookmarks } from 'react-icons/io';
+import { BsFillRocketTakeoffFill, BsChatTextFill } from 'react-icons/bs'
+import { IoMdBookmarks } from 'react-icons/io'
 import styles from './page.module.css'
 import { TokenInfo, ResultData } from '@/types'
 import {
@@ -232,7 +232,7 @@ export default function Home() {
                   selectedOption === 'promptBox' ? styles.activeButton : ''
                 }
               >
-                <BsFillRocketTakeoffFill className={styles.icon}/>
+                <BsFillRocketTakeoffFill className={styles.icon} />
                 Prompt Box
               </button>
               <button
@@ -243,7 +243,7 @@ export default function Home() {
                     : ''
                 }
               >
-                <BsChatTextFill className={styles.icon}/>
+                <BsChatTextFill className={styles.icon} />
                 Think of a prompt together
               </button>
               <button
@@ -252,7 +252,7 @@ export default function Home() {
                   selectedOption === 'templatePrompt' ? styles.activeButton : ''
                 }
               >
-                <IoMdBookmarks className={styles.icon}/>
+                <IoMdBookmarks className={styles.icon} />
                 Template Prompt
               </button>
             </div>
