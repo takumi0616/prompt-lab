@@ -1,6 +1,6 @@
 .sidebar {
   width: 40%;
-  max-height: calc(100vh - 60px);
+  max-height: 100%;
   background-color: #ffffff;
   transition: transform 0.3s ease;
   position: absolute;
