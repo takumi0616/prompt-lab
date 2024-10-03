@@ -10,7 +10,10 @@ export default function FixPromptBox({
     <div className={styles.fixPrompt}>
       {improvementSuggestions ? (
         <>
-          <h3>改善提案</h3>
+          <h2>プロンプトの改善についての提案</h2>
+          <h4>
+            サイドメニューにも同じ内容が表示されているので、参考にしながらプロンプトを改善しよう！
+          </h4>
           <ReactMarkdown>{improvementSuggestions}</ReactMarkdown>
         </>
       ) : (

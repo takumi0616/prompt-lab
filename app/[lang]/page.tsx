@@ -6,7 +6,7 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6'
 import { motion, AnimatePresence } from 'framer-motion'
 import { BsFillRocketTakeoffFill, BsChatTextFill } from 'react-icons/bs'
 import { IoMdBookmarks } from 'react-icons/io'
-import { FaSpinner } from 'react-icons/fa'
+import ReactLoading from 'react-loading'
 import styles from './page.module.css'
 import { TokenInfo, ResultData } from '@/app/types'
 import {
@@ -467,8 +467,17 @@ export default function Home() {
               />
             </Element>
             {isFixPromptLoading ? (
-              <div className={styles.loading}>
-                <FaSpinner className={styles.spinner} /> 評価中...
+              <div className={styles.loadingContainer}>
+                <ReactLoading
+                  type="spin"
+                  color="#00BFFF"
+                  height={50}
+                  width={50}
+                  className={styles.loading}
+                />
+                <p className={styles.loadingText}>
+                  プロンプトや結果について評価中...
+                </p>
               </div>
             ) : (
               result.similarityScore !== undefined && (
