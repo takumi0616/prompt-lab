@@ -6,6 +6,7 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6'
 import { motion, AnimatePresence } from 'framer-motion'
 import { BsFillRocketTakeoffFill, BsChatTextFill } from 'react-icons/bs'
 import { IoMdBookmarks } from 'react-icons/io'
+import { FaSpinner } from 'react-icons/fa'
 import styles from './page.module.css'
 import { TokenInfo, ResultData } from '@/app/types'
 import {
@@ -48,6 +49,7 @@ export default function Home() {
   const [selectedOption, setSelectedOption] = useState('promptBox')
   const [isTemplateModalOpen, setIsTemplateModalOpen] = useState(false)
   const [selectedTemplatePrompt, setSelectedTemplatePrompt] = useState('')
+  const [isFixPromptLoading, setIsFixPromptLoading] = useState(false)
   const [improvementSuggestions, setImprovementSuggestions] = useState<
     string | null
   >(null)
@@ -87,6 +89,7 @@ export default function Home() {
     setLogprobs([])
     setIsLoading(true)
     setImprovementSuggestions(null)
+    setIsFixPromptLoading(false)
 
     try {
       const response = await fetch('/api/chatgpt', {
@@ -114,50 +117,6 @@ export default function Home() {
       const data: ResultData = await response.json()
       setResult(data)
 
-      if (data.text) {
-        setResult(data)
-      } else {
-        throw new Error('No text returned from API')
-      }
-
-      if (data.data.choices[0].logprobs) {
-        setLogprobs(data.data.choices[0].logprobs.content)
-      } else {
-        throw new Error('No logprobs found in API response')
-      }
-
-      if (isToggled && correctText.trim() !== '') {
-        const fixPromptResponse = await fetch('/api/fixprompt', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            apiKey,
-            userPrompt: prompt,
-            output: data.text,
-            desiredOutput: correctText,
-            similarityScore: data.similarityScore || 0,
-          }),
-        })
-
-        if (!fixPromptResponse.ok) {
-          throw new Error(
-            `FixPrompt API request failed with status ${fixPromptResponse.status}`,
-          )
-        }
-
-        const fixPromptData = await fixPromptResponse.json()
-
-        if (fixPromptData.improvementSuggestions) {
-          setImprovementSuggestions(fixPromptData.improvementSuggestions)
-        } else {
-          throw new Error(
-            'No improvement suggestions returned from FixPrompt API',
-          )
-        }
-      }
-
       if (correctText.trim() !== '') {
         const embeddingResponse = await fetch('/api/embedding', {
           method: 'POST',
@@ -178,20 +137,58 @@ export default function Home() {
         }
 
         const embeddingData = await embeddingResponse.json()
+        const similarityScore = embeddingData.similarityScore
+
         setResult((prevResult) => {
           if (prevResult) {
             return {
               ...prevResult,
-              similarityScore: embeddingData.similarityScore,
+              similarityScore: similarityScore,
             }
           } else {
             return {
               text: data.text,
               data: data.data,
-              similarityScore: embeddingData.similarityScore,
+              similarityScore: similarityScore,
             }
           }
         })
+
+        if (isToggled && correctText.trim() !== '') {
+          setIsFixPromptLoading(true)
+
+          const fixPromptResponse = await fetch('/api/fixprompt', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              apiKey,
+              userPrompt: prompt,
+              output: data.text,
+              desiredOutput: correctText,
+              similarityScore: similarityScore,
+            }),
+          })
+
+          if (!fixPromptResponse.ok) {
+            throw new Error(
+              `FixPrompt API request failed with status ${fixPromptResponse.status}`,
+            )
+          }
+
+          const fixPromptData = await fixPromptResponse.json()
+
+          if (fixPromptData.improvementSuggestions) {
+            setImprovementSuggestions(fixPromptData.improvementSuggestions)
+          } else {
+            throw new Error(
+              'No improvement suggestions returned from FixPrompt API',
+            )
+          }
+
+          setIsFixPromptLoading(false)
+        }
       }
     } catch (error: unknown) {
       if (error instanceof Error) {
@@ -463,13 +460,21 @@ export default function Home() {
                 topP={topP}
               />
             </Element>
-            {result.similarityScore !== undefined && (
-              <div className={`${styles.fadeIn} ${styles.mb}`}>
-                <h2 className={styles.scoreText}>
-                  Similarity Score: {result.similarityScore}
-                </h2>
-                <FixPromptBox improvementSuggestions={improvementSuggestions} />
+            {isFixPromptLoading ? (
+              <div className={styles.loading}>
+                <FaSpinner className={styles.spinner} /> 評価中...
               </div>
+            ) : (
+              result.similarityScore !== undefined && (
+                <div className={`${styles.fadeIn} ${styles.mb}`}>
+                  <h2 className={styles.scoreText}>
+                    Similarity Score: {result.similarityScore}
+                  </h2>
+                  <FixPromptBox
+                    improvementSuggestions={improvementSuggestions}
+                  />
+                </div>
+              )
             )}
           </div>
         </div>
