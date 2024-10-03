@@ -2,9 +2,9 @@
 
 import React from 'react'
 import { ImLab } from 'react-icons/im'
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 import styles from './Header.module.css'
-import { useLanguage } from '@/i18n/client'
+// import { useLanguage } from '@/i18n/client'
 
 export default function Header() {
   const handleReload = () => {
@@ -17,14 +17,14 @@ export default function Header() {
     }
   }
 
-  const { language, setLanguage } = useLanguage()
-  const router = useRouter()
+  // const { language, setLanguage } = useLanguage()
+  // const router = useRouter()
 
-  const handleLanguageToggle = () => {
-    const newLanguage = language === 'ja' ? 'en' : 'ja'
-    setLanguage(newLanguage)
-    router.push(`/${newLanguage}`)
-  }
+  // const handleLanguageToggle = () => {
+  //   const newLanguage = language === 'ja' ? 'en' : 'ja'
+  //   setLanguage(newLanguage)
+  //   router.push(`/${newLanguage}`)
+  // }
 
   return (
     <header className={styles.header}>
@@ -39,7 +39,7 @@ export default function Header() {
         <p className={styles.text}>Prompt Lab</p>
       </div>
 
-      <div
+      {/* <div
         className={styles.languageToggleContainer}
         onClick={handleLanguageToggle}
         onKeyPress={handleLanguageToggle}
@@ -55,7 +55,7 @@ export default function Header() {
           ></div>
         </div>
         <img src="/us.png" alt="English" className={styles.languageIcon} />
-      </div>
+      </div> */}
 
       {/* <nav className={styles.nav}>
         <ul className={styles.navList}>
