@@ -9,7 +9,6 @@ import {
 import { IoLogoWechat } from 'react-icons/io5'
 import { SiLibreofficeimpress } from 'react-icons/si'
 import { BiDetail } from 'react-icons/bi'
-import { MdOutlineRateReview } from 'react-icons/md'
 import styles from './TemplatePrompt.module.css'
 import { TemplatePromptProps } from '@/app/types'
 
@@ -67,13 +66,6 @@ const templates = [
     icon: <BiDetail />,
     prompt:
       'あなたはチームリーダーです。週次チームミーティングのためのアジェンダを作成してください。',
-  },
-  {
-    title: '製品レビュー作成',
-    subTitle: ' 新製品のスマートフォンに関するレビュー',
-    icon: <MdOutlineRateReview />,
-    prompt:
-      'あなたはテクノロジーレビュアーです。最新のスマートフォンの製品レビューを作成してください。',
   },
 ]
 
