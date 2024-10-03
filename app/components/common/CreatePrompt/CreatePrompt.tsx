@@ -42,7 +42,6 @@ export default function CreatePrompt({ onComplete }: CreatePromptProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [showQuestion, setShowQuestion] = useState(true)
 
-  // 初回レンダリング時に `show` クラスを適用
   useEffect(() => {
     setShowQuestion(true)
   }, [])
@@ -81,7 +80,6 @@ export default function CreatePrompt({ onComplete }: CreatePromptProps) {
       generatedPrompt += `以下を参考にしてください：\n\n${answers[5]}\n\n`
     }
 
-    // Markdown形式にするため、適切に改行や強調を追加
     generatedPrompt = generatedPrompt.trim()
 
     onComplete(generatedPrompt)
@@ -89,11 +87,11 @@ export default function CreatePrompt({ onComplete }: CreatePromptProps) {
 
   const handleNext = () => {
     if (currentQuestion < questions.length - 1) {
-      setShowQuestion(false) // 一度非表示にする
+      setShowQuestion(false)
       setTimeout(() => {
         setCurrentQuestion(currentQuestion + 1)
-        setShowQuestion(true) // 新しい質問を表示する
-      }, 300) // アニメーションに合わせてタイミング調整
+        setShowQuestion(true)
+      }, 300)
     } else {
       handleComplete()
     }
@@ -101,11 +99,11 @@ export default function CreatePrompt({ onComplete }: CreatePromptProps) {
 
   const handlePrevious = () => {
     if (currentQuestion > 0) {
-      setShowQuestion(false) // 一度非表示にする
+      setShowQuestion(false)
       setTimeout(() => {
         setCurrentQuestion(currentQuestion - 1)
-        setShowQuestion(true) // 新しい質問を表示する
-      }, 300) // アニメーションに合わせてタイミング調整
+        setShowQuestion(true)
+      }, 300)
     }
   }
 

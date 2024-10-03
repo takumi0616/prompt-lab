@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactMarkdown from 'react-markdown'
 import styles from './GeneratedResultsBox.module.css'
 import { GenerationResultsProps } from '@/app/types'
 
@@ -15,7 +16,7 @@ export default function GeneratedResultsBox({
     <div className={styles.responseBox}>
       <header>Generation Results</header>
       <div className={styles.responseBoxArea}>
-        <p className={styles.black}>{result}</p>
+        <ReactMarkdown className={styles.black}>{result}</ReactMarkdown>
       </div>
       <div className={styles.parameters}>
         <p className={styles.parameterBox}>

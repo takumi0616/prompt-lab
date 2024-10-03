@@ -123,3 +123,11 @@ export interface FirstModalProps {
 export interface CreatePromptProps {
   onComplete: (generatedPrompt: string) => void
 }
+
+export interface FixPromptProps {
+  apiKey: string
+  userPrompt: string
+  output: string
+  desiredOutput: string
+  similarityScore: number
+}

@@ -21,6 +21,7 @@ import {
 } from '@/app/components/common'
 import { LogprobsDisplay, Header, Footer } from '@/app/components/layouts'
 import SideBar from '@/app/components/layouts/SideBar'
+import FixPromptBox from '@/app/components/common/FixPromptBox'
 
 export default function Home() {
   const [checkboxStates, setCheckboxStates] = useState<boolean[]>(
@@ -68,7 +69,7 @@ export default function Home() {
 
   useEffect(() => {
     if (isToggled) {
-      // Expected Answerを表示
+      // Expected Answerがオンの場合の処理
     }
   }, [isToggled, result])
 
@@ -430,6 +431,13 @@ export default function Home() {
                 <h2 className={styles.scoreText}>
                   Similarity Score: {result.similarityScore}
                 </h2>
+                <FixPromptBox
+                  apiKey={apiKey}
+                  userPrompt={prompt}
+                  output={result.text}
+                  desiredOutput={correctText}
+                  similarityScore={result.similarityScore}
+                />
               </div>
             )}
           </div>
