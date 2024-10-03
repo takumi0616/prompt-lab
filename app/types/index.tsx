@@ -96,6 +96,7 @@ export interface SideBarProps {
   isOpen: boolean
   checkboxStates: boolean[]
   setCheckboxStates: React.Dispatch<React.SetStateAction<boolean[]>>
+  improvementSuggestions: string | null
 }
 
 export interface TemplatePromptProps {
@@ -125,9 +126,5 @@ export interface CreatePromptProps {
 }
 
 export interface FixPromptProps {
-  apiKey: string
-  userPrompt: string
-  output: string
-  desiredOutput: string
-  similarityScore: number
+  improvementSuggestions: string | null
 }

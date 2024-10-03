@@ -48,6 +48,9 @@ export default function Home() {
   const [selectedOption, setSelectedOption] = useState('promptBox')
   const [isTemplateModalOpen, setIsTemplateModalOpen] = useState(false)
   const [selectedTemplatePrompt, setSelectedTemplatePrompt] = useState('')
+  const [improvementSuggestions, setImprovementSuggestions] = useState<
+    string | null
+  >(null)
 
   const toggleSidebar = () => {
     setIsSidebarOpen((prevState) => !prevState)
@@ -69,7 +72,7 @@ export default function Home() {
 
   useEffect(() => {
     if (isToggled) {
-      // Expected Answerがオンの場合の処理
+      // "Enable Expected Answer" がオンの場合の処理（必要なら追加）
     }
   }, [isToggled, result])
 
@@ -83,6 +86,7 @@ export default function Home() {
     setResult(null)
     setLogprobs([])
     setIsLoading(true)
+    setImprovementSuggestions(null)
 
     try {
       const response = await fetch('/api/chatgpt', {
@@ -120,6 +124,38 @@ export default function Home() {
         setLogprobs(data.data.choices[0].logprobs.content)
       } else {
         throw new Error('No logprobs found in API response')
+      }
+
+      if (isToggled && correctText.trim() !== '') {
+        const fixPromptResponse = await fetch('/api/fixprompt', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            apiKey,
+            userPrompt: prompt,
+            output: data.text,
+            desiredOutput: correctText,
+            similarityScore: data.similarityScore || 0,
+          }),
+        })
+
+        if (!fixPromptResponse.ok) {
+          throw new Error(
+            `FixPrompt API request failed with status ${fixPromptResponse.status}`,
+          )
+        }
+
+        const fixPromptData = await fixPromptResponse.json()
+
+        if (fixPromptData.improvementSuggestions) {
+          setImprovementSuggestions(fixPromptData.improvementSuggestions)
+        } else {
+          throw new Error(
+            'No improvement suggestions returned from FixPrompt API',
+          )
+        }
       }
 
       if (correctText.trim() !== '') {
@@ -235,6 +271,7 @@ export default function Home() {
             isOpen={isSidebarOpen}
             checkboxStates={checkboxStates}
             setCheckboxStates={setCheckboxStates}
+            improvementSuggestions={improvementSuggestions}
           />
         </div>
         {renderSidebarToggleButton()}
@@ -431,13 +468,7 @@ export default function Home() {
                 <h2 className={styles.scoreText}>
                   Similarity Score: {result.similarityScore}
                 </h2>
-                <FixPromptBox
-                  apiKey={apiKey}
-                  userPrompt={prompt}
-                  output={result.text}
-                  desiredOutput={correctText}
-                  similarityScore={result.similarityScore}
-                />
+                <FixPromptBox improvementSuggestions={improvementSuggestions} />
               </div>
             )}
           </div>

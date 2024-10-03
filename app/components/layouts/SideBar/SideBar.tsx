@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import ReactMarkdown from 'react-markdown'
 import styles from './SideBar.module.css'
 import { Tip, SideBarProps } from '@/app/types'
 
@@ -95,7 +96,19 @@ export default function SideBar({
   isOpen,
   checkboxStates,
   setCheckboxStates,
+  improvementSuggestions,
 }: SideBarProps) {
+  const [showImprovementSuggestions, setShowImprovementSuggestions] =
+    useState(false)
+
+  useEffect(() => {
+    if (improvementSuggestions) {
+      setShowImprovementSuggestions(true)
+    } else {
+      setShowImprovementSuggestions(false)
+    }
+  }, [improvementSuggestions])
+
   const handleCheckboxChange = (index: number) => {
     const updatedCheckboxStates = [...checkboxStates]
     updatedCheckboxStates[index] = !updatedCheckboxStates[index]
@@ -106,8 +119,17 @@ export default function SideBar({
     <div
       className={`${styles.sidebar} ${isOpen ? styles.open : styles.closed}`}
     >
-      <h2 className={styles.title}>プロンプトチェックシート（全16個）</h2>
       <div className={styles.content}>
+        {showImprovementSuggestions && (
+          <div className={styles.tipItem}>
+            <h2 className={styles.title}>プロンプト改善提案</h2>
+            <div className={styles.improvementSuggestions}>
+              <ReactMarkdown>{improvementSuggestions}</ReactMarkdown>
+            </div>
+          </div>
+        )}
+
+        <h2 className={styles.title}>プロンプトチェックシート（全16個）</h2>
         {tips.map((tip, index) => (
           <div key={tip.id} className={styles.tipItem}>
             <label className={styles.checkboxLabel}>
