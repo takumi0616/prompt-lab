@@ -5,19 +5,23 @@
   transition: transform 0.3s ease;
   position: absolute;
   left: 0;
+  top: 100px;
+  bottom: 30px;
   overflow-y: auto;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  padding-bottom: 80px;
-  padding-top: 80px;
+  padding: 24px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
 }
 
 .closed {
   transform: translateX(-100%);
+  margin-left: 0;
 }
 
 .open {
   transform: translateX(0);
+  margin-left: 20px;
 }
 
 .content {
@@ -32,7 +36,6 @@
   border-bottom: 2px solid #f0f0f0;
   padding-bottom: 10px;
   word-wrap: break-word;
-  margin-top: 40px;
 }
 
 .tipItem {
