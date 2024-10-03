@@ -117,6 +117,12 @@ export default function Home() {
       const data: ResultData = await response.json()
       setResult(data)
 
+      if (data.data.choices[0].logprobs) {
+        setLogprobs(data.data.choices[0].logprobs.content)
+      } else {
+        throw new Error('No logprobs found in API response')
+      }
+
       if (correctText.trim() !== '') {
         const embeddingResponse = await fetch('/api/embedding', {
           method: 'POST',
