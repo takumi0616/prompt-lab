@@ -145,6 +145,40 @@ export default function SideBar({
             <p className={styles.tipExample}>{tip.example}</p>
           </div>
         ))}
+
+        <div className={styles.referenceSection}>
+          <h2 className={styles.title}>参考文献</h2>
+          <p>本サイトは以下の研究および記事をもとに作成されています：</p>
+          <ul className={styles.referenceList}>
+            <li>
+              Zhou, Yongchao, et al. &quot;Large language models are human-level
+              prompt engineers.&quot;
+              <i>arXiv preprint arXiv:2211.01910</i> (2022).
+            </li>
+            <li>
+              Bsharat, Sondos Mahmoud, Aidar Myrzakhan, and Zhiqiang Shen.
+              &quot;Principled instructions are all you need for questioning
+              llama-1/2, gpt-3.5/4.&quot;
+              <i>arXiv preprint arXiv:2312.16171</i> (2023).
+            </li>
+            <li>
+              かずうぉんばっと,
+              &quot;プロンプト改善エージェントを作ってみた&quot;
+              <a href="https://zenn.dev/kazuwombat/articles/2095668882245d">
+                Zenn Article
+              </a>{' '}
+              (2023).
+            </li>
+            <li>
+              Ryotaro,
+              &quot;OpenAI・Anthropic・Googleのプロンプトエンジニアリングガイドをまとめてみた&quot;
+              <a href="https://zenn.dev/shilla/articles/85b20f8263e206">
+                Zenn Article
+              </a>{' '}
+              (2024).
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   )
