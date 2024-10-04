@@ -1,29 +1,38 @@
 import React from 'react'
+import { RxCross1 } from 'react-icons/rx'
 import styles from './TemplateModal.module.css'
+import { TemplateModalProps } from '@/app/types'
 
-interface TemplateModalProps {
-  prompt: string
-  onClose: () => void
-  onInsert: () => void
-}
-
-const TemplateModal: React.FC<TemplateModalProps> = ({
+export default function TemplateModal({
+  title,
+  subTitle,
   prompt,
   onClose,
   onInsert,
-}) => {
+}: TemplateModalProps) {
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
-        <h3>テンプレートの内容</h3>
-        <p>{prompt}</p>
+        <button className={styles.closeButton} onClick={onClose}>
+          <RxCross1 />
+        </button>
+        <div className={styles.modalIntro}>
+          <div className={styles.modalTitle}>
+            <h3>{title}</h3>
+          </div>
+          <div className={styles.modalSubTitle}>
+            <p>{subTitle}</p>
+          </div>
+          <div className={styles.modalPrompt}>
+            <p>{prompt}</p>
+          </div>
+        </div>
         <div className={styles.buttonGroup}>
-          <button onClick={onInsert}>挿入</button>
-          <button onClick={onClose}>閉じる</button>
+          <button className={styles.insertButton} onClick={onInsert}>
+            挿入
+          </button>
         </div>
       </div>
     </div>
   )
 }
-
-export default TemplateModal

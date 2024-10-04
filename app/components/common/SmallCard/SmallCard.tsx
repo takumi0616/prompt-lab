@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './SmallCard.module.css'
-import { SmallCardProps } from '@/types'
+import { SmallCardProps } from '@/app/types'
 
 export default function SmallCard({
   token,

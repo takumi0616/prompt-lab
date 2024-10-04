@@ -5,6 +5,7 @@ export { default as GeneratedResultsBox } from './GeneratedResultsBox'
 export { default as InputBox } from './InputBox'
 export { default as CreatePrompt } from './CreatePrompt'
 export { default as TemplatePrompt } from './TemplatePrompt'
+export { default as FixPromptBox } from './FixPromptBox'
 export {
   ConfigModal,
   FirstModal,

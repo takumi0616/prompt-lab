@@ -2,12 +2,7 @@ import React, { useState } from 'react'
 import { AiOutlineQuestionCircle } from 'react-icons/ai'
 import { RxCross1 } from 'react-icons/rx'
 import styles from './FirstModal.module.css'
-
-type FirstModalProps = {
-  onClose: () => void
-  onSwitchToExplanation: () => void
-  setApiKey: (key: string) => void
-}
+import { FirstModalProps } from '@/app/types'
 
 export default function FirstModal({
   onClose,

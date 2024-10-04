@@ -61,3 +61,16 @@
 .black {
   color: #333;
 }
+
+.responseBoxArea ul {
+  padding-left: 20px;
+}
+
+.responseBoxArea li {
+  margin-bottom: 5px;
+}
+
+.responseBoxArea p {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}

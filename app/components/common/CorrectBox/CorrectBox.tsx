@@ -2,12 +2,12 @@
 
 import React, { useRef, useState, useEffect } from 'react'
 import styles from './CorrectBox.module.css'
-import { CorrectBoxProps } from '@/types'
+import { CorrectBoxProps } from '@/app/types'
 
-const CorrectBox: React.FC<CorrectBoxProps> = ({
+export default function CorrectBox({
   correctText,
   setCorrectText,
-}) => {
+}: CorrectBoxProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [message, setMessage] = useState(correctText)
 
@@ -38,5 +38,3 @@ const CorrectBox: React.FC<CorrectBoxProps> = ({
     </div>
   )
 }
-
-export default CorrectBox

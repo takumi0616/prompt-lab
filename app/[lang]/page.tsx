@@ -4,8 +4,11 @@ import { useState, useEffect } from 'react'
 import { Element, scroller } from 'react-scroll'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6'
 import { motion, AnimatePresence } from 'framer-motion'
+import { BsFillRocketTakeoffFill, BsChatTextFill } from 'react-icons/bs'
+import { IoMdBookmarks } from 'react-icons/io'
+import ReactLoading from 'react-loading'
 import styles from './page.module.css'
-import { TokenInfo, ResultData } from '@/types'
+import { TokenInfo, ResultData } from '@/app/types'
 import {
   ConfigModal,
   CorrectBox,
@@ -16,16 +19,20 @@ import {
   InstructionModal,
   TemplateModal,
   TemplatePrompt,
-} from '@/components/common'
-import { LogprobsDisplay, Header, Footer } from '@/components/layouts'
-import SideBar from '@/components/layouts/SideBar'
+} from '@/app/components/common'
+import { LogprobsDisplay, Header, Footer } from '@/app/components/layouts'
+import SideBar from '@/app/components/layouts/SideBar'
+import FixPromptBox from '@/app/components/common/FixPromptBox'
 
 export default function Home() {
+  const [checkboxStates, setCheckboxStates] = useState<boolean[]>(
+    new Array(20).fill(false),
+  )
   const [model, setModel] = useState('gpt-4o')
   const [apiKey, setApiKey] = useState('')
   const [prompt, setPrompt] = useState('')
-  const [maxTokens, setMaxTokens] = useState(300)
-  const [seed, setSeed] = useState(100)
+  const [maxTokens, setMaxTokens] = useState(1500)
+  const [seed, setSeed] = useState(0)
   const [topLogprobs, setTopLogprobs] = useState(3)
   const [temperature, setTemperature] = useState(1)
   const [topP, setTopP] = useState(1)
@@ -42,6 +49,12 @@ export default function Home() {
   const [selectedOption, setSelectedOption] = useState('promptBox')
   const [isTemplateModalOpen, setIsTemplateModalOpen] = useState(false)
   const [selectedTemplatePrompt, setSelectedTemplatePrompt] = useState('')
+  const [isFixPromptLoading, setIsFixPromptLoading] = useState(false)
+  const [selectedTemplateTitle, setSelectedTemplateTitle] = useState('')
+  const [selectedTemplateSubTitle, setSelectedTemplateSubTitle] = useState('')
+  const [improvementSuggestions, setImprovementSuggestions] = useState<
+    string | null
+  >(null)
 
   const toggleSidebar = () => {
     setIsSidebarOpen((prevState) => !prevState)
@@ -63,10 +76,13 @@ export default function Home() {
 
   useEffect(() => {
     if (isToggled) {
-      // Expected Answerを表示
-      // ここでは `isHidden` を使わず、直接 `isToggled` を使用して表示制御します
+      // "Enable Expected Answer" がオンの場合の処理（必要なら追加）
     }
   }, [isToggled, result])
+
+  const resetCheckboxes = () => {
+    setCheckboxStates(new Array(20).fill(false))
+  }
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
@@ -74,6 +90,8 @@ export default function Home() {
     setResult(null)
     setLogprobs([])
     setIsLoading(true)
+    setImprovementSuggestions(null)
+    setIsFixPromptLoading(false)
 
     try {
       const response = await fetch('/api/chatgpt', {
@@ -101,19 +119,13 @@ export default function Home() {
       const data: ResultData = await response.json()
       setResult(data)
 
-      if (data.text) {
-        setResult(data)
-      } else {
-        throw new Error('No text returned from API')
-      }
-
       if (data.data.choices[0].logprobs) {
         setLogprobs(data.data.choices[0].logprobs.content)
       } else {
         throw new Error('No logprobs found in API response')
       }
 
-      if (correctText.trim() !== '') {
+      if (isToggled && correctText.trim() !== '') {
         const embeddingResponse = await fetch('/api/embedding', {
           method: 'POST',
           headers: {
@@ -133,20 +145,58 @@ export default function Home() {
         }
 
         const embeddingData = await embeddingResponse.json()
+        const similarityScore = embeddingData.similarityScore
+
         setResult((prevResult) => {
           if (prevResult) {
             return {
               ...prevResult,
-              similarityScore: embeddingData.similarityScore,
+              similarityScore: similarityScore,
             }
           } else {
             return {
               text: data.text,
               data: data.data,
-              similarityScore: embeddingData.similarityScore,
+              similarityScore: similarityScore,
             }
           }
         })
+
+        if (isToggled && correctText.trim() !== '') {
+          setIsFixPromptLoading(true)
+
+          const fixPromptResponse = await fetch('/api/fixprompt', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              apiKey,
+              userPrompt: prompt,
+              output: data.text,
+              desiredOutput: correctText,
+              similarityScore: similarityScore,
+            }),
+          })
+
+          if (!fixPromptResponse.ok) {
+            throw new Error(
+              `FixPrompt API request failed with status ${fixPromptResponse.status}`,
+            )
+          }
+
+          const fixPromptData = await fixPromptResponse.json()
+
+          if (fixPromptData.improvementSuggestions) {
+            setImprovementSuggestions(fixPromptData.improvementSuggestions)
+          } else {
+            throw new Error(
+              'No improvement suggestions returned from FixPrompt API',
+            )
+          }
+
+          setIsFixPromptLoading(false)
+        }
       }
     } catch (error: unknown) {
       if (error instanceof Error) {
@@ -156,6 +206,7 @@ export default function Home() {
       }
     } finally {
       setIsLoading(false)
+      resetCheckboxes()
     }
   }
 
@@ -179,7 +230,12 @@ export default function Home() {
 
   const renderSidebarToggleButton = () => {
     return (
-      <button className={styles.sidebarToggleButton} onClick={toggleSidebar}>
+      <button
+        className={`${styles.sidebarToggleButton} ${
+          !isSidebarOpen ? styles.fuwafuwa : ''
+        }`}
+        onClick={toggleSidebar}
+      >
         {isSidebarOpen ? (
           <FaChevronLeft size={24} />
         ) : (
@@ -200,7 +256,13 @@ export default function Home() {
     setIsTemplateModalOpen(false)
   }
 
-  const handleTemplateModalOpen = (prompt: string) => {
+  const handleTemplateModalOpen = (
+    title: string,
+    subTitle: string,
+    prompt: string,
+  ) => {
+    setSelectedTemplateTitle(title)
+    setSelectedTemplateSubTitle(subTitle)
     setSelectedTemplatePrompt(prompt)
     setIsTemplateModalOpen(true)
   }
@@ -216,11 +278,18 @@ export default function Home() {
         <div
           className={`${styles.sidebar} ${isSidebarOpen ? styles.sidebarOpen : ''}`}
         >
-          <SideBar isOpen={isSidebarOpen} />
+          <SideBar
+            isOpen={isSidebarOpen}
+            checkboxStates={checkboxStates}
+            setCheckboxStates={setCheckboxStates}
+            improvementSuggestions={improvementSuggestions}
+          />
         </div>
         {renderSidebarToggleButton()}
         <div
-          className={`${styles.heroContainer} ${isSidebarOpen ? styles.heroContainerSidebarOpen : ''}`}
+          className={`${styles.heroContainer} ${
+            isSidebarOpen ? styles.heroContainerSidebarOpen : ''
+          }`}
         >
           <div className={styles.menuContainer}>
             <div className={styles.menu}>
@@ -230,6 +299,7 @@ export default function Home() {
                   selectedOption === 'promptBox' ? styles.activeButton : ''
                 }
               >
+                <BsFillRocketTakeoffFill className={styles.icon} />
                 Prompt Box
               </button>
               <button
@@ -240,6 +310,7 @@ export default function Home() {
                     : ''
                 }
               >
+                <BsChatTextFill className={styles.icon} />
                 Think of a prompt together
               </button>
               <button
@@ -248,6 +319,7 @@ export default function Home() {
                   selectedOption === 'templatePrompt' ? styles.activeButton : ''
                 }
               >
+                <IoMdBookmarks className={styles.icon} />
                 Template Prompt
               </button>
             </div>
@@ -282,15 +354,23 @@ export default function Home() {
                       isLoading={isLoading}
                     />
                     {isToggled && (
-                      <div className={styles.componentBottom}>
-                        <div className={styles.hideComponent}>
-                          <p>Expected Answer</p>
-                          <CorrectBox
-                            correctText={correctText}
-                            setCorrectText={setCorrectText}
-                          />
-                        </div>
-                      </div>
+                      <AnimatePresence>
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.5 }}
+                          className={styles.componentBottom}
+                        >
+                          <div className={styles.hideComponent}>
+                            <p>Expected Answer</p>
+                            <CorrectBox
+                              correctText={correctText}
+                              setCorrectText={setCorrectText}
+                            />
+                          </div>
+                        </motion.div>
+                      </AnimatePresence>
                     )}
                   </div>
                 </>
@@ -317,10 +397,7 @@ export default function Home() {
                     </h2>
                   </div>
                   <div className={styles.componentTop}>
-                    <TemplatePrompt
-                      onSelectPrompt={handleTemplatePromptSelect}
-                      onOpenModal={handleTemplateModalOpen}
-                    />
+                    <TemplatePrompt onOpenModal={handleTemplateModalOpen} />
                   </div>
                 </>
               )}
@@ -329,6 +406,8 @@ export default function Home() {
 
           {isTemplateModalOpen && (
             <TemplateModal
+              title={selectedTemplateTitle}
+              subTitle={selectedTemplateSubTitle}
               prompt={selectedTemplatePrompt}
               onClose={handleTemplateModalClose}
               onInsert={() =>
@@ -394,12 +473,29 @@ export default function Home() {
                 topP={topP}
               />
             </Element>
-            {result.similarityScore !== undefined && (
-              <div className={`${styles.fadeIn} ${styles.mb}`}>
-                <h2 className={styles.scoreText}>
-                  Similarity Score: {result.similarityScore}
-                </h2>
+            {isFixPromptLoading ? (
+              <div className={styles.loadingContainer}>
+                <ReactLoading
+                  type="spin"
+                  color="#00BFFF"
+                  height={50}
+                  width={50}
+                  className={styles.loading}
+                />
+                <p className={styles.loadingText}>
+                  プロンプトや結果について評価中...
+                </p>
               </div>
+            ) : (
+              result.similarityScore !== undefined && (
+                <div className={`${styles.fadeIn} ${styles.mb}`}>
+                  <FixPromptBox
+                    improvementSuggestions={improvementSuggestions}
+                    score={result.similarityScore * 100}
+                    similarityScore={result.similarityScore}
+                  />
+                </div>
+              )
             )}
           </div>
         </div>
