@@ -100,7 +100,6 @@ export interface SideBarProps {
 }
 
 export interface TemplatePromptProps {
-  onSelectPrompt: (prompt: string) => void
   onOpenModal: (title: string, subTitle: string, prompt: string) => void
 }
 

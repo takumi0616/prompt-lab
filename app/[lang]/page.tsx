@@ -397,10 +397,7 @@ export default function Home() {
                     </h2>
                   </div>
                   <div className={styles.componentTop}>
-                    <TemplatePrompt
-                      onSelectPrompt={handleTemplatePromptSelect}
-                      onOpenModal={handleTemplateModalOpen}
-                    />
+                    <TemplatePrompt onOpenModal={handleTemplateModalOpen} />
                   </div>
                 </>
               )}

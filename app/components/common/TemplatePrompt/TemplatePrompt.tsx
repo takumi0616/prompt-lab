@@ -69,10 +69,7 @@ const templates = [
   },
 ]
 
-export default function TemplatePrompt({
-  onSelectPrompt,
-  onOpenModal,
-}: TemplatePromptProps) {
+export default function TemplatePrompt({ onOpenModal }: TemplatePromptProps) {
   const handleKeyDown = (
     event: React.KeyboardEvent<HTMLDivElement>,
     title: string,
@@ -113,12 +110,6 @@ export default function TemplatePrompt({
                 </div>
               </div>
             </div>
-            <button
-              className={styles.insertButton}
-              onClick={() => onSelectPrompt(template.prompt)}
-            >
-              挿入
-            </button>
           </div>
         ))}
       </div>

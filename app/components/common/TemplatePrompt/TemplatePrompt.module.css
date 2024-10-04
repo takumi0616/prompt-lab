@@ -18,12 +18,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #f7f7f7;
+  background-color: #ffffff;
   padding: 14px;
   border-radius: 8px;
   width: 100%;
   min-width: 300px;
   max-width: 500px;
+  height: 92px;
   box-sizing: border-box;
 }
 
@@ -35,13 +36,14 @@
 }
 
 .iconWrapper {
-  background-color: #ffffff;
+  background-color: #f7f7f7;
   border-radius: 50%;
   padding: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 18px;
+  color: #2e3d4d;
 }
 
 .iconWrapper svg {
@@ -55,13 +57,14 @@
 }
 
 .templateTitle {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
   text-align: left;
 }
 
 .templateSubTitle {
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: bold;
   color: #666;
   text-align: left;
 }
