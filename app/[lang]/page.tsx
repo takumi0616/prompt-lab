@@ -50,6 +50,8 @@ export default function Home() {
   const [isTemplateModalOpen, setIsTemplateModalOpen] = useState(false)
   const [selectedTemplatePrompt, setSelectedTemplatePrompt] = useState('')
   const [isFixPromptLoading, setIsFixPromptLoading] = useState(false)
+  const [selectedTemplateTitle, setSelectedTemplateTitle] = useState('')
+  const [selectedTemplateSubTitle, setSelectedTemplateSubTitle] = useState('')
   const [improvementSuggestions, setImprovementSuggestions] = useState<
     string | null
   >(null)
@@ -254,7 +256,13 @@ export default function Home() {
     setIsTemplateModalOpen(false)
   }
 
-  const handleTemplateModalOpen = (prompt: string) => {
+  const handleTemplateModalOpen = (
+    title: string,
+    subTitle: string,
+    prompt: string,
+  ) => {
+    setSelectedTemplateTitle(title)
+    setSelectedTemplateSubTitle(subTitle)
     setSelectedTemplatePrompt(prompt)
     setIsTemplateModalOpen(true)
   }
@@ -401,6 +409,8 @@ export default function Home() {
 
           {isTemplateModalOpen && (
             <TemplateModal
+              title={selectedTemplateTitle}
+              subTitle={selectedTemplateSubTitle}
               prompt={selectedTemplatePrompt}
               onClose={handleTemplateModalClose}
               onInsert={() =>

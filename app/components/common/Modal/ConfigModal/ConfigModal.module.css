@@ -33,11 +33,11 @@
 
 .closeButton {
   position: absolute;
-  top: 0px;
+  top: 16px;
   right: 22px;
   background: none;
   border: none;
-  font-size: 48px;
+  font-size: 30px;
   cursor: pointer;
   color: #7b90a6;
 }

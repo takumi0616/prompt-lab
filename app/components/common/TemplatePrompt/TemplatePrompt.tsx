@@ -75,10 +75,12 @@ export default function TemplatePrompt({
 }: TemplatePromptProps) {
   const handleKeyDown = (
     event: React.KeyboardEvent<HTMLDivElement>,
+    title: string,
+    subTitle: string,
     prompt: string,
   ) => {
     if (event.key === 'Enter' || event.key === ' ') {
-      onOpenModal(prompt)
+      onOpenModal(title, subTitle, prompt)
     }
   }
 
@@ -91,8 +93,17 @@ export default function TemplatePrompt({
               className={styles.cardContent}
               role="button"
               tabIndex={0}
-              onClick={() => onOpenModal(template.prompt)}
-              onKeyDown={(event) => handleKeyDown(event, template.prompt)}
+              onClick={() =>
+                onOpenModal(template.title, template.subTitle, template.prompt)
+              }
+              onKeyDown={(event) =>
+                handleKeyDown(
+                  event,
+                  template.title,
+                  template.subTitle,
+                  template.prompt,
+                )
+              }
             >
               <div className={styles.iconWrapper}>{template.icon}</div>
               <div className={styles.textContent}>

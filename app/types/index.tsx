@@ -101,10 +101,12 @@ export interface SideBarProps {
 
 export interface TemplatePromptProps {
   onSelectPrompt: (prompt: string) => void
-  onOpenModal: (prompt: string) => void
+  onOpenModal: (title: string, subTitle: string, prompt: string) => void
 }
 
 export interface TemplateModalProps {
+  title: string
+  subTitle: string
   prompt: string
   onClose: () => void
   onInsert: () => void

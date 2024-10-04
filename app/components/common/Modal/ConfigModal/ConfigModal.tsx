@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { RxCross1 } from 'react-icons/rx'
 import styles from './ConfigModal.module.css'
 import { ConfigModalProps } from '@/app/types'
 
@@ -120,7 +121,7 @@ export default function ConfigModal({
           <h2>ChatGPT Configuration</h2>
           <p>Customize your ChatGPT integration settings.</p>
           <button className={styles.closeButton} onClick={handleCancel}>
-            &times;
+            <RxCross1 />
           </button>
         </div>
 
