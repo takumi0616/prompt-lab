@@ -57,12 +57,6 @@ const TemplatePrompt: React.FC<TemplatePromptProps> = ({
                 </div>
               </div>
             </div>
-            <button
-              className={styles.insertButton}
-              onClick={() => onSelectPrompt(template.prompt)}
-            >
-              挿入
-            </button>
           </div>
         ))}
       </div>
