@@ -41,6 +41,8 @@ export default function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [selectedOption, setSelectedOption] = useState('promptBox')
   const [isTemplateModalOpen, setIsTemplateModalOpen] = useState(false)
+  const [selectedTemplateTitle, setSelectedTemplateTitle] = useState('')
+  const [selectedTemplateSubTitle, setSelectedTemplateSubTitle] = useState('')
   const [selectedTemplatePrompt, setSelectedTemplatePrompt] = useState('')
 
   const toggleSidebar = () => {
@@ -200,7 +202,13 @@ export default function Home() {
     setIsTemplateModalOpen(false)
   }
 
-  const handleTemplateModalOpen = (prompt: string) => {
+  const handleTemplateModalOpen = (
+    title: string,
+    subTitle: string,
+    prompt: string,
+  ) => {
+    setSelectedTemplateTitle(title)
+    setSelectedTemplateSubTitle(subTitle)
     setSelectedTemplatePrompt(prompt)
     setIsTemplateModalOpen(true)
   }
@@ -329,6 +337,8 @@ export default function Home() {
 
           {isTemplateModalOpen && (
             <TemplateModal
+              title={selectedTemplateTitle}
+              subTitle={selectedTemplateSubTitle}
               prompt={selectedTemplatePrompt}
               onClose={handleTemplateModalClose}
               onInsert={() =>
