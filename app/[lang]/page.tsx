@@ -125,7 +125,7 @@ export default function Home() {
         throw new Error('No logprobs found in API response')
       }
 
-      if (correctText.trim() !== '') {
+      if (isToggled && correctText.trim() !== '') {
         const embeddingResponse = await fetch('/api/embedding', {
           method: 'POST',
           headers: {
