@@ -20,7 +20,7 @@ const TemplateModal: React.FC<TemplateModalProps> = ({
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
-      <button className={styles.closeButton} onClick={onClose}>
+        <button className={styles.closeButton} onClick={onClose}>
           <RxCross1 />
         </button>
         <div className={styles.modalIntro}>
