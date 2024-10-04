@@ -9,7 +9,7 @@
 
 .sidebar {
   width: 0;
-  height: 32px;
+  height: 0px;
   background-color: #f0f0f0;
   transition: width 0.3s ease;
   overflow: hidden;
@@ -56,7 +56,7 @@
 }
 
 .sidebarOpen + .sidebarToggleButton {
-  left: calc(40% + 24px);
+  left: calc(40% + 30px);
 }
 
 .sidebarToggleButton:hover {

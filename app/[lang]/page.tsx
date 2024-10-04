@@ -482,11 +482,10 @@ export default function Home() {
             ) : (
               result.similarityScore !== undefined && (
                 <div className={`${styles.fadeIn} ${styles.mb}`}>
-                  <h2 className={styles.scoreText}>
-                    Similarity Score: {result.similarityScore}
-                  </h2>
                   <FixPromptBox
                     improvementSuggestions={improvementSuggestions}
+                    score={result.similarityScore * 100}
+                    similarityScore={result.similarityScore}
                   />
                 </div>
               )

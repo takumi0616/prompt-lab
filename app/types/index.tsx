@@ -127,4 +127,6 @@ export interface CreatePromptProps {
 
 export interface FixPromptProps {
   improvementSuggestions: string | null
+  score: number
+  similarityScore: number
 }
