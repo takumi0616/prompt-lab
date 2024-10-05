@@ -4,7 +4,6 @@
   width: 100%;
   min-height: calc(100vh - 60px);
   overflow: hidden;
-  position: relative;
 }
 
 .sidebar {
@@ -81,7 +80,7 @@
   align-items: center;
   transition: width 0.3s ease;
   overflow: hidden;
-  padding-top: 15vh;
+  padding-top: 16vh;
 }
 
 .heroContainerSidebarOpen {
