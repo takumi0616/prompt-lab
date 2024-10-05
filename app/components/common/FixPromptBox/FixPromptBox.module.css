@@ -1,176 +1,50 @@
-.resultContainer {
+.fixPrompt {
   background-color: #ffffff;
-  border-radius: 12px;
   padding: 24px;
-  margin-top: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  max-width: 95vw;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.scoreSection {
-  display: flex;
-  background-color: #fff5e6;
   border-radius: 8px;
-  padding: 24px;
-  margin-bottom: 20px;
-  align-items: center;
-  border: 1px solid rgba(255, 167, 38, 0.2);
+  margin-top: 20px;
+  width: 95vw;
+  font-size: 20px;
+  font-family: 'Montserrat';
 }
 
-.scorePrimary {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 20px;
+.fixPromptText h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
-.trophyIcon {
-  font-size: 48px;
-  margin-right: 8px;
+.fixPromptText h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
-.scoreContent {
-  flex: 2;
+.fixPromptText h4 {
+  font-size: 18px;
+  font-weight: normal;
+  color: #666666;
+  margin-bottom: 30px;
 }
 
-.scoreHeader {
-  margin-bottom: 8px;
+.fixPromptText li p ul {
+  margin-bottom: 5px;
+}
+
+.scoreBox {
+  margin-bottom: 60px;
 }
 
 .scoreTitle {
-  font-size: 24px;
+  font-size: 42px;
   font-weight: bold;
   color: #333;
-  margin-bottom: 4px;
 }
 
-.scoreValue {
-  font-size: 48px;
-  font-weight: bold;
-  color: #ff6b6b;
-  line-height: 1.2;
-}
-
-.scoreSecondary {
-  flex: 2;
-  text-align: left;
-  padding-left: 24px;
-  border-left: 2px solid rgba(255, 167, 38, 0.3);
-}
-
-.scoreMessage {
-  font-size: 18px;
-  color: #5d4037;
-  margin-bottom: 8px;
-  font-weight: 500;
-}
-
-.starContainer {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 8px;
-}
-
-.star {
+.scoreSubTitle {
   font-size: 24px;
-  color: #ffb300;
-}
-
-.similarityScore {
-  font-size: 14px;
-  color: #795548;
-}
-
-.hintSection {
-  background-color: #f5f5f5;
-  border-radius: 8px;
-  padding: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.hintHeader {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.hintIcon {
-  font-size: 24px;
-}
-
-.hintTitle {
-  font-size: 24px;
-  font-weight: bold;
-  color: #424242;
-}
-
-.hintDescription {
-  font-size: 16px;
-  color: #616161;
-  margin-bottom: 8px;
-  padding-left: 16px;
-}
-
-.hintList {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 18px;
-  color: #424242;
-  line-height: 1.6;
-  margin-left: 12px;
-}
-
-.hintList h3 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #fff;
-  background-color: #2980b9;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  margin: 12px 0;
-  padding: 10px 15px;
-  text-align: center;
-}
-
-.hintList ol,
-.hintList p {
-  padding-left: 10px;
-  margin-bottom: 10px;
-}
-
-.hintList li {
-  position: relative;
-  padding-left: 20px;
-}
-
-.hintList li::before {
-  content: '•';
-  position: absolute;
-  left: 0;
-  color: #ff6b6b;
-  font-weight: bold;
-}
-
-@media (max-width: 768px) {
-  .scoreSection {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .scorePrimary {
-    margin-bottom: 16px;
-    justify-content: center;
-    gap: 0;
-  }
-
-  .scoreSecondary {
-    padding-left: 0;
-    border-left: none;
-    text-align: center;
-  }
+  color: #777;
+  margin-top: 8px;
 }
