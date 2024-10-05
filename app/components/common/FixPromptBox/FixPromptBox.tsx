@@ -8,27 +8,68 @@ export default function FixPromptBox({
   score,
   similarityScore,
 }: FixPromptProps) {
+  const getScoreMessage = (score: number) => {
+    if (score >= 90) return 'すごい！天才プロンプター！'
+    if (score >= 70) return 'いいね！あともう一歩！'
+    return 'がんばって！次はもっとよくなるよ！'
+  }
+
+  const starCount = Math.min(5, Math.floor(score / 20))
+
   return (
-    <div className={styles.fixPrompt}>
-      <div className={styles.scoreBox}>
-        <h2 className={styles.scoreTitle}>
-          あなたのプロンプトの点数: {Math.round(score)}点
-        </h2>
-        <h3 className={styles.scoreSubTitle}>
-          Similarity Score: {similarityScore}
-        </h3>
+    <div className={styles.resultContainer}>
+      <div className={styles.scoreSection}>
+        <div className={styles.scorePrimary}>
+          <span className={styles.trophyIcon} role="img" aria-label="trophy">
+            🏆
+          </span>
+          <div className={styles.scoreContent}>
+            <div className={styles.scoreHeader}>
+              <h2 className={styles.scoreTitle}>きみのスコア</h2>
+            </div>
+            <div className={styles.scoreValue}>{Math.round(score)}点</div>
+          </div>
+        </div>
+
+        <div className={styles.scoreSecondary}>
+          <p className={styles.scoreMessage}>{getScoreMessage(score)}</p>
+          <div className={styles.starContainer}>
+            {[...Array(5)].map((_, i) => (
+              <span
+                key={i}
+                className={styles.star}
+                role="img"
+                aria-label="star"
+                style={{ opacity: i < starCount ? 1 : 0.3 }}
+              >
+                ⭐
+              </span>
+            ))}
+          </div>
+          <p className={styles.similarityScore}>
+            類似度スコア: {similarityScore}
+          </p>
+        </div>
       </div>
+
       {improvementSuggestions ? (
-        <div className={styles.fixPromptText}>
-          <h2>プロンプトの改善についての提案</h2>
-          <h4>
-            サイドメニューにも同じ内容が表示されているので、参考にしながらプロンプトを改善しよう！
-          </h4>
-          <ReactMarkdown>{improvementSuggestions}</ReactMarkdown>
+        <div className={styles.hintSection}>
+          <div className={styles.hintHeader}>
+            <span className={styles.hintIcon} role="img" aria-label="lightbulb">
+              💡
+            </span>
+            <h3 className={styles.hintTitle}>もっとよくするためのヒント！</h3>
+          </div>
+          <p className={styles.hintDescription}>
+            ヒントを参考に、もっといいプロンプトを作ってみよう！
+            サイドメニューにも同じ内容が表示されているよ！
+          </p>
+          <div className={styles.hintList}>
+            <ReactMarkdown>{improvementSuggestions}</ReactMarkdown>
+          </div>
         </div>
       ) : (
-        // <p>No improvement suggestions available</p>
-        <p>改善提案はありません</p>
+        <p>今はもっとよくするためのヒントがないよ。またあとで見てみてね！</p>
       )}
     </div>
   )
