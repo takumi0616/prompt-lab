@@ -32,7 +32,7 @@ export default function Home() {
   const [apiKey, setApiKey] = useState('')
   const [prompt, setPrompt] = useState('')
   const [maxTokens, setMaxTokens] = useState(1500)
-  const [seed, setSeed] = useState(0)
+  const [seed, setSeed] = useState(1)
   const [topLogprobs, setTopLogprobs] = useState(3)
   const [temperature, setTemperature] = useState(1)
   const [topP, setTopP] = useState(1)
