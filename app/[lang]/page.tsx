@@ -389,7 +389,7 @@ export default function Home() {
                     <h1 className={styles.title}>
                       {/* Create your prompt */}
                       あなたのプロンプトを作ります
-                      </h1>
+                    </h1>
                     <h2 className={styles.subtitle}>
                       {/* You can create a prompt just by answering a question */}
                       幾つかの質問に答えるとプロンプトが完成
@@ -406,7 +406,7 @@ export default function Home() {
                     <h1 className={styles.title}>
                       {/* Select the template */}
                       テンプレートを選んでください
-                      </h1>
+                    </h1>
                     <h2 className={styles.subtitle}>
                       {/* Click the insert button and use the prompt */}
                       テンプレートを選択し、プロンプトボックスに挿入
