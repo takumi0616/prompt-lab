@@ -300,7 +300,8 @@ export default function Home() {
                 }
               >
                 <BsFillRocketTakeoffFill className={styles.icon} />
-                Prompt Box
+                {/* Prompt Box */}
+                プロンプトボックス
               </button>
               <button
                 onClick={() => setSelectedOption('thinkPromptTogether')}
@@ -311,7 +312,8 @@ export default function Home() {
                 }
               >
                 <BsChatTextFill className={styles.icon} />
-                Think of a prompt together
+                {/* Think of a prompt together */}
+                一緒にプロンプトを考える
               </button>
               <button
                 onClick={() => setSelectedOption('templatePrompt')}
@@ -320,7 +322,8 @@ export default function Home() {
                 }
               >
                 <IoMdBookmarks className={styles.icon} />
-                Template Prompt
+                {/* Template Prompt */}
+                プロンプトの例リスト
               </button>
             </div>
           </div>
@@ -337,9 +340,13 @@ export default function Home() {
               {selectedOption === 'promptBox' && (
                 <>
                   <div className={styles.hero}>
-                    <h1 className={styles.title}>Chat with an AI</h1>
+                    <h1 className={styles.title}>
+                      {/* Chat with an AI */}
+                      生成AIの言葉選びを見てみましょう
+                    </h1>
                     <h2 className={styles.subtitle}>
-                      Click on the gear icon to set the optimal parameters
+                      {/* Click on the gear icon to set the optimal parameters */}
+                      歯車アイコンをクリックしてパラメータを最適に
                     </h2>
                   </div>
                   <div className={styles.componentTop}>
@@ -363,7 +370,8 @@ export default function Home() {
                           className={styles.componentBottom}
                         >
                           <div className={styles.hideComponent}>
-                            <p>Expected Answer</p>
+                            {/* <p>Expected Answer</p> */}
+                            <p>出力したいテキスト</p>
                             <CorrectBox
                               correctText={correctText}
                               setCorrectText={setCorrectText}
@@ -378,9 +386,13 @@ export default function Home() {
               {selectedOption === 'thinkPromptTogether' && (
                 <>
                   <div className={styles.hero}>
-                    <h1 className={styles.title}>Create your prompt</h1>
+                    <h1 className={styles.title}>
+                      {/* Create your prompt */}
+                      あなたのプロンプトを作ります
+                      </h1>
                     <h2 className={styles.subtitle}>
-                      You can create a prompt just by answering a question
+                      {/* You can create a prompt just by answering a question */}
+                      幾つかの質問に答えるとプロンプトが完成
                     </h2>
                   </div>
                   <div className={styles.componentTop}>
@@ -391,9 +403,13 @@ export default function Home() {
               {selectedOption === 'templatePrompt' && (
                 <>
                   <div className={styles.hero}>
-                    <h1 className={styles.title}>Select the template</h1>
+                    <h1 className={styles.title}>
+                      {/* Select the template */}
+                      テンプレートを選んでください
+                      </h1>
                     <h2 className={styles.subtitle}>
-                      Click the insert button and use the prompt
+                      {/* Click the insert button and use the prompt */}
+                      テンプレートを選択し、プロンプトボックスに挿入
                     </h2>
                   </div>
                   <div className={styles.componentTop}>
