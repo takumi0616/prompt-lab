@@ -342,7 +342,7 @@ export default function Home() {
                   <div className={styles.hero}>
                     <h1 className={styles.title}>
                       {/* Chat with an AI */}
-                      生成AIの言葉選びを見てみましょう
+                      生成AIとチャットしてみよう
                     </h1>
                     <h2 className={styles.subtitle}>
                       {/* Click on the gear icon to set the optimal parameters */}
