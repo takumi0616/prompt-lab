@@ -323,7 +323,7 @@ export default function Home() {
               >
                 <IoMdBookmarks className={styles.icon} />
                 {/* Template Prompt */}
-                プロンプトの例リスト
+                プロンプトのテンプレート
               </button>
             </div>
           </div>
