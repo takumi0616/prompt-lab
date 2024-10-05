@@ -118,8 +118,10 @@ export default function ConfigModal({
     <div className={styles.modalOverlay}>
       <div ref={modalRef} className={styles.modalContent}>
         <div className={styles.modalHeader}>
-          <h2>ChatGPT Configuration</h2>
-          <p>Customize your ChatGPT integration settings.</p>
+          {/* <h2>ChatGPT Configuration</h2> */}
+          <h2>ChatGPTの設定</h2>
+          {/* <p>Customize your ChatGPT integration settings.</p> */}
+          <p>ChatPGTのパラメータが変更できます。</p>
           <button className={styles.closeButton} onClick={handleCancel}>
             <RxCross1 />
           </button>
@@ -297,10 +299,10 @@ export default function ConfigModal({
         </div>
         <div className={styles.modalFooter}>
           <button className={styles.cancelButton} onClick={handleCancel}>
-            Cancel
+            戻る
           </button>
           <button className={styles.saveButton} onClick={handleSave}>
-            Save
+            保存
           </button>
         </div>
       </div>
