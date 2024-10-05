@@ -29,7 +29,8 @@ export default function CorrectBox({
       <div className={styles.component}>
         <textarea
           ref={textareaRef}
-          placeholder="Enter correct text here..."
+          // placeholder="Enter correct text here..."
+          placeholder="出力したいテキストを入力してください"
           value={message}
           onChange={handleChange}
           className={styles.textarea}

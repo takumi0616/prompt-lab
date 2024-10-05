@@ -27,7 +27,8 @@ export default function FixPromptBox({
           <ReactMarkdown>{improvementSuggestions}</ReactMarkdown>
         </div>
       ) : (
-        <p>No improvement suggestions available</p>
+        // <p>No improvement suggestions available</p>
+        <p>改善提案はありません</p>
       )}
     </div>
   )

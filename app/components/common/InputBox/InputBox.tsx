@@ -49,7 +49,8 @@ export default function InputBox({
         <textarea
           ref={textareaRef}
           className={styles.textarea}
-          placeholder="Type your message..."
+          // placeholder="Type your message..."
+          placeholder="メッセージを入力してください"
           value={message}
           onChange={handleChange}
         />
@@ -71,7 +72,8 @@ export default function InputBox({
               />
             )}
             <div className={styles.iconIntro}>
-              <p>Enable Expected Answer</p>
+              {/* <p>Enable Expected Answer</p> */}
+              <p>採点機能を有効</p>
             </div>
           </div>
           <div className={styles.rightIcons}>

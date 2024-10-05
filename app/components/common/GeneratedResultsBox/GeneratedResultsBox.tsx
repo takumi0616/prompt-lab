@@ -14,7 +14,8 @@ export default function GeneratedResultsBox({
 }: GenerationResultsProps) {
   return (
     <div className={styles.responseBox}>
-      <header>Generation Results</header>
+      {/* <header>Generation Results</header> */}
+      <header>生成結果</header>
       <div className={styles.responseBoxArea}>
         <ReactMarkdown className={styles.black}>{result}</ReactMarkdown>
       </div>

@@ -26,7 +26,7 @@ export default function GenerateButton({
           (disabled || isLoading) && styles.disabled
         }`}
       >
-        {isLoading ? <div className={styles.loader}></div> : <p>Generate</p>}
+        {isLoading ? <div className={styles.loader}></div> : <p>生成する</p>}
       </button>
       {showTooltip && (
         <div className={styles.tooltip}>
