@@ -4,7 +4,7 @@
   align-items: stretch;
   border-radius: 25px;
   border: 2px solid #7b90a6;
-  background-color: #f0f7ff;
+  background-color: #fff;
   padding: 15px;
 }
 
@@ -22,7 +22,7 @@
   border-radius: 25px;
   font-size: 20px;
   font-weight: bold;
-  background-color: #f0f7ff;
+  background-color: #fff;
   color: #333;
   min-height: 100px;
   max-height: 500px;

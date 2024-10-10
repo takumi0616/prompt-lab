@@ -6,7 +6,7 @@
   font-size: 24px;
   font-family: 'Montserrat';
   font-weight: bold;
-  width: 95vw;
+  width: 100%;
   overflow-wrap: break-word;
   display: grid;
   grid-template-rows: 76.08px auto auto;
