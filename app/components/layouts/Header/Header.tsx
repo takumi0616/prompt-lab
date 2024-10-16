@@ -2,11 +2,13 @@
 
 import React from 'react'
 import { ImLab } from 'react-icons/im'
-// import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
+import { signIn, signOut, useSession } from 'next-auth/react'
 import styles from './Header.module.css'
-// import { useLanguage } from '@/i18n/client'
+import { useLanguage } from '@/i18n/client'
 
 export default function Header() {
+  const { data: session } = useSession()
   const handleReload = () => {
     window.location.reload()
   }
@@ -17,14 +19,14 @@ export default function Header() {
     }
   }
 
-  // const { language, setLanguage } = useLanguage()
-  // const router = useRouter()
+  const { language, setLanguage } = useLanguage()
+  const router = useRouter()
 
-  // const handleLanguageToggle = () => {
-  //   const newLanguage = language === 'ja' ? 'en' : 'ja'
-  //   setLanguage(newLanguage)
-  //   router.push(`/${newLanguage}`)
-  // }
+  const handleLanguageToggle = () => {
+    const newLanguage = language === 'ja' ? 'en' : 'ja'
+    setLanguage(newLanguage)
+    router.push(`/${newLanguage}`)
+  }
 
   return (
     <header className={styles.header}>
@@ -39,25 +41,7 @@ export default function Header() {
         <p className={styles.text}>Prompt Lab</p>
       </div>
 
-      {/* <div
-        className={styles.languageToggleContainer}
-        onClick={handleLanguageToggle}
-        onKeyPress={handleLanguageToggle}
-        tabIndex={0}
-        role="button"
-      >
-        <img src="/japan.png" alt="Japanese" className={styles.languageIcon} />
-        <div className={styles.toggleSwitch}>
-          <div
-            className={`${styles.toggleBall} ${
-              language === 'en' ? styles.toggleBallRight : ''
-            }`}
-          ></div>
-        </div>
-        <img src="/us.png" alt="English" className={styles.languageIcon} />
-      </div> */}
-
-      {/* <nav className={styles.nav}>
+      <nav className={styles.nav}>
         <ul className={styles.navList}>
           {session ? (
             <li className={styles.navItem}>
@@ -77,7 +61,24 @@ export default function Header() {
             </li>
           )}
         </ul>
-      </nav> */}
+      </nav>
+      <div
+        className={styles.languageToggleContainer}
+        onClick={handleLanguageToggle}
+        onKeyPress={handleLanguageToggle}
+        tabIndex={0}
+        role="button"
+      >
+        <img src="/japan.png" alt="Japanese" className={styles.languageIcon} />
+        <div className={styles.toggleSwitch}>
+          <div
+            className={`${styles.toggleBall} ${
+              language === 'en' ? styles.toggleBallRight : ''
+            }`}
+          ></div>
+        </div>
+        <img src="/us.png" alt="English" className={styles.languageIcon} />
+      </div>
     </header>
   )
 }

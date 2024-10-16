@@ -4,6 +4,7 @@ import { BsToggleOff, BsToggleOn } from 'react-icons/bs'
 import styles from './InputBox.module.css'
 import GenerateButton from '@/app/components/common/GenerateButton'
 import { InputBoxProps } from '@/app/types'
+import { useTranslation } from '@/i18n/client'
 
 export default function InputBox({
   apiKey,
@@ -14,7 +15,9 @@ export default function InputBox({
   isToggled,
   setIsToggled,
   isLoading,
-}: InputBoxProps) {
+  lang,
+}: InputBoxProps & { lang: string }) {
+  const { t } = useTranslation(lang)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [message, setMessage] = useState(prompt)
 
@@ -49,8 +52,7 @@ export default function InputBox({
         <textarea
           ref={textareaRef}
           className={styles.textarea}
-          // placeholder="Type your message..."
-          placeholder="メッセージを入力してください"
+          placeholder={t('inputBox.placeholder')}
           value={message}
           onChange={handleChange}
         />
@@ -72,8 +74,7 @@ export default function InputBox({
               />
             )}
             <div className={styles.iconIntro}>
-              {/* <p>Enable Expected Answer</p> */}
-              <p>採点機能を有効</p>
+              <p>{t('inputBox.enableGrading')}</p>
             </div>
           </div>
           <div className={styles.rightIcons}>

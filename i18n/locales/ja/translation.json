@@ -1,1 +1,165 @@
-{}
+{
+  "home": {
+    "chatWithAI": "生成AIとチャットしてみよう",
+    "setOptimalParameters": "歯車アイコンをクリックしてパラメータを最適に",
+    "promptBox": "プロンプトボックス",
+    "thinkPromptTogether": "一緒にプロンプトを考える",
+    "templatePrompt": "プロンプトのテンプレート",
+    "expectedAnswer": "出力したいテキスト",
+    "outputText": "出力テキスト",
+    "createPromptQuestion": "幾つかの質問に答えるとプロンプトが完成",
+    "templatePromptInstructions": "テンプレートを選択し、プロンプトボックスに挿入"
+  },
+  "modals": {
+    "loadingPrompt": "プロンプトや結果について評価中...",
+    "fixPrompt": "FixPrompt APIリクエストに失敗しました"
+  },
+  "sidebar": {
+    "improvementSuggestions": "プロンプト改善提案",
+    "promptChecklist": "プロンプトチェックシート（全16個）",
+    "references": "参考文献",
+    "siteBasedOn": "本サイトは以下の研究および記事をもとに作成されています：",
+    "referenceList": [
+      "Zhou, Yongchao, et al. \"Large language models are human-level prompt engineers.\" arXiv preprint arXiv:2211.01910 (2022).",
+      "Bsharat, Sondos Mahmoud, Aidar Myrzakhan, and Zhiqiang Shen. \"Principled instructions are all you need for questioning llama-1/2, gpt-3.5/4.\" arXiv preprint arXiv:2312.16171 (2023).",
+      "かずうぉんばっと, \"プロンプト改善エージェントを作ってみた.\" Zenn記事 (2023).",
+      "Ryotaro, \"OpenAI・Anthropic・Googleのプロンプトエンジニアリングガイドをまとめてみた.\" Zenn記事 (2024)."
+    ]
+  },
+  "tips": [
+    {
+      "title": "明確で具体的な指示を出す",
+      "example": "例: 「次の文章を要約してください。要約は3文以内でお願いします。」"
+    },
+    {
+      "title": "期待する出力形式を指定する",
+      "example": "例: 「回答はJSON形式で以下のようにしてください：{\"鶴の数\": , \"亀の数\": }」"
+    },
+    {
+      "title": "モデルに役割を与える",
+      "example": "例: 「あなたは旅行ガイドです。おすすめの観光地を教えてください。」"
+    },
+    {
+      "title": "思考プロセスを促す（チェーン・オブ・ソート）",
+      "example": "例: 「ステップバイステップで問題を解いてください。」"
+    },
+    {
+      "title": "具体的な例を提供する（Few-shot学習）",
+      "example": "例: 「例：'早起きは三文の徳' の意味を説明してください。では、'石の上にも三年' の意味も説明してください。」"
+    },
+    {
+      "title": "肯定的な表現を使う",
+      "example": "例: 「〜してください。」（「〜しないでください。」より効果的）"
+    },
+    {
+      "title": "対象者を明示する",
+      "example": "例: 「小学生にも分かるように説明してください。」"
+    },
+    {
+      "title": "形式や構造を指定する",
+      "example": "例: 「箇条書きで回答してください。」"
+    },
+    {
+      "title": "特定の語句やフレーズを使うよう指示する",
+      "example": "例: 「回答に必ず '重要なポイントは' というフレーズを含めてください。」"
+    },
+    {
+      "title": "偏見やステレオタイプを避けるよう指示する",
+      "example": "例: 「回答は偏見を持たず、中立的な立場でお願いします。」"
+    },
+    {
+      "title": "過度な丁寧さを省く",
+      "example": "例: 「簡潔に回答してください。 'お願いします' や 'ありがとうございます' は不要です。」"
+    },
+    {
+      "title": "デリミター（区切り記号）を使って明確にする",
+      "example": "例: 「次の文章を '---' で囲みます：---ここに文章---」"
+    },
+    {
+      "title": "複雑なタスクを分割する",
+      "example": "例: 「まず問題の要点をまとめ、その後解決策を提案してください。」"
+    },
+    {
+      "title": "特定の情報に基づいて回答するよう指示する",
+      "example": "例: 「以下のテキストを参考に答えてください： 'テキスト内容'」"
+    },
+    {
+      "title": "回答の長さを指定する",
+      "example": "例: 「100文字以内で説明してください。」"
+    },
+    {
+      "title": "問題解決のプロセスを示す",
+      "example": "例: 「以下の数式を解いて、その過程を説明してください。」"
+    }
+  ],
+  "inputBox": {
+    "placeholder": "メッセージを入力してください",
+    "enableGrading": "採点機能を有効"
+  },
+  "correctBox": {
+    "placeholder": "出力したいテキストを入力してください"
+  },
+  "createPrompt": {
+    "whatDoYouWantToKnow": "何を知りたいですか？",
+    "enterInterest": "興味のあるテーマを入力してください。",
+    "exampleAI": "例: AI技術に関する情報",
+    "howDoYouWantItExplained": "どんなふうに教えて欲しいですか？",
+    "enterExplanationStyle": "希望する説明の仕方を入力してください。",
+    "exampleBriefly": "例: 簡潔に、詳細に、初心者向けに",
+    "whoWillAnswer": "誰に教えて欲しいですか？",
+    "enterRole": "回答者の役割や視点を入力してください。",
+    "exampleExpert": "例: 専門家、先生、子供",
+    "yourIdentity": "あなたの身分を教えてください",
+    "enterPosition": "あなたの職業や立場を入力してください。",
+    "exampleStudent": "例: 学生、エンジニア、経営者",
+    "desiredLength": "何文字くらいで教えて欲しいですか？",
+    "enterLength": "希望する回答の長さを入力してください。",
+    "exampleLength": "例: 100文字、500文字、具体的な長さ",
+    "enterExample": "例の文章があれば入力してください",
+    "enterExampleExplanation": "回答に含めたい例があれば入力してください。",
+    "exampleProverb": "例: 「早起きは三文の徳」の意味を説明してください。",
+    "youAre": "あなたは",
+    "teachAbout": "次のテーマについて教えてください",
+    "explain": "にも分かるように説明してください。",
+    "pleaseExplainIn": "回答は",
+    "format": "形式でお願いします",
+    "pleaseLimitAnswerTo": "回答は",
+    "referenceExample": "以下を参考にしてください",
+    "back": "戻る",
+    "next": "次へ",
+    "complete": "完了"
+  },
+  "templatePrompt": {
+    "businessEmail": "ビジネスメールの作成",
+    "clientProgressReport": "クライアントへの進捗報告メール",
+    "businessEmailPrompt": "あなたはビジネスマンです。クライアントに対して、プロジェクトの進捗報告メールを書いてください。",
+
+    "shoppingList": "買い物リストの作成",
+    "weeklyGroceries": "一週間分の食材リスト",
+    "shoppingListPrompt": "あなたは家庭で料理をする人です。1週間分の食材の買い物リストを作成してください。",
+
+    "quickRecipe": "簡単な料理レシピ",
+    "tenMinuteMeal": "10分で作れる料理",
+    "quickRecipePrompt": "10分以内で作れる簡単な料理のレシピを提案してください。",
+
+    "travelPlan": "旅行プランの提案",
+    "tokyoTrip": "東京の3泊4日旅行プラン",
+    "travelPlanPrompt": "あなたは旅行代理店のスタッフです。3泊4日で楽しめる東京の旅行プランを提案してください。",
+
+    "interviewQuestions": "インタビューの質問",
+    "interviewForAuthor": "作家へのインタビューのための質問のリスト",
+    "interviewQuestionsPrompt": "あなたは記者です。作家へのインタビューのための質問のリストを作成してください。",
+
+    "prosAndCons": "賛否両論者",
+    "analyzeTopic": "特定のトピックの長所と短所を分析",
+    "prosAndConsPrompt": "リモートワークとオフィスワークの長所と短所を分析してください。",
+
+    "presentationMaterial": "資料作成",
+    "newSoftware": "自社の新しいソフトウェアに関する資料作成",
+    "presentationMaterialPrompt": "あなたは大手企業に勤めるソフトウェアの担当者です。新しいソフトウェアに関する資料の骨子を作成してください。",
+
+    "meetingAgenda": "会議アジェンダ作成",
+    "weeklyMeeting": "週次チームミーティングのアジェンダ",
+    "meetingAgendaPrompt": "あなたはチームリーダーです。週次チームミーティングのためのアジェンダを作成してください。"
+  }
+}
