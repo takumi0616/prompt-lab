@@ -11,65 +11,65 @@ import { SiLibreofficeimpress } from 'react-icons/si'
 import { BiDetail } from 'react-icons/bi'
 import styles from './TemplatePrompt.module.css'
 import { TemplatePromptProps } from '@/app/types'
+import { useTranslation } from '@/i18n/client'
 
-const templates = [
-  {
-    title: 'ビジネスメールの作成',
-    subTitle: 'クライアントへの進捗報告メール',
-    icon: <FaEnvelope />,
-    prompt:
-      'あなたはビジネスマンです。クライアントに対して、プロジェクトの進捗報告メールを書いてください。',
-  },
-  {
-    title: '買い物リストの作成',
-    subTitle: '一週間分の食材リスト',
-    icon: <FaShoppingCart />,
-    prompt:
-      'あなたは家庭で料理をする人です。1週間分の食材の買い物リストを作成してください。',
-  },
-  {
-    title: '簡単な料理レシピ',
-    subTitle: '10分で作れる料理',
-    icon: <FaUtensils />,
-    prompt: '10分以内で作れる簡単な料理のレシピを提案してください。',
-  },
-  {
-    title: '旅行プランの提案',
-    subTitle: '東京の3泊4日旅行プラン',
-    icon: <FaPlane />,
-    prompt:
-      'あなたは旅行代理店のスタッフです。3泊4日で楽しめる東京の旅行プランを提案してください。',
-  },
-  {
-    title: 'インタビューの質問',
-    subTitle: ' 作家へのインタビューのための質問のリスト',
-    icon: <FaPenFancy />,
-    prompt:
-      'あなたは記者です。作家へのインタビューのための質問のリストを作成してください。',
-  },
-  {
-    title: '賛否両論者',
-    subTitle: ' 特定のトピックの長所と短所を分析',
-    icon: <IoLogoWechat />,
-    prompt: 'リモートワークとオフィスワークの長所と短所を分析してください。',
-  },
-  {
-    title: '資料作成',
-    subTitle: ' 自社の新しいソフトウェアに関する資料作成',
-    icon: <SiLibreofficeimpress />,
-    prompt:
-      'あなたは大手企業に勤めるソフトウェアの担当者です。新しいソフトウェアに関する資料の骨子を作成してください。',
-  },
-  {
-    title: '会議アジェンダ作成',
-    subTitle: ' 週次チームミーティングのアジェンダ',
-    icon: <BiDetail />,
-    prompt:
-      'あなたはチームリーダーです。週次チームミーティングのためのアジェンダを作成してください。',
-  },
-]
+export default function TemplatePrompt({
+  onOpenModal,
+  lang,
+}: TemplatePromptProps & { lang: string }) {
+  const { t } = useTranslation(lang)
 
-export default function TemplatePrompt({ onOpenModal }: TemplatePromptProps) {
+  const templates = [
+    {
+      title: t('templatePrompt.businessEmail'),
+      subTitle: t('templatePrompt.clientProgressReport'),
+      icon: <FaEnvelope />,
+      prompt: t('templatePrompt.businessEmailPrompt'),
+    },
+    {
+      title: t('templatePrompt.shoppingList'),
+      subTitle: t('templatePrompt.weeklyGroceries'),
+      icon: <FaShoppingCart />,
+      prompt: t('templatePrompt.shoppingListPrompt'),
+    },
+    {
+      title: t('templatePrompt.quickRecipe'),
+      subTitle: t('templatePrompt.tenMinuteMeal'),
+      icon: <FaUtensils />,
+      prompt: t('templatePrompt.quickRecipePrompt'),
+    },
+    {
+      title: t('templatePrompt.travelPlan'),
+      subTitle: t('templatePrompt.tokyoTrip'),
+      icon: <FaPlane />,
+      prompt: t('templatePrompt.travelPlanPrompt'),
+    },
+    {
+      title: t('templatePrompt.interviewQuestions'),
+      subTitle: t('templatePrompt.interviewForAuthor'),
+      icon: <FaPenFancy />,
+      prompt: t('templatePrompt.interviewQuestionsPrompt'),
+    },
+    {
+      title: t('templatePrompt.prosAndCons'),
+      subTitle: t('templatePrompt.analyzeTopic'),
+      icon: <IoLogoWechat />,
+      prompt: t('templatePrompt.prosAndConsPrompt'),
+    },
+    {
+      title: t('templatePrompt.presentationMaterial'),
+      subTitle: t('templatePrompt.newSoftware'),
+      icon: <SiLibreofficeimpress />,
+      prompt: t('templatePrompt.presentationMaterialPrompt'),
+    },
+    {
+      title: t('templatePrompt.meetingAgenda'),
+      subTitle: t('templatePrompt.weeklyMeeting'),
+      icon: <BiDetail />,
+      prompt: t('templatePrompt.meetingAgendaPrompt'),
+    },
+  ]
+
   const handleKeyDown = (
     event: React.KeyboardEvent<HTMLDivElement>,
     title: string,

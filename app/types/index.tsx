@@ -79,11 +79,13 @@ export interface InputBoxProps {
   isToggled: boolean
   setIsToggled: (value: boolean) => void
   isLoading: boolean
+  lang: string
 }
 
 export interface CorrectBoxProps {
   correctText: string
   setCorrectText: (value: string) => void
+  lang: string
 }
 
 export interface Tip {
@@ -97,10 +99,12 @@ export interface SideBarProps {
   checkboxStates: boolean[]
   setCheckboxStates: React.Dispatch<React.SetStateAction<boolean[]>>
   improvementSuggestions: string | null
+  lang: string
 }
 
 export interface TemplatePromptProps {
   onOpenModal: (title: string, subTitle: string, prompt: string) => void
+  lang: string
 }
 
 export interface TemplateModalProps {
@@ -124,6 +128,7 @@ export interface FirstModalProps {
 
 export interface CreatePromptProps {
   onComplete: (generatedPrompt: string) => void
+  lang: string
 }
 
 export interface FixPromptProps {

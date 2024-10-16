@@ -1,38 +1,45 @@
+'use client'
+
 import React, { useState, useEffect } from 'react'
 import styles from './CreatePrompt.module.css'
 import { CreatePromptProps } from '@/app/types'
+import { useTranslation } from '@/i18n/client'
 
-export default function CreatePrompt({ onComplete }: CreatePromptProps) {
+export default function CreatePrompt({
+  onComplete,
+  lang,
+}: CreatePromptProps & { lang: string }) {
+  const { t } = useTranslation(lang)
   const questions = [
     {
-      question: '何を知りたいですか？',
-      subTitle: '興味のあるテーマを入力してください。',
-      example: '例: AI技術に関する情報',
+      question: t('createPrompt.whatDoYouWantToKnow'),
+      subTitle: t('createPrompt.enterInterest'),
+      example: t('createPrompt.exampleAI'),
     },
     {
-      question: 'どんなふうに教えて欲しいですか？',
-      subTitle: '希望する説明の仕方を入力してください。',
-      example: '例: 簡潔に、詳細に、初心者向けに',
+      question: t('createPrompt.howDoYouWantItExplained'),
+      subTitle: t('createPrompt.enterExplanationStyle'),
+      example: t('createPrompt.exampleBriefly'),
     },
     {
-      question: '誰に教えて欲しいですか？',
-      subTitle: '回答者の役割や視点を入力してください。',
-      example: '例: 専門家、先生、子供',
+      question: t('createPrompt.whoWillAnswer'),
+      subTitle: t('createPrompt.enterRole'),
+      example: t('createPrompt.exampleExpert'),
     },
     {
-      question: 'あなたの身分を教えてください',
-      subTitle: 'あなたの職業や立場を入力してください。',
-      example: '例: 学生、エンジニア、経営者',
+      question: t('createPrompt.yourIdentity'),
+      subTitle: t('createPrompt.enterPosition'),
+      example: t('createPrompt.exampleStudent'),
     },
     {
-      question: '何文字くらいで教えて欲しいですか？',
-      subTitle: '希望する回答の長さを入力してください。',
-      example: '例: 100文字、500文字、具体的な長さ',
+      question: t('createPrompt.desiredLength'),
+      subTitle: t('createPrompt.enterLength'),
+      example: t('createPrompt.exampleLength'),
     },
     {
-      question: '例の文章があれば入力してください',
-      subTitle: '回答に含めたい例があれば入力してください。',
-      example: '例: 「早起きは三文の徳」の意味を説明してください。',
+      question: t('createPrompt.enterExample'),
+      subTitle: t('createPrompt.enterExampleExplanation'),
+      example: t('createPrompt.exampleProverb'),
     },
   ]
 
@@ -51,33 +58,33 @@ export default function CreatePrompt({ onComplete }: CreatePromptProps) {
 
     // Tip 3: モデルに役割を与える
     if (answers[2]) {
-      generatedPrompt += `あなたは${answers[2]}です。\n\n`
+      generatedPrompt += `${t('createPrompt.youAre')} ${answers[2]}.\n\n`
     }
 
     // Tip 6: 肯定的な表現を使う
     // Tip 1: 明確で具体的な指示を出す
     if (answers[0]) {
-      generatedPrompt += `次のテーマについて教えてください：「${answers[0]}」。\n\n`
+      generatedPrompt += `${t('createPrompt.teachAbout')} 「${answers[0]}」.\n\n`
     }
 
     // Tip 7: 対象者を明示する
     if (answers[3]) {
-      generatedPrompt += `${answers[3]}にも分かるように説明してください。\n\n`
+      generatedPrompt += `${answers[3]}${t('createPrompt.explain')}\n\n`
     }
 
     // Tip 2: 期待する出力形式を指定する
     if (answers[1]) {
-      generatedPrompt += `回答は${answers[1]}形式でお願いします。\n\n`
+      generatedPrompt += `${t('createPrompt.pleaseExplainIn')} ${answers[1]} ${t('createPrompt.format')}.\n\n`
     }
 
     // Tip 15: 回答の長さを指定する
     if (answers[4]) {
-      generatedPrompt += `回答は${answers[4]}以内でお願いします。\n\n`
+      generatedPrompt += `${t('createPrompt.pleaseLimitAnswerTo')} ${answers[4]}.\n\n`
     }
 
     // Tip 5: 具体的な例を提供する（Few-shot学習）
     if (answers[5]) {
-      generatedPrompt += `以下を参考にしてください：\n\n${answers[5]}\n\n`
+      generatedPrompt += `${t('createPrompt.referenceExample')}:\n\n${answers[5]}\n\n`
     }
 
     generatedPrompt = generatedPrompt.trim()
@@ -136,15 +143,15 @@ export default function CreatePrompt({ onComplete }: CreatePromptProps) {
           onClick={handlePrevious}
           disabled={currentQuestion === 0}
         >
-          戻る
+          {t('createPrompt.back')}
         </button>
         {currentQuestion < questions.length - 1 ? (
           <button className={styles.button} onClick={handleNext}>
-            次へ
+            {t('createPrompt.next')}
           </button>
         ) : (
           <button className={styles.button} onClick={handleComplete}>
-            完了
+            {t('createPrompt.complete')}
           </button>
         )}
       </div>

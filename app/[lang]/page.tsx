@@ -23,8 +23,10 @@ import {
 import { LogprobsDisplay, Header, Footer } from '@/app/components/layouts'
 import SideBar from '@/app/components/layouts/SideBar'
 import FixPromptBox from '@/app/components/common/FixPromptBox'
+import { useTranslation } from '@/i18n/client'
 
-export default function Home() {
+export default function Home({ params }: { params: { lang: string } }) {
+  const { t } = useTranslation(params.lang)
   const [checkboxStates, setCheckboxStates] = useState<boolean[]>(
     new Array(20).fill(false),
   )
@@ -283,6 +285,7 @@ export default function Home() {
             checkboxStates={checkboxStates}
             setCheckboxStates={setCheckboxStates}
             improvementSuggestions={improvementSuggestions}
+            lang={params.lang}
           />
         </div>
         {renderSidebarToggleButton()}
@@ -300,8 +303,7 @@ export default function Home() {
                 }
               >
                 <BsFillRocketTakeoffFill className={styles.icon} />
-                {/* Prompt Box */}
-                プロンプトボックス
+                {t('home.promptBox')}
               </button>
               <button
                 onClick={() => setSelectedOption('thinkPromptTogether')}
@@ -312,8 +314,7 @@ export default function Home() {
                 }
               >
                 <BsChatTextFill className={styles.icon} />
-                {/* Think of a prompt together */}
-                一緒にプロンプトを考える
+                {t('home.thinkPromptTogether')}
               </button>
               <button
                 onClick={() => setSelectedOption('templatePrompt')}
@@ -322,8 +323,7 @@ export default function Home() {
                 }
               >
                 <IoMdBookmarks className={styles.icon} />
-                {/* Template Prompt */}
-                プロンプトのテンプレート
+                {t('home.templatePrompt')}
               </button>
             </div>
           </div>
@@ -340,13 +340,9 @@ export default function Home() {
               {selectedOption === 'promptBox' && (
                 <>
                   <div className={styles.hero}>
-                    <h1 className={styles.title}>
-                      {/* Chat with an AI */}
-                      生成AIとチャットしてみよう
-                    </h1>
+                    <h1 className={styles.title}>{t('home.chatWithAI')}</h1>
                     <h2 className={styles.subtitle}>
-                      {/* Click on the gear icon to set the optimal parameters */}
-                      歯車アイコンをクリックしてパラメータを最適に
+                      {t('home.setOptimalParameters')}
                     </h2>
                   </div>
                   <div className={styles.componentTop}>
@@ -359,6 +355,7 @@ export default function Home() {
                       isToggled={isToggled}
                       setIsToggled={setIsToggled}
                       isLoading={isLoading}
+                      lang={params.lang}
                     />
                     {isToggled && (
                       <AnimatePresence>
@@ -370,11 +367,11 @@ export default function Home() {
                           className={styles.componentBottom}
                         >
                           <div className={styles.hideComponent}>
-                            {/* <p>Expected Answer</p> */}
-                            <p>出力したいテキスト</p>
+                            <p>{t('home.expectedAnswer')}</p>
                             <CorrectBox
                               correctText={correctText}
                               setCorrectText={setCorrectText}
+                              lang={params.lang}
                             />
                           </div>
                         </motion.div>
@@ -387,33 +384,33 @@ export default function Home() {
                 <>
                   <div className={styles.hero}>
                     <h1 className={styles.title}>
-                      {/* Create your prompt */}
-                      あなたのプロンプトを作ります
+                      {t('home.thinkPromptTogether')}
                     </h1>
                     <h2 className={styles.subtitle}>
-                      {/* You can create a prompt just by answering a question */}
-                      幾つかの質問に答えるとプロンプトが完成
+                      {t('home.createPromptQuestion')}
                     </h2>
                   </div>
                   <div className={styles.componentTop}>
-                    <CreatePrompt onComplete={handleCreatePromptComplete} />
+                    <CreatePrompt
+                      onComplete={handleCreatePromptComplete}
+                      lang={params.lang}
+                    />
                   </div>
                 </>
               )}
               {selectedOption === 'templatePrompt' && (
                 <>
                   <div className={styles.hero}>
-                    <h1 className={styles.title}>
-                      {/* Select the template */}
-                      テンプレートを選んでください
-                    </h1>
+                    <h1 className={styles.title}>{t('home.templatePrompt')}</h1>
                     <h2 className={styles.subtitle}>
-                      {/* Click the insert button and use the prompt */}
-                      テンプレートを選択し、プロンプトボックスに挿入
+                      {t('home.templatePromptInstructions')}
                     </h2>
                   </div>
                   <div className={styles.componentTop}>
-                    <TemplatePrompt onOpenModal={handleTemplateModalOpen} />
+                    <TemplatePrompt
+                      onOpenModal={handleTemplateModalOpen}
+                      lang={params.lang}
+                    />
                   </div>
                 </>
               )}
@@ -499,7 +496,7 @@ export default function Home() {
                   className={styles.loading}
                 />
                 <p className={styles.loadingText}>
-                  プロンプトや結果について評価中...
+                  {t('modals.loadingPrompt')}
                 </p>
               </div>
             ) : (

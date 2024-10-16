@@ -1,1 +1,165 @@
-{}
+{
+  "home": {
+    "chatWithAI": "Chat with an AI",
+    "setOptimalParameters": "Click on the gear icon to set the optimal parameters",
+    "promptBox": "Prompt Box",
+    "thinkPromptTogether": "Think of a prompt together",
+    "templatePrompt": "Template Prompt",
+    "expectedAnswer": "Expected Answer",
+    "outputText": "Output Text",
+    "createPromptQuestion": "Answer a few questions and the prompt will be complete.",
+    "templatePromptInstructions": "Select a template and insert it into the prompt box."
+  },
+  "modals": {
+    "loadingPrompt": "Evaluating the prompt and result...",
+    "fixPrompt": "FixPrompt API request failed with status"
+  },
+  "sidebar": {
+    "improvementSuggestions": "Improvement Suggestions",
+    "promptChecklist": "Prompt Checklist (16 items)",
+    "references": "References",
+    "siteBasedOn": "This site is based on the following studies and articles:",
+    "referenceList": [
+      "Zhou, Yongchao, et al. \"Large language models are human-level prompt engineers.\" arXiv preprint arXiv:2211.01910 (2022).",
+      "Bsharat, Sondos Mahmoud, Aidar Myrzakhan, and Zhiqiang Shen. \"Principled instructions are all you need for questioning llama-1/2, gpt-3.5/4.\" arXiv preprint arXiv:2312.16171 (2023).",
+      "Kazuwombat, \"I created a prompt improvement agent.\" Zenn Article (2023).",
+      "Ryotaro, \"A summary of Prompt Engineering Guides from OpenAI, Anthropic, and Google.\" Zenn Article (2024)."
+    ]
+  },
+  "tips": [
+    {
+      "title": "Give clear and specific instructions",
+      "example": "e.g., \"Please summarize the following text in 3 sentences or fewer.\""
+    },
+    {
+      "title": "Specify the expected output format",
+      "example": "e.g., \"The response should be in JSON format: {\"number_of_cranes\": , \"number_of_turtles\": }\""
+    },
+    {
+      "title": "Assign a role to the model",
+      "example": "e.g., \"You are a tour guide. Please recommend a sightseeing spot.\""
+    },
+    {
+      "title": "Encourage thought processes (Chain of Thought)",
+      "example": "e.g., \"Solve the problem step by step.\""
+    },
+    {
+      "title": "Provide specific examples (Few-shot learning)",
+      "example": "e.g., \"Explain the meaning of the saying 'The early bird catches the worm.' Now, explain the meaning of 'Patience is a virtue.'\""
+    },
+    {
+      "title": "Use positive expressions",
+      "example": "e.g., \"Please do...\" (more effective than \"Please don't...\")"
+    },
+    {
+      "title": "Clarify the audience",
+      "example": "e.g., \"Explain it in a way that even elementary school students can understand.\""
+    },
+    {
+      "title": "Specify the format or structure",
+      "example": "e.g., \"Please respond in bullet points.\""
+    },
+    {
+      "title": "Instruct to use specific words or phrases",
+      "example": "e.g., \"Please include the phrase 'The important point is...' in the response.\""
+    },
+    {
+      "title": "Avoid bias and stereotypes",
+      "example": "e.g., \"Please respond in an unbiased and neutral manner.\""
+    },
+    {
+      "title": "Omit excessive politeness",
+      "example": "e.g., \"Please be concise. There is no need to say 'please' or 'thank you.'\""
+    },
+    {
+      "title": "Use delimiters to clarify",
+      "example": "e.g., \"The text is surrounded by '---': ---text here---\""
+    },
+    {
+      "title": "Break down complex tasks",
+      "example": "e.g., \"First summarize the key points, then suggest a solution.\""
+    },
+    {
+      "title": "Respond based on specific information",
+      "example": "e.g., \"Please refer to the following text: 'Text content'\""
+    },
+    {
+      "title": "Specify the length of the response",
+      "example": "e.g., \"Explain in 100 characters or fewer.\""
+    },
+    {
+      "title": "Show the problem-solving process",
+      "example": "e.g., \"Solve the following equation and explain the steps.\""
+    }
+  ],
+  "inputBox": {
+    "placeholder": "Type your message...",
+    "enableGrading": "Enable Grading"
+  },
+  "correctBox": {
+    "placeholder": "Enter correct text here..."
+  },
+  "createPrompt": {
+    "whatDoYouWantToKnow": "What do you want to know?",
+    "enterInterest": "Enter the topic of interest.",
+    "exampleAI": "e.g., Information on AI technology",
+    "howDoYouWantItExplained": "How would you like it explained?",
+    "enterExplanationStyle": "Enter the style of explanation you prefer.",
+    "exampleBriefly": "e.g., Briefly, in detail, for beginners",
+    "whoWillAnswer": "Who will answer?",
+    "enterRole": "Enter the role or perspective of the respondent.",
+    "exampleExpert": "e.g., Expert, teacher, child",
+    "yourIdentity": "What is your identity?",
+    "enterPosition": "Enter your profession or position.",
+    "exampleStudent": "e.g., Student, engineer, manager",
+    "desiredLength": "How long should the answer be?",
+    "enterLength": "Enter the desired length of the answer.",
+    "exampleLength": "e.g., 100 words, 500 words, specific length",
+    "enterExample": "If you have an example sentence, enter it here",
+    "enterExampleExplanation": "If you want to include an example in the answer, enter it.",
+    "exampleProverb": "e.g., Explain the meaning of the proverb 'The early bird catches the worm.'",
+    "youAre": "You are",
+    "teachAbout": "Please explain the topic:",
+    "explain": "Please explain it in a way that is easy to understand.",
+    "pleaseExplainIn": "Please explain in",
+    "format": "format.",
+    "pleaseLimitAnswerTo": "Please limit your answer to",
+    "referenceExample": "Refer to the following example:",
+    "back": "Back",
+    "next": "Next",
+    "complete": "Complete"
+  },
+  "templatePrompt": {
+    "businessEmail": "Business Email",
+    "clientProgressReport": "Progress Report to Client",
+    "businessEmailPrompt": "You are a business person. Please write a progress report email to the client.",
+
+    "shoppingList": "Create a Shopping List",
+    "weeklyGroceries": "Weekly Grocery List",
+    "shoppingListPrompt": "You cook at home. Please create a grocery shopping list for one week.",
+
+    "quickRecipe": "Quick Recipe",
+    "tenMinuteMeal": "10-Minute Meal",
+    "quickRecipePrompt": "Suggest a recipe that can be prepared in under 10 minutes.",
+
+    "travelPlan": "Travel Plan",
+    "tokyoTrip": "3 Nights 4 Days in Tokyo",
+    "travelPlanPrompt": "You work for a travel agency. Please suggest a 3-night, 4-day travel plan in Tokyo.",
+
+    "interviewQuestions": "Interview Questions",
+    "interviewForAuthor": "Questions for an Author Interview",
+    "interviewQuestionsPrompt": "You are a journalist. Create a list of questions for an interview with an author.",
+
+    "prosAndCons": "Pros and Cons",
+    "analyzeTopic": "Analyze the Advantages and Disadvantages of a Topic",
+    "prosAndConsPrompt": "Please analyze the advantages and disadvantages of remote work versus office work.",
+
+    "presentationMaterial": "Presentation Material",
+    "newSoftware": "Material for New Software",
+    "presentationMaterialPrompt": "You work at a major company as a software manager. Please create an outline of materials for the new software.",
+
+    "meetingAgenda": "Meeting Agenda",
+    "weeklyMeeting": "Weekly Team Meeting Agenda",
+    "meetingAgendaPrompt": "You are a team leader. Please create an agenda for the weekly team meeting."
+  }
+}

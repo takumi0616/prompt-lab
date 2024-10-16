@@ -3,11 +3,14 @@
 import React, { useRef, useState, useEffect } from 'react'
 import styles from './CorrectBox.module.css'
 import { CorrectBoxProps } from '@/app/types'
+import { useTranslation } from '@/i18n/client'
 
 export default function CorrectBox({
   correctText,
   setCorrectText,
-}: CorrectBoxProps) {
+  lang,
+}: CorrectBoxProps & { lang: string }) {
+  const { t } = useTranslation(lang)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [message, setMessage] = useState(correctText)
 
@@ -29,8 +32,7 @@ export default function CorrectBox({
       <div className={styles.component}>
         <textarea
           ref={textareaRef}
-          // placeholder="Enter correct text here..."
-          placeholder="出力したいテキストを入力してください"
+          placeholder={t('correctBox.placeholder')}
           value={message}
           onChange={handleChange}
           className={styles.textarea}
